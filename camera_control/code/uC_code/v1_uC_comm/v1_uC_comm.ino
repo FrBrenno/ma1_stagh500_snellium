@@ -1,14 +1,13 @@
 #include <Arduino.h>
-#include <EEPROM.h>
-
-#if defined(ARDUINO_AVR_UNO)       
-  #define BOARD "Uno"
+#include <MicrocontrollerID.h>
+#include <avr/eeprom.h>
 
 //======== MICROCONTROLLER INFORMATION ========//
-const String customName = "Device A";       # User-defined
-const String board = "Board " + BOARD;      # Hardware defined, defined on IDE
-const String mcuType = "ATmega328P-AU";     # Hardware defined
-const String serialNumber = "123456789";    # Hardware defined, some MCU types has built-in SID
+      
+#define CUSTOM_NAME "Device A"      // User-defined
+#define BOARD "Uno Clone"
+#define MCU_TYPE "ATmega328P"     
+char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips, generally a serial number
 
 //======== MACROS DEFINITION ========//
 //=== PINS
@@ -18,11 +17,13 @@ const String serialNumber = "123456789";    # Hardware defined, some MCU types h
 #define HELLO_COMMAND String("hello")
 #define PING_COMMAND String("ping")
 #define TRIGGER_COMMAND String("trigger")
+#define INFO_COMMAND String ("info")
 #define STOP_COMMAND String("stop")
 
 #define HELLO_RESPONSE String("hello")
 #define PING_RESPONSE String("pong")
 #define TRIGGER_RESPONSE String("triggered")
+#define INFO_RESPONSE String(String(CUSTOM_NAME) + " (uCID:"+ uCID +") Board "+ BOARD + " " + MCU_TYPE)
 #define STOP_RESPONSE String ("stopped")
 
 //=== MACRO FUNCTIONS
@@ -36,13 +37,17 @@ unsigned long delayBlink = 500;
 
 //======== CYCLE FUNCTION ========//
 void setup() {
-  // put your setup code here, to run once:
+  // Retrieve uC unique identify
+  MicroID.getUniqueIDString(uCID, IDSIZE);
+
+
   Serial.begin(9600);
   pinMode(LED, OUTPUT);
 }
 
 
 void loop() {
+  // Turns on LED when blinking delay is achieved.
   unsigned long currentTimeBlink = millis();
   if (currentTimeBlink - lastTimeBlink >= delayBlink){
     if (!digitalRead(LED) && is_ready){
@@ -50,7 +55,7 @@ void loop() {
     }
   }
   
-
+  
   String message = Serial.readString();
   if (message != "")
   {
@@ -69,6 +74,9 @@ void loop() {
       else if (message.equals(TRIGGER_COMMAND)){
         trigger();
       }
+      else if (message.equals(INFO_COMMAND)){
+        info();
+      }
       else if (message.equals(STOP_COMMAND)){
         stop();
       } 
@@ -84,7 +92,6 @@ void blinkLED(){
   LED_OFF();
   lastTimeBlink = millis();
 }
-
 //======== COMMANDS FUNCTIONS ========//
 void hello() {
   Serial.println(HELLO_RESPONSE);
@@ -104,6 +111,11 @@ void ping() {
 
 void trigger(){
   Serial.println(TRIGGER_RESPONSE);
+  blinkLED();
+}
+
+void info(){
+  Serial.println(INFO_RESPONSE);
   blinkLED();
 }
 

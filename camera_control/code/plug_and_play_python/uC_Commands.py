@@ -48,6 +48,18 @@ class TriggerCommand(Command):
     def on_failure(self, uC):
         print("Trigger command failed")
         
+class InfoCommand(Command):
+    """ Info command to get information from the microcontroller.
+    """
+    def __init__(self):
+        super().__init__("info", None)
+        
+    def on_success(self, uC):
+        pass
+    
+    def on_failure(self, uC):
+        print("Info command failed")
+
 class StopCommand(Command):
     """ Stop command to stop the communication with the microcontroller.
     """

@@ -1,7 +1,7 @@
 import serial
 import time
 
-from uC_Commands import HelloCommand, PingCommand, StopCommand
+from uC_Commands import HelloCommand, PingCommand, InfoCommand, StopCommand
 
 ### Sleep time between port opening and command execution.
 ### This is necessary because of Arduino auto-reset feature.
@@ -57,6 +57,11 @@ class uC_SerialCommunication:
         response = self.rx_message()
         
         print("<- Received:", response)
+        
+        if command.response == None:
+            print("## Command executed...")
+            return
+        
         # Check if the response is the expected one
         if response == command.response:
             command.on_success(self)
@@ -74,6 +79,7 @@ if __name__ == "__main__":
     
     uC.execute_command(HelloCommand())
     uC.execute_command(PingCommand())
+    uC.execute_command(InfoCommand())
     uC.execute_command(StopCommand())
     
     print("## Closing serial port...")

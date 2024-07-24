@@ -22,6 +22,7 @@ class uC_SerialCommunication:
         time.sleep(SLEEP_TIME)      # Wait for Arduino reset
         self.ser.flushInput()
         self.ser.flushOutput()
+        self.test_connection()
 
     def rx_message(self):
         """Receive a message from the serial port.
@@ -47,19 +48,17 @@ class uC_SerialCommunication:
         Args:
             command (Command): Command to be executed.
         """
-        print("## Executing command...")
         print("-> Sending:", command.command)  
            
         self.tx_message(command.command)
         
-        print("- Waiting for:", command.response)
+        print("-- Waiting for:", command.response)
         
         response = self.rx_message()
         
-        print("<- Received:", response)
+        print("<- Received:", response, end="\n\n")
         
         if command.response == None:
-            print("## Command executed...")
             return
         
         # Check if the response is the expected one
@@ -67,12 +66,10 @@ class uC_SerialCommunication:
             return command.on_success(self)
         else:
             return command.on_failure(self)
-        print("## Command executed...")
     
     def test_connection(self):
         """Test the connection with the microcontroller.
         """
-        print("## Testing connection...")
         if self.execute_command(PingCommand()):
             print("## Connection active...")
         else:
@@ -81,22 +78,10 @@ class uC_SerialCommunication:
 if __name__ == "__main__":
     print("## uC Serial Communication")
     
-    print("## Opening serial port...")
     uC = uC_SerialCommunication("/dev/ttyUSB0", 9600)
-    print("## Serial port opened...")
     
-    for i in range(0, random.randint(1, 2)):
-        for i in range(0, random.randint(1, 10)):
-            uC.execute_command(InfoCommand())
-        for i in range(0, random.randint(0, 2)):
-            uC.execute_command(PingCommand())
-    for i in range(0, random.randint(1, 2)):
-        uC.execute_command(TriggerCommand())
+    uC.execute_command(InfoCommand())
+    uC.execute_command(TriggerCommand())
     uC.execute_command(HelpCommand())
     
-    print("## Closing serial port...")
     uC.ser.close()
-    print("## Serial port closed...")
-    
-    print("## uC Serial Communication")
-    

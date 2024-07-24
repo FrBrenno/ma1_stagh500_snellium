@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/19.07.md",
+                "file": "camera_control/journal/24.07.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/19.07.md",
+                "file": "camera_control/journal/24.07.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/19.07.md",
+                "file": "camera_control/journal/24.07.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/19.07.md"
+                "file": "camera_control/journal/24.07.md"
               }
             }
           }
@@ -151,22 +151,24 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
-    "camera_control/lu311398psnh.tmp",
-    "camera_control/lu6991ousg.tmp",
-    "camera_control/lu6991ousd.tmp",
-    "camera_control/lu6991ous8.tmp",
-    "camera_control/lu6991our6.tmp",
-    "camera_control/lu6991ou90.tmp",
-    "camera_control/lu6991otfd.tmp",
-    "camera_control/journal/18.07.md",
+    "camera_control/journal/23.07.md",
+    "camera_control/journal/24.07.md",
+    "camera_control/code/plug_and_play_python/uC_SerialCommunication.py",
+    "camera_control/code/plug_and_play_python",
+    "camera_control/code/plug_and_play_cpp/Makefile",
+    "camera_control/code/plug_and_play_cpp/main.cpp",
+    "camera_control/code/plug_and_play_cpp/src/uC_SerialCommunication.cpp",
+    "camera_control/code/plug_and_play_cpp/src",
+    "camera_control/code/plug_and_play_cpp/out/obj/uC_SerialCommunication.o",
+    "camera_control/code/plug_and_play_cpp/out/obj",
+    "camera_control/code/plug_and_play_cpp/out",
+    "camera_control/code/plug_and_play_cpp/include/uC_SerialCommunication.hpp",
+    "camera_control/journal/22.07 - Week 2.md",
+    "camera_control/journal/15.07 - Week 1.md",
     "camera_control/journal/19.07.md",
+    "camera_control/journal/18.07.md",
     "camera_control/journal/17.07.md",
-    "camera_control/lu4175fpr5.tmp",
-    "camera_control/lu4175fpno.tmp",
-    "camera_control/lu4175fpm7.tmp",
-    "camera_control/lu4175fpds.tmp",
     "camera_control/journal/16.07.md",
-    "camera_control/journal/15.07.md",
     "camera_control/Untitled.md",
     "Welcome.md"
   ]

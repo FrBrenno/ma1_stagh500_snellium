@@ -48,21 +48,21 @@ class uC_SerialCommunication:
         Args:
             command (Command): Command to be executed.
         """
-        print("-> Sending:", command.command)  
+        print("-> Sending:", command.serialize())  
            
-        self.tx_message(command.command)
+        self.tx_message(command.serialize())
         
-        print("-- Waiting for:", command.response)
+        print("-- Waiting for:", command.expected_response)
         
         response = self.rx_message()
         
         print("<- Received:", response, end="\n\n")
         
-        if command.response == None:
+        if command.expected_response == None:
             return
         
         # Check if the response is the expected one
-        if response == command.response:
+        if response == command.expected_response:
             return command.on_success(self)
         else:
             return command.on_failure(self)
@@ -83,5 +83,7 @@ if __name__ == "__main__":
     uC.execute_command(InfoCommand())
     uC.execute_command(TriggerCommand())
     uC.execute_command(HelpCommand())
+    
+    uC.execute_command(TriggerCommand(1, 2, 3, 4, 5))
     
     uC.ser.close()

@@ -49,6 +49,7 @@ unsigned long lastTimeBlink = 0;
 unsigned long delayBlink = 500;
 String message = "";
 String errorMessage = "Error: ";
+String errorOrigin = "";
 
 String debugMessage = "Success";
 bool debugMode = false;
@@ -107,6 +108,7 @@ void loop() {
     if (errorMessage != "Error: "){
       Serial.println(errorMessage);
       errorMessage = "Error: ";
+      errorOrigin = "";
     }
   }
    
@@ -119,7 +121,7 @@ void deserilizeArgumentsBlock(CommandArgs& deserialized){
   int idxFirstSeparator = arguments.indexOf(COMMAND_SEPARATOR);
 
   if (idxFirstSeparator == -1){ // Empty argument block or bad-formatted.
-    error("Arguments block is empty or not well formatted.");
+    errorParser("Arguments block is empty or not well formatted.");
   }
   else{
     int argNumber = arguments.substring(0, idxFirstSeparator).toInt();
@@ -128,7 +130,7 @@ void deserilizeArgumentsBlock(CommandArgs& deserialized){
 
     // See if argNumber is lower than argument list capacity
     if (argNumber > ARGUMENT_LIST_MAXSIZE){
-      error("There are too many arguments.");
+      errorParser("There are too many arguments.");
     }
 
     // Parse arguments and put them in the array
@@ -137,7 +139,7 @@ void deserilizeArgumentsBlock(CommandArgs& deserialized){
 
       if (idxSeparator == -1){ // No separator found : end of block or bad-format
         if (i != argNumber - 1){ 
-          error("There is not the same number of arguments as mentioned!");
+          errorParser("There is not the same number of arguments as mentioned!");
         }
         else{
           break;
@@ -166,7 +168,8 @@ CommandArgs deserialize(){
       input = input.substring(0, input.length()-2);
       // Empty command: ||||
       if (input.equals(COMMAND_DELIMITER)){
-        error("Empty command block.");
+        errorParser("Empty command block.");
+        debugMessage = "Fail";
         return deserialized;
       }
 
@@ -193,7 +196,7 @@ CommandArgs deserialize(){
       else{
         String option = input.substring(idxOptionSeparator + 1);
         if (option.length() == 0){ // option block is empty : command-
-          error("Empty option block.");
+          errorParser("Empty option block.");
         }
         else{
           deserialized.option = option;
@@ -202,10 +205,10 @@ CommandArgs deserialize(){
       deserialized.command = input.substring(0, idxOptionSeparator);
     }
     else{
-      error("Command is not correctly delimited: Not ending with ||.");
+      errorParser("Command is not correctly delimited: Not ending with ||.");
     }
   }else{
-    error("Command is not correctly delimited: Not starting with ||.");
+    errorParser("Command is not correctly delimited: Not starting with ||.");
   }
 
   return deserialized;
@@ -218,10 +221,14 @@ void blinkLED(){
   lastTimeBlink = millis();
 }
 
+void errorParser(String errorMsg){
+  error("Parser: "+ errorMsg);
+}
+
 void error(String errorMsg){
   errorMessage += errorMsg;
-  debugMessage = "Fail";
 }
+
 
 //======== COMMANDS FUNCTIONS ========//
 void info(CommandArgs comArgs){

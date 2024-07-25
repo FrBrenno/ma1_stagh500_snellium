@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/24.07.md",
+                "file": "camera_control/journal/25.07.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/24.07.md",
+                "file": "camera_control/journal/25.07.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/24.07.md",
+                "file": "camera_control/journal/25.07.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/24.07.md"
+                "file": "camera_control/journal/25.07.md"
               }
             }
           }
@@ -151,6 +151,14 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
+    "camera_control/code/uC_code/v1_uC_comm/utils/uC_serializer.hpp",
+    "camera_control/code/uC_code/v1_uC_comm/utils/uC_serializer.cpp",
+    "camera_control/code/uC_code/v1_uC_comm/utils",
+    "camera_control/code/plug_and_play_python/__pycache__/uC_SerialCommunication.cpython-312.pyc",
+    "camera_control/code/plug_and_play_python/uC_test.py",
+    "camera_control/journal/24.07.md",
+    "camera_control/journal/25.07.md",
+    "camera_control/journal/26.07 - Day OFF.md",
     "camera_control/biblio/block-rx65n.png",
     "camera_control/code/plug_and_play_python/__pycache__/uC_Commands.cpython-312.pyc",
     "camera_control/code/plug_and_play_python/uC_Commands.py",
@@ -158,12 +166,7 @@
     "camera_control/code/uC_code/v1_uC_comm/v1_uC_comm.ino",
     "camera_control/code/uC_code/v1_uC_comm",
     "camera_control/code/uC_code",
-    "camera_control/code/plug_and_play_python/__pycache__/Command.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/__pycache__",
-    "camera_control/code/plug_and_play_python/Command.py",
     "camera_control/journal/23.07.md",
-    "camera_control/journal/24.07.md",
-    "camera_control/code/plug_and_play_python/uC_SerialCommunication.py",
     "camera_control/journal/22.07 - Week 2.md",
     "camera_control/journal/15.07 - Week 1.md",
     "camera_control/journal/19.07.md",

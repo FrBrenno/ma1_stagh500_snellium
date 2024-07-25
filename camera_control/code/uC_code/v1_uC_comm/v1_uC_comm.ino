@@ -14,18 +14,21 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 
 //=== COMMANDS STRINGS
 #define COMMAND_DELIMITER "||"
-#define ARGUMENTS_DELIMITER "|"
+#define BLOCK_DELIMITER "|"
+#define COMMAND_SEPARATOR "-"
  
 #define ARGUMENT_LIST_MAXSIZE 10
 
+#define INFO_COMMAND String ("info")
 #define PING_COMMAND String("ping")
 #define TRIGGER_COMMAND String("trigger")
-#define INFO_COMMAND String ("info")
+#define DEBUG_COMMAND String ("debug")
 #define HELP_COMMAND String ("help")
 
+#define INFO_RESPONSE String(String(CUSTOM_NAME) + " (uCID:"+ uCID +") Board "+ BOARD + " " + MCU_TYPE)
 #define PING_RESPONSE String("pong")
 #define TRIGGER_RESPONSE String("triggered")
-#define INFO_RESPONSE String(String(CUSTOM_NAME) + " (uCID:"+ uCID +") Board "+ BOARD + " " + MCU_TYPE)
+#define DEBUG_RESPONSE String("debug mode:")
 #define HELP_RESPONSE String("Commands available: \"info\" \"ping\" \"trigger\" \"help\"")
 //=== MACRO FUNCTIONS
 #define LED_ON() digitalWrite(LED, HIGH)
@@ -35,14 +38,21 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 struct CommandArgs{
   String fullString = "";
   String command = "";
-  String argumentsString = "";
+  String option = "";
+  String arguments = "";
   int argNumber = 0;
-  String arguments[ARGUMENT_LIST_MAXSIZE];
+  String args[ARGUMENT_LIST_MAXSIZE];
 };
 
 //======== GLOBAL VARIABLES ========//
 unsigned long lastTimeBlink = 0;
 unsigned long delayBlink = 500;
+String message = "";
+String errorMessage = "Error: ";
+
+String debugMessage = "Success";
+bool debugMode = false;
+bool debugParser = false;
 
 //======== CYCLE FUNCTION ========//
 void setup() {
@@ -65,7 +75,6 @@ void loop() {
   
   if (Serial.available()){
     CommandArgs comArgs = deserialize();
-    Serial.println("Command: " + comArgs.command + " Arguments(" + comArgs.argNumber + "): ");
     String command = comArgs.command;
 
     if (command.equals(INFO_COMMAND)){
@@ -77,40 +86,71 @@ void loop() {
     else if (command.equals(TRIGGER_COMMAND)){
       trigger();
     }
+    else if (command.equals(DEBUG_COMMAND)){
+      debug(comArgs);
+    }
     else if (command.equals(HELP_COMMAND)){
       help();
     }
     else{
-      error("\"" + comArgs.fullString + "\": Unknown command.");
-      help();
+      message += "Command \""+ comArgs.fullString +"\"" + " unknown.";
     }
-      
+
+    if (message != ""){
+      Serial.println(message);
+      message = "";
+    }
+    if (debugMode){
+      Serial.println(debugMessage);
+      debugMessage = "Success";
+    }
+    if (errorMessage != "Error: "){
+      Serial.println(errorMessage);
+      errorMessage = "Error: ";
+    }
   }
+   
 }
 
 //======== UTILITY FUNCTIONS ========//
-void deserializeArguments(CommandArgs deserialized){
-  int i = 0;
-  int delimiterPosition = 0;
-  String input = deserialized.argumentsString;
+void deserilizeArgumentsBlock(CommandArgs& deserialized){
+  String arguments = deserialized.arguments;
+  // Parse argument number
+  int idxFirstSeparator = arguments.indexOf(COMMAND_SEPARATOR);
 
-  while (input.length() > 0){
-    delimiterPosition = input.indexOf(ARGUMENTS_DELIMITER);
-    String token = input.substring(0, delimiterPosition);
-    if (i == 1){// Parse number of arguments
-      int argNumber = token.toInt();
-      deserialized.argNumber = argNumber;
-      if (argNumber > ARGUMENT_LIST_MAXSIZE) // more arguments than supported
-      {
-        error("Too many arguments. More arguments than total capacity (10).");
-        return;
+  if (idxFirstSeparator == -1){ // Empty argument block or bad-formatted.
+    error("Arguments block is empty or not well formatted.");
+  }
+  else{
+    int argNumber = arguments.substring(0, idxFirstSeparator).toInt();
+    arguments = arguments.substring(idxFirstSeparator + 1);
+    deserialized.argNumber = argNumber;
+
+    // See if argNumber is lower than argument list capacity
+    if (argNumber > ARGUMENT_LIST_MAXSIZE){
+      error("There are too many arguments.");
+    }
+
+    // Parse arguments and put them in the array
+    for (int i = 0; i <= argNumber; i++){
+      int idxSeparator = arguments.indexOf(COMMAND_SEPARATOR);
+
+      if (idxSeparator == -1){ // No separator found : end of block or bad-format
+        if (i != argNumber - 1){ 
+          error("There is not the same number of arguments as mentioned!");
+        }
+        else{
+          break;
+        }
       }
+      
+      // grab arg and set into the array
+      String arg = arguments.substring(0, idxSeparator);
+      deserialized.args[i] = arg;
+      // reduce input
+      arguments = arguments.substring(idxSeparator + 1); 
+
     }
-    else{
-      deserialized.arguments[i - 1] = token;
-    }
-    input = input.substring(delimiterPosition+1);
-    i++;
   }
 }
 
@@ -118,22 +158,56 @@ CommandArgs deserialize(){
   String input = Serial.readString();
   CommandArgs deserialized;
   deserialized.fullString = input;
+  
+  if (input.startsWith(COMMAND_DELIMITER) ){ 
+    input = input.substring(2);
 
-  if (input.startsWith(COMMAND_DELIMITER) && input.endsWith(COMMAND_DELIMITER)){
-    input = input.substring(2, input.length() - 2);
+    if (input.endsWith(COMMAND_DELIMITER)){
+      input = input.substring(0, input.length()-2);
+      // Empty command: ||||
+      if (input.equals(COMMAND_DELIMITER)){
+        error("Empty command block.");
+        return deserialized;
+      }
 
-    // Parse command
-    int firstDelimiterPosition = input.indexOf(ARGUMENTS_DELIMITER);
-    deserialized.command = input.substring(0, firstDelimiterPosition);
-    // Check if there is arguments to this command
-    if (firstDelimiterPosition != -1){
-      deserialized.argumentsString = input.substring(firstDelimiterPosition+1);
-      deserializeArguments(deserialized);
+      //=== Separate COMMAND-OPTIONS from #ARGS-ARGUMENTS
+      int idxBlockDelimiter = input.indexOf(BLOCK_DELIMITER);
+
+      if (idxBlockDelimiter == -1){     // No block delimitation, no arguments
+        deserialized.arguments = "";
+      }
+      else{                             // Arguments
+        String arguments = input.substring(idxBlockDelimiter + 1);
+        deserialized.arguments = arguments;
+        // break down arguments into array
+        deserilizeArgumentsBlock(deserialized);
+      }
+
+      //=== Separate COMMAND from OPTION
+      input = input.substring(0, idxBlockDelimiter);
+      int idxOptionSeparator = input.indexOf(COMMAND_SEPARATOR);
+
+      if (idxOptionSeparator == -1){  // No separator on command block, single command word
+        deserialized.option = "";
+      }
+      else{
+        String option = input.substring(idxOptionSeparator + 1);
+        if (option.length() == 0){ // option block is empty : command-
+          error("Empty option block.");
+        }
+        else{
+          deserialized.option = option;
+        } 
+      }
+      deserialized.command = input.substring(0, idxOptionSeparator);
     }
+    else{
+      error("Command is not correctly delimited: Not ending with ||.");
+    }
+  }else{
+    error("Command is not correctly delimited: Not starting with ||.");
   }
-  else{
-    error("Incorrect command pattern.");
-  }
+
   return deserialized;
 }
 
@@ -144,25 +218,41 @@ void blinkLED(){
   lastTimeBlink = millis();
 }
 
-void error(String message){
-  Serial.println(message);
+void error(String errorMsg){
+  errorMessage += errorMsg;
+  debugMessage = "Fail";
 }
 
 //======== COMMANDS FUNCTIONS ========//
 void info(){
-  Serial.println(INFO_RESPONSE);
+  message += INFO_RESPONSE;
 }
 
 void ping() {
-  Serial.println(PING_RESPONSE);
+  message += PING_RESPONSE;
   blinkLED();
 }
 
 void trigger(){
-  Serial.println(TRIGGER_RESPONSE);
+  message += TRIGGER_RESPONSE;
   blinkLED();
 }
 
+void debug(CommandArgs comArgs){
+  message += DEBUG_COMMAND;
+  debugMode = true;
+  if (comArgs.option == "parser")
+  {
+    debugParser = !debugParser;
+    message += " -" + comArgs.option + " ";
+    if (debugParser)
+      message += "True";
+    else
+      message += "False";
+  }
+  
+}
+
 void help(){
-  Serial.println(HELP_RESPONSE);
+  message += HELP_RESPONSE;
 }

@@ -22,7 +22,6 @@ class uC_SerialCommunication:
         time.sleep(SLEEP_TIME)      # Wait for Arduino reset
         self.ser.flushInput()
         self.ser.flushOutput()
-        self.test_connection()
 
     def rx_message(self):
         """Receive a message from the serial port.
@@ -30,7 +29,7 @@ class uC_SerialCommunication:
         Returns:
             str: Message received from the serial port.
         """
-        return self.ser.readline().decode().strip()
+        return self.ser.readline().decode(errors="ignore").strip()
         
     ## Transmit functions
     def tx_message(self, command):
@@ -54,26 +53,36 @@ class uC_SerialCommunication:
         
         print("-- Waiting for:", command.expected_response)
         
-        response = self.rx_message()
+        response_status = self.rx_message()
+        response_message = self.rx_message()
         
-        print("<- Received:", response, end="\n\n")
+        print("<- Received:", response_message, end="\n\n")
         
         if command.expected_response == None:
             return
         
         # Check if the response is the expected one
-        if response == command.expected_response:
+        if response_message == command.expected_response:
             return command.on_success(self)
         else:
             return command.on_failure(self)
     
-    def test_connection(self):
-        """Test the connection with the microcontroller.
-        """
-        if self.execute_command(PingCommand()):
-            print("## Connection active...")
-        else:
-            print("## Connection failed...")
+            
+    def execute_custom_command(self, commands_str):
+        """Execute a list of commands.
+
+        Args:
+            commands_str (list): List of commands to be executed.
+        """        
+        print("-> Sending:", commands_str)  
+           
+        self.tx_message(commands_str)
+        
+        response = self.rx_message()
+        
+        print("<- Received:", response)
+        return response
+        
     
 if __name__ == "__main__":
     print("## uC Serial Communication")

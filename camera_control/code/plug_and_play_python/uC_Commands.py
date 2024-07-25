@@ -24,7 +24,6 @@ class Command():
             serialized += f"{self.delimiter.join(self.arguments)}{self.delimiter}"
             serialized += f"{self.delimiter}"
         serialized += f"{self.delimiter}"
-        print(serialized)
         return serialized
     
 class PingCommand(Command):

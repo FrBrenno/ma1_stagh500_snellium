@@ -25,7 +25,7 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 #define DEBUG_COMMAND String ("debug")
 #define HELP_COMMAND String ("help")
 
-#define INFO_RESPONSE String(String(CUSTOM_NAME) + " (uCID:"+ uCID +") Board "+ BOARD + " " + MCU_TYPE)
+#define INFO_RESPONSE
 #define PING_RESPONSE String("pong")
 #define TRIGGER_RESPONSE String("triggered")
 #define DEBUG_RESPONSE String("debug mode:")
@@ -82,16 +82,16 @@ void loop() {
       info(comArgs);
     }
     else if (command.equals(PING_COMMAND)) {
-      ping();
+      ping(comArgs);
     }
     else if (command.equals(TRIGGER_COMMAND)){
-      trigger();
+      trigger(comArgs);
     }
     else if (command.equals(DEBUG_COMMAND)){
       debug(comArgs);
     }
     else if (command.equals(HELP_COMMAND)){
-      help();
+      help(comArgs);
     }
     else{
       message += "Command \""+ comArgs.fullString +"\"" + " unknown.";
@@ -134,25 +134,18 @@ void deserilizeArgumentsBlock(CommandArgs& deserialized){
     }
 
     // Parse arguments and put them in the array
-    for (int i = 0; i <= argNumber; i++){
+    int argCount = 0;
+    for (argCount = 0; argCount < argNumber; argCount++){
       int idxSeparator = arguments.indexOf(COMMAND_SEPARATOR);
-
-      if (idxSeparator == -1){ // No separator found : end of block or bad-format
-        if (i != argNumber - 1){ 
-          errorParser("There is not the same number of arguments as mentioned!");
-        }
-        else{
-          break;
-        }
-      }
       
       // grab arg and set into the array
       String arg = arguments.substring(0, idxSeparator);
-      deserialized.args[i] = arg;
+      deserialized.args[argCount] = arg;
       // reduce input
       arguments = arguments.substring(idxSeparator + 1); 
-
     }
+    if (argCount + 1 != argNumber)
+      errorParser("There is not the same number of arguments as mentioned!");
   }
 }
 
@@ -169,7 +162,6 @@ CommandArgs deserialize(){
       // Empty command: ||||
       if (input.equals(COMMAND_DELIMITER)){
         errorParser("Empty command block.");
-        debugMessage = "Fail";
         return deserialized;
       }
 
@@ -226,22 +218,42 @@ void errorParser(String errorMsg){
 }
 
 void error(String errorMsg){
+  debugMessage = "Fail";
   errorMessage += errorMsg;
 }
 
 
 //======== COMMANDS FUNCTIONS ========//
 void info(CommandArgs comArgs){
-
-  message += INFO_RESPONSE;
+  // It is possible to get every individual info of uC
+  // by passing the derised info name as arguments
+  message += "INFO: ";
+  if (comArgs.argNumber == 0){
+    message += String(CUSTOM_NAME) + " (uCID:"+ uCID +") Board "+ BOARD + " " + MCU_TYPE;
+  }
+  else{
+    for (int i = 0; i < comArgs.argNumber; i++){
+      String arg = comArgs.args[i];
+      debugMessage += "###" + String(i) + ": " + arg + "\n";
+      if (arg.equals("custom_name")) {
+        message += CUSTOM_NAME;
+      } else if (arg.equals("ucid")) {
+          message += uCID;
+      } else if (arg.equals("board")) {
+          message += BOARD;
+      } else if (arg.equals("mcu_type")) {
+          message += MCU_TYPE;
+      } else {}
+    }
+  }
 }
 
-void ping() {
+void ping(CommandArgs comArgs) {
   message += PING_RESPONSE;
   blinkLED();
 }
 
-void trigger(){
+void trigger(CommandArgs comArgs){
   message += TRIGGER_RESPONSE;
   blinkLED();
 }
@@ -259,6 +271,6 @@ void debug(CommandArgs comArgs){
   
 }
 
-void help(){
+void help(CommandArgs comArgs){
   message += HELP_RESPONSE;
 }

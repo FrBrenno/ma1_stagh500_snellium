@@ -44,6 +44,7 @@ PARSING_STRINGS_TEST = [
     ("||ping-|2-arg1-arg2||", False),
 ]
 
+
 def run_test(test):
     command_str, success_status = test
     print(f"Running test: {command_str}")

@@ -78,7 +78,7 @@ void loop() {
     String command = comArgs.command;
 
     if (command.equals(INFO_COMMAND)){
-      info();
+      info(comArgs);
     }
     else if (command.equals(PING_COMMAND)) {
       ping();
@@ -224,7 +224,8 @@ void error(String errorMsg){
 }
 
 //======== COMMANDS FUNCTIONS ========//
-void info(){
+void info(CommandArgs comArgs){
+
   message += INFO_RESPONSE;
 }
 
@@ -240,15 +241,13 @@ void trigger(){
 
 void debug(CommandArgs comArgs){
   message += DEBUG_COMMAND;
-  debugMode = true;
+  debugMode = !debugMode;
+
   if (comArgs.option == "parser")
   {
     debugParser = !debugParser;
-    message += " -" + comArgs.option + " ";
-    if (debugParser)
-      message += "True";
-    else
-      message += "False";
+    message += " -" + comArgs.option + " " + debugParser;
+    debugMessage = "Success";
   }
   
 }

@@ -47,15 +47,12 @@ class uC_SerialCommunication:
         Args:
             command (Command): Command to be executed.
         """
-        print("-> Sending:", command.serialize())  
-           
+        print("-> Sending:", command.serialize())     
         self.tx_message(command.serialize())
         
         print("-- Waiting for:", command.expected_response)
         
-        response_status = self.rx_message()
         response_message = self.rx_message()
-        
         print("<- Received:", response_message, end="\n\n")
         
         if command.expected_response == None:
@@ -66,22 +63,6 @@ class uC_SerialCommunication:
             return command.on_success(self)
         else:
             return command.on_failure(self)
-    
-            
-    def execute_custom_command(self, commands_str):
-        """Execute a list of commands.
-
-        Args:
-            commands_str (list): List of commands to be executed.
-        """        
-        print("-> Sending:", commands_str)  
-           
-        self.tx_message(commands_str)
-        
-        response = self.rx_message()
-        
-        print("<- Received:", response)
-        return response
         
     
 if __name__ == "__main__":
@@ -89,10 +70,15 @@ if __name__ == "__main__":
     
     uC = uC_SerialCommunication("/dev/ttyUSB0", 9600)
     
+    uC.execute_command(PingCommand())
     uC.execute_command(InfoCommand())
+    uC.execute_command(InfoCommand("ucid"))
     uC.execute_command(TriggerCommand())
+    uC.execute_command(TriggerCommand("selective", 1, 4))
     uC.execute_command(HelpCommand())
-    
-    uC.execute_command(TriggerCommand(1, 2, 3, 4, 5))
+    uC.execute_command(HelpCommand("trigger"))
+    uC.execute_command(HelpCommand("info"))
+    uC.execute_command(DebugCommand())
+    uC.execute_command(DebugCommand())    
     
     uC.ser.close()

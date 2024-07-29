@@ -1,0 +1,24 @@
+Summary of the analysis of the USB sniffing
+
+Average time difference between the transmission of the command and its response: 1.054362795 s
+
+Analysis of file ../usb_sniffing.csv
+Number of pairs of URB_BULK out and URB_BULK in: 40
+Average time difference between the transmission of the command and its response: 1.054696275 s
+
+Analysis of file ../usb_sniffing_2.csv
+Number of pairs of URB_BULK out and URB_BULK in: 40
+Average time difference between the transmission of the command and its response: 1.0546945750000003 s
+
+Analysis of file ../usb_sniffing_3_random.csv
+Number of pairs of URB_BULK out and URB_BULK in: 40
+Average time difference between the transmission of the command and its response: 1.0538550999999998 s
+
+Analysis of file ../usb_sniffing_4_random.csv
+Number of pairs of URB_BULK out and URB_BULK in: 40
+Average time difference between the transmission of the command and its response: 1.054259375 s
+
+Analysis of file ../usb_sniffing_5_random.csv
+Number of pairs of URB_BULK out and URB_BULK in: 40
+Average time difference between the transmission of the command and its response: 1.05430865 s
+

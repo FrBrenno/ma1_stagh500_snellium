@@ -1,9 +1,14 @@
+############################################################################################################
+# Base classes for microcontroller commands
+############################################################################################################
 class Command():
+    """ Base class for microcontroller single word commands.
+    """
     def __init__(self, command=None, response=None):
         self.delimiter = '|'
+        self.separator = '-'
         self.command_str = command
         self.expected_response = response
-        self.arguments = []
         
     def on_success(self, uC):
         pass
@@ -11,21 +16,92 @@ class Command():
     def on_failure(self, uC):
         pass
     
-    def add_argument(self, arg):
-        self.arguments.append(str(arg))
-
-    def show_arguments(self):
-        print("Arguments:", self.arguments)
         
     def serialize(self):
-        serialized = f"{self.delimiter*2}{self.command_str}{self.delimiter}"
+        serialized = f"{self.delimiter*2}{self.command_str}{self.delimiter*2}"
+        print(serialized)
+        return serialized
+
+class CommandWithOption(Command):
+    """ Base class for microcontroller commands with an option.
+    """
+    def __init__(self, command=None, response=None, option=None):
+        super().__init__(command, response)
+        self.option = option
+        
+    def set_option(self, option):
+        self.option = option
+        
+    def serialize(self):
+        serialized = f"{self.delimiter*2}{self.command_str}"
+        if self.option is not None:
+            serialized += f"{self.separator}{self.option}"
+        serialized += f"{self.delimiter*2}"
+        print(serialized)
+        return serialized
+        
+class CommandWithArguments(Command):
+    """ Base class for microcontroller commands with arguments.
+    """
+    def __init__(self, command=None, response=None):
+        super().__init__(command, response)
+        self.arguments = []
+        
+    def __init__(self, command=None, response=None, *args):
+        super().__init__(command, response)
+        self.arguments = list(args)
+    
+    def add_argument(self, argument):
+        self.arguments.append(str(argument))
+    
+    def serialize(self):
+        serialized = f"{self.delimiter*2}{self.command_str}"
         if len(self.arguments) > 0:
-            serialized += f"{len(self.arguments)}:"
-            serialized += f"{self.delimiter.join(self.arguments)}{self.delimiter}"
-            serialized += f"{self.delimiter}"
-        serialized += f"{self.delimiter}"
+            serialized += f"{self.delimiter}{len(self.arguments)}{self.separator}"
+            serialized += f"{self.separator.join(self.arguments)}"
+        serialized += f"{self.delimiter*2}"
+        print(serialized)
         return serialized
     
+class CommandWithOptionsAndArguments(Command):
+    """ Base class for microcontroller commands with options and arguments.
+    """
+    def __init__(self, command=None, response=None):
+        super().__init__(command, response)
+        self.option = None
+        self.arguments = []
+    
+    def __init__(self, command=None, response=None, option=None):
+        super().__init__(command, response)
+        self.option = option
+        self.arguments = []
+        
+    def __init__(self, command=None, response=None, option=None, *args):
+        super().__init__(command, response)
+        self.option = option
+        self.arguments = list(args)
+        
+    def set_option(self, option):
+        self.option = option
+        
+    def add_argument(self, argument):
+        self.arguments.append(str(argument))
+        
+    def serialize(self):
+        serialized = f"{self.delimiter*2}{self.command_str}"
+        if self.option is not None:
+            serialized += f"{self.separator}{self.option}"
+        if len(self.arguments) > 0:
+            serialized += f"{self.delimiter}{len(self.arguments)}{self.separator}"
+            serialized += f"{self.separator.join(self.arguments)}"
+        serialized += f"{self.delimiter*2}"
+        print(serialized)
+        return serialized
+    
+############################################################################################################
+# Command classes
+############################################################################################################
+
 class PingCommand(Command):
     """ Ping command to check if the communication is active.
     """
@@ -38,18 +114,27 @@ class PingCommand(Command):
     def on_failure(self, uC):
         print("Ping command failed")
         return False
-    
-        
-class TriggerCommand(Command):
-    """ Trigger command to trigger cameras controlled by the microcontroller.
+
+class InfoCommand(CommandWithOption):
+    """ Info command to get information from the microcontroller.
     """
-    def __init__(self):
-        super().__init__("trigger", "triggered")
+    def __init__(self, option=None):
+        super().__init__("info", None, option)
         
-    def __init__(self, *args):
-        super().__init__("trigger", "triggered")
+    def on_success(self, uC):
+        return True
+    
+    def on_failure(self, uC):
+        print("Info command failed")
+        return False 
+        
+class TriggerCommand(CommandWithOptionsAndArguments):
+    """ Trigger command to trigger cameras controlled by the microcontroller.
+    """        
+    def __init__(self, trigger_type="all", *args):
+        super().__init__("trigger", "triggered", trigger_type)
         for arg in args:
-            self.add_argument(arg)
+            self.add_argument(str(arg))       
         
     def on_success(self, uC):
         return True
@@ -57,25 +142,25 @@ class TriggerCommand(Command):
     def on_failure(self, uC):
         print("Trigger command failed")
         return False
-        
-class InfoCommand(Command):
-    """ Info command to get information from the microcontroller.
+
+class DebugCommand(Command):
+    """ Debug command to debug the microcontroller.
     """
     def __init__(self):
-        super().__init__("info", None)
+        super().__init__("debug", None)
         
     def on_success(self, uC):
         return True
     
     def on_failure(self, uC):
-        print("Info command failed")
+        print("Debug command failed")
         return False
     
-class HelpCommand(Command):
+class HelpCommand(CommandWithOption):
     """ Help command to get help from the microcontroller.
     """
-    def __init__(self):
-        super().__init__("help", None)
+    def __init__(self, option=None):
+        super().__init__("help", None, option)
         
     def on_success(self, uC):
         return True
@@ -92,16 +177,22 @@ if __name__ == "__main__":
     ping.serialize()
     
     trigger = TriggerCommand()
-    trigger.add_argument("1")
-    trigger.add_argument("2")
     trigger.serialize()
     
-    trigger2 = TriggerCommand(1, 2, 3, 4, 5)
-    trigger2.serialize()
-    
+    trigger_sel = TriggerCommand("selective", 1, 2, 3)
+    trigger_sel.serialize()
+        
     info = InfoCommand()
     info.serialize()
+    
+    info_mcu_type = InfoCommand("mcu_type")
+    info_mcu_type.serialize()
+    
+    debug = DebugCommand()
+    debug.serialize()
     
     help = HelpCommand()
     help.serialize()
     
+    help_info = HelpCommand("info")
+    help_info.serialize()

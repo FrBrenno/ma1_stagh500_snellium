@@ -3,12 +3,14 @@
 #define STRING_PING "ping"
 #define STRING_INFO "info"
 #define STRING_TRIGGER "trigger"
+#define STRING_DEBUG "debug"
 #define STRING_HELP "help"
 
 #define COMMAND_DELIMITER "||"
 #define DELIMITER "|"
 #define SEPARATOR "-"
 
+#define TRIGGER_OPTION_ALL "all"
 #define TRIGGER_OPTION_SELECTIVE "selective"
 #define TRIGGER_OPTION_SHOW "show"
 
@@ -36,10 +38,11 @@ class Deserializer {
     static void errorParser(CommandArgs &deserialized_, String errorMsg);
     static void deserializeArgBlock(CommandArgs &deserialized_);
     static void validateCommandArg(CommandArgs &deserialized_);
-    static void validateHelpCommand(CommandArgs &deserialized_);
-    static void validateTriggerCommand(CommandArgs &deserialized_);
-    static void validateInfoCommand(CommandArgs &deserialized_);
     static void validatePingCommand(CommandArgs &deserialized_);
+    static void validateInfoCommand(CommandArgs &deserialized_);
+    static void validateTriggerCommand(CommandArgs &deserialized_);
+    static void validateDebugCommand(CommandArgs &deserialized_);
+    static void validateHelpCommand(CommandArgs &deserialized_);
     static void deserializeCommand(CommandArgs &deserialized_, String &serialMessage);
 
 public:

@@ -6,7 +6,7 @@ Deserializer::Deserializer() {}
 
 void Deserializer::errorParser(CommandArgs &deserialized_, String errorMsg)
 {
-    deserialized_.errorMessage +=   errorMsg;
+    deserialized_.errorMessage += errorMsg + "\n";
     deserialized_.status = 1;
 }
 
@@ -146,25 +146,26 @@ void Deserializer::deserializeArgBlock(CommandArgs &deserialized_)
 
 void Deserializer::validateCommandArg(CommandArgs &deserialized_)
 {
-    // PING COMMAND is a single-word command accepting no options or arguments
     if (deserialized_.command.equals(STRING_PING))
     {
         validatePingCommand(deserialized_);
     }
 
-    // INFO COMMAND only takes arguments and its arguments are the information to be retrieved
     else if (deserialized_.command.equals(STRING_INFO))
     {
         validateInfoCommand(deserialized_);
     }
 
-    // TRIGGER COMMAND takes options that are trigger modes and arguments that are the camera names
     else if (deserialized_.command.equals(STRING_TRIGGER))
     {
         validateTriggerCommand(deserialized_);
     }
 
-    // HELP COMMAND can take no options or arguments but can take arguments with the command name to get help
+    else if (deserialized_.command.equals(STRING_DEBUG))
+    {
+        validateDebugCommand(deserialized_);
+    }
+
     else if (deserialized_.command.equals(STRING_HELP))
     {
         validateHelpCommand(deserialized_);
@@ -177,84 +178,112 @@ void Deserializer::validateCommandArg(CommandArgs &deserialized_)
     }
 }
 
-void Deserializer::validateHelpCommand(CommandArgs &deserialized_)
-{
-    if (deserialized_.option != "")
-    {
-        errorParser(deserialized_, "Help command does not accept options.");
-    }
-
-    if (deserialized_.argNumber > 1)
-    {
-        errorParser(deserialized_, "Help command takes at most one argument.");
-    }
-
-    if (deserialized_.argNumber == 1)
-    {
-        String arg = deserialized_.args[0];
-        if (arg != STRING_PING &&
-            arg != STRING_INFO &&
-            arg != STRING_TRIGGER &&
-            arg != STRING_HELP)
-        {
-            errorParser(deserialized_, "Help command has invalid arguments.");
-        }
-    }
-}
-
-void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
-{
-    if (deserialized_.option != TRIGGER_OPTION_SELECTIVE &&
-        deserialized_.option != TRIGGER_OPTION_SHOW)
-    {
-        errorParser(deserialized_, "Trigger command has invalid options.");
-    }
-
-    if (deserialized_.arguments == "")
-    {
-        errorParser(deserialized_, "Trigger command requires arguments.");
-    }
-
-    if (deserialized_.argNumber == 0)
-    {
-        errorParser(deserialized_, "Trigger command requires at least one argument.");
-    }
-}
-
-void Deserializer::validateInfoCommand(CommandArgs &deserialized_)
-{
-    if (deserialized_.option != "")
-    {
-        errorParser(deserialized_, "Info command does not accept options.");
-    }
-
-    if (deserialized_.arguments == "")
-    {
-        errorParser(deserialized_, "Info command requires arguments.");
-    }
-
-    if (deserialized_.argNumber == 0)
-    {
-        errorParser(deserialized_, "Info command requires at least one argument.");
-    }
-
-    for (int i = 0; i < deserialized_.argNumber; i++)
-    {
-        String arg = deserialized_.args[i];
-        if (arg != INFO_ARG_CUSTOM_NAME &&
-            arg != INFO_ARG_BOARD &&
-            arg != INFO_ARG_MCU_TYPE &&
-            arg != INFO_ARG_UCID)
-        {
-            errorParser(deserialized_, "Info command has invalid arguments.");
-        }
-    }
-}
-
 void Deserializer::validatePingCommand(CommandArgs &deserialized_)
 {
+    // ||ping||
+    // PING COMMAND is a single-word command accepting no options or arguments
     if (deserialized_.option != "" || deserialized_.arguments != "")
     {
         errorParser(deserialized_, "Ping command does not accept options or arguments.");
     }
 }
+
+void Deserializer::validateInfoCommand(CommandArgs &deserialized_)
+{
+    // ||info|| or ||info-<OPTION>||
+    // <OPTION> for info command can be: custom_name, board, mcu_type, ucid
+
+    // It takes no arguments
+    if (deserialized_.argNumber > 0)
+    {
+        errorParser(deserialized_, "Info command does not accept arguments.");
+    }
+
+    // It can take no options or the options are valid
+    if (deserialized_.option != "" &&
+        deserialized_.option != INFO_ARG_CUSTOM_NAME &&
+        deserialized_.option != INFO_ARG_BOARD &&
+        deserialized_.option != INFO_ARG_MCU_TYPE &&
+        deserialized_.option != INFO_ARG_UCID)
+    {
+        errorParser(deserialized_, "Info command has invalid options.");
+    }
+}
+
+void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
+{
+    // ||trigger-<OPTION>|| or ||trigger-selective|<ARGBLOCK>||
+    // <OPTION> for trigger command can be: all, selective, show
+    // all: trigger all cameras
+    // selective: trigger only cameras passed as arguments
+    // show: show the cameras that are available
+    // <ARGBLOCK> rule is : <ARGNUMBER><ARGLIST>
+    // <ARGLIST> rule is: <SEP><ARG><ARGLIST> or <SEP><ARG>
+    // <SEP> is the separator character
+    // <ARGNUMBER> is the number of arguments
+    // <ARG> is the camera name
+
+    // TRIGGER COMMAND takes options that are trigger modes and arguments that are the camera names
+
+    if (deserialized_.option != TRIGGER_OPTION_ALL &&
+        deserialized_.option != TRIGGER_OPTION_SELECTIVE &&
+        deserialized_.option != TRIGGER_OPTION_SHOW)
+    {
+        errorParser(deserialized_, "Trigger command has invalid options.");
+    }
+
+    // If the option is show or all, it takes no arguments
+    if (deserialized_.option == TRIGGER_OPTION_SHOW || deserialized_.option == TRIGGER_OPTION_ALL)
+    {
+        if (deserialized_.argNumber > 0)
+        {
+            errorParser(deserialized_, "Trigger command with option " + deserialized_.option + " does not accept arguments.");
+        }
+    }
+
+    // If the option is selective, it takes arguments
+    if (deserialized_.option == TRIGGER_OPTION_SELECTIVE)
+    {
+        if (deserialized_.argNumber == 0)
+        {
+            errorParser(deserialized_, "Trigger command with option " + deserialized_.option + " takes at least one argument.");
+        }
+    }
+    
+    // TODO: Check if the cameras names passed as arguments are valid
+}
+
+void Deserializer::validateDebugCommand(CommandArgs &deserialized_){
+    // ||debug||
+    // debug command takes no options nor arguments
+
+    if (deserialized_.option != "" || deserialized_.arguments != "")
+    {
+        errorParser(deserialized_, "Debug command does not accept options or arguments.");
+    }
+}
+
+void Deserializer::validateHelpCommand(CommandArgs &deserialized_)
+{
+    // ||help|| or ||help-<COMMAND>||
+    // <COMMAND> for help command can be: ping, info, trigger, help
+    // help without command on option will show the help for all commands
+    // HELP COMMAND can take no options or take one option that is a command name to get help
+
+    if (deserialized_.argNumber > 0)
+    {
+        errorParser(deserialized_, "Help command does not accept arguments.");
+    }
+
+    if (deserialized_.option != "" &&
+        deserialized_.option != STRING_PING &&
+        deserialized_.option != STRING_INFO &&
+        deserialized_.option != STRING_TRIGGER &&
+        deserialized_.option != STRING_DEBUG &&
+        deserialized_.option != STRING_HELP)
+    {
+        errorParser(deserialized_, "Help command has invalid options.");
+    }
+
+}
+

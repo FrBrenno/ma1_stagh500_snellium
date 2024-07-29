@@ -13,12 +13,6 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 //=== PINS
 #define LED 13
 
-#define INFO_COMMAND String ("info")
-#define PING_COMMAND String("ping")
-#define TRIGGER_COMMAND String("trigger")
-#define DEBUG_COMMAND String ("debug")
-#define HELP_COMMAND String ("help")
-
 //=== MACRO FUNCTIONS
 #define LED_ON() digitalWrite(LED, HIGH)
 #define LED_OFF() digitalWrite(LED, LOW)
@@ -27,8 +21,7 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 unsigned long lastTimeBlink = 0;
 unsigned long delayBlink = 500;
 String message = "";
-String errorMessage = "Error: ";
-String errorOrigin = "";
+String errorMessage = "";
 
 String debugMessage = "Success";
 bool debugMode = false;
@@ -56,25 +49,25 @@ void loop() {
     String commandString = Serial.readString();
     CommandArgs comArgs = Deserializer::deserialize(commandString);
 
-    if (!comArgs.status){
+    if (comArgs.status != 0){
       // Deserialization has failed.
-      errorMessage +=  comArgs.errorMessage;
+      error(comArgs.errorMessage);
     }
     else{
       // Deserialization was successful.
-      if (comArgs.command.equals(INFO_COMMAND)){
+      if (comArgs.command.equals(STRING_INFO)){
         info(comArgs);
       }
-      else if (comArgs.command.equals(PING_COMMAND)) {
+      else if (comArgs.command.equals(STRING_PING)) {
         ping(comArgs);
       }
-      else if (comArgs.command.equals(TRIGGER_COMMAND)){
+      else if (comArgs.command.equals(STRING_TRIGGER)){
         trigger(comArgs);
       }
-      else if (comArgs.command.equals(DEBUG_COMMAND)){
+      else if (comArgs.command.equals(STRING_DEBUG)){
         debug(comArgs);
       }
-      else if (comArgs.command.equals(HELP_COMMAND)){
+      else if (comArgs.command.equals(STRING_HELP)){
         help(comArgs);
       }
       else{
@@ -83,7 +76,7 @@ void loop() {
     }
    
 
-    if (message != ""){
+    if (message.length() > 0){
       Serial.println(message);
       message = "";
     }
@@ -91,10 +84,9 @@ void loop() {
       Serial.println(debugMessage);
       debugMessage = "Success";
     }
-    if (errorMessage != "Error: "){
+    if (errorMessage.length() > 0){
       Serial.println(errorMessage);
-      errorMessage = "Error: ";
-      errorOrigin = "";
+      errorMessage = "";
     }
   }
    
@@ -107,10 +99,6 @@ void blinkLED(){
   lastTimeBlink = millis();
 }
 
-void errorParser(String errorMsg){
-  error("Parser: "+ errorMsg);
-}
-
 void error(String errorMsg){
   debugMessage = "Fail";
   errorMessage += errorMsg;
@@ -119,40 +107,60 @@ void error(String errorMsg){
 
 //======== COMMANDS FUNCTIONS ========//
 void info(CommandArgs comArgs){
-  // It is possible to get every individual info of uC
-  // by passing the derised info name as arguments
+  // ||info|| returns all information about the device
+  // ||info-<INFO_TYPE>|| returns specific information about the device
   message += "INFO: ";
-  if (comArgs.argNumber == 0){
-    message += String(CUSTOM_NAME) + " (uCID:"+ uCID +") Board "+ BOARD + " " + MCU_TYPE;
+  
+  if (comArgs.option.equals(INFO_ARG_CUSTOM_NAME)){
+    message += CUSTOM_NAME;
+  }
+  else if (comArgs.option.equals(INFO_ARG_BOARD)){
+    message += BOARD;
+  }
+  else if (comArgs.option.equals(INFO_ARG_MCU_TYPE)){
+    message += MCU_TYPE;
+  }
+  else if (comArgs.option.equals(INFO_ARG_UCID)){
+    message += uCID;
   }
   else{
-    for (int i = 0; i < comArgs.argNumber; i++){
-      String arg = comArgs.args[i];
-      debugMessage += "###" + String(i) + ": " + arg + "\n";
-      if (arg.equals("custom_name")) {
-        message += CUSTOM_NAME;
-      } else if (arg.equals("ucid")) {
-          message += uCID;
-      } else if (arg.equals("board")) {
-          message += BOARD;
-      } else if (arg.equals("mcu_type")) {
-          message += MCU_TYPE;
-      } else {}
-    }
+    message += "Custom Name: " + String(CUSTOM_NAME) + " | Board: " + BOARD + " | MCU Type: " + MCU_TYPE + " | uCID: " + uCID;
   }
 }
 
 void ping(CommandArgs comArgs) {
+  // ||ping|| returns "pong"
   message += "pong";
-  blinkLED();
 }
 
 void trigger(CommandArgs comArgs){
-  message += "triggered";
-  blinkLED();
+  // ||trigger-all|| triggers all devices
+  // ||trigger-selective|<ARGBLOCK>|| triggers selected devices based on ARGBLOCK
+  // ||trigger-show|| shows all devices
+  message += "trigger";
+  
+  if (comArgs.option.equals(TRIGGER_OPTION_ALL)){
+    message += " all";
+    blinkLED();
+  }
+  else if (comArgs.option.equals(TRIGGER_OPTION_SELECTIVE)){
+    message += " selective";
+    for (int i = 0; i < comArgs.argNumber; i++){
+      message += " " + comArgs.args[i];
+    }
+    blinkLED();
+  }
+  else if (comArgs.option.equals(TRIGGER_OPTION_SHOW)){
+    message += " show";
+  }
+  else{
+    message += " all";
+    blinkLED();
+  }
 }
 
 void debug(CommandArgs comArgs){
+  // ||debug|| toggles debug mode
   debugMode = !debugMode;
   message += "debug mode: ";
   if (debugMode)
@@ -162,5 +170,39 @@ void debug(CommandArgs comArgs){
 }
 
 void help(CommandArgs comArgs){
-  message += "Commands available: \"info\" \"ping\" \"trigger\" \"help\"";
+  // ||help|| returns all available commands and short description
+  // ||help-<COMMAND>|| returns detailed information about the command
+  message += "HELP: ";
+
+  if (comArgs.option.equals(""))
+  {
+    message += "Available commands: ";
+    message += "ping, info, trigger, debug, help\n";
+  }
+  else if (comArgs.option.equals(STRING_PING)){
+    message += "ping: returns 'pong' \n";
+    message += "It is used to check if the communication with the device still active.\n";
+  }
+  else if (comArgs.option.equals(STRING_INFO)){
+    message += "info: returns all device information\n";
+    message += "It is used to retrieve information about the device.\n";
+    message += "Options: custom_name, board, mcu_type, ucid\n";
+  }
+  else if (comArgs.option.equals(STRING_TRIGGER)){
+    message += "trigger: sends a trigger to the device\n";
+    message += "It is used to trigger the device to perform image acquisition.\n";
+    message += "Options: all, selective, show\n";
+  }
+  else if (comArgs.option.equals(STRING_DEBUG)){
+    message += "debug: toggles debug mode\n";
+    message += "Debug mode is used to check the device's internal state.\n";
+  }
+  else if (comArgs.option.equals(STRING_HELP)){
+    message += "help: returns available commands\n";
+    message += "It is used to retrieve information about the available commands.\n";
+    message += "Options: ping, info, trigger, debug, help\n";
+  }
+  else{
+    message += "Command \"" + comArgs.option + "\" not found.";
+  }
 }

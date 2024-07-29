@@ -16,6 +16,7 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 //=== MACRO FUNCTIONS
 #define LED_ON() digitalWrite(LED, HIGH)
 #define LED_OFF() digitalWrite(LED, LOW)
+#define LED_TOGGLE() digitalWrite(LED, !digitalRead(LED))
 
 //======== GLOBAL VARIABLES ========//
 unsigned long lastTimeBlink = 0;
@@ -40,8 +41,11 @@ void loop() {
   // Turns on LED when blinking delay is achieved.
   unsigned long currentTimeBlink = millis();
   if (currentTimeBlink - lastTimeBlink >= delayBlink){
-    if (!digitalRead(LED)){
+    if (debugMode){
       LED_ON();
+    }
+    else{
+      LED_OFF();
     }
   }
   
@@ -66,9 +70,6 @@ void loop() {
       }
       else if (comArgs.command.equals(STRING_DEBUG)){
         debug(comArgs);
-      }
-      else if (comArgs.command.equals(STRING_HELP)){
-        help(comArgs);
       }
       else{
         message += "Command \""+ comArgs.fullString +"\"" + " unknown.";
@@ -95,7 +96,7 @@ void loop() {
 //======== UTILITY FUNCTIONS ========//
 
 void blinkLED(){
-  LED_OFF();
+  LED_TOGGLE();
   lastTimeBlink = millis();
 }
 
@@ -163,46 +164,10 @@ void debug(CommandArgs comArgs){
   // ||debug|| toggles debug mode
   debugMode = !debugMode;
   message += "debug mode: ";
-  if (debugMode)
+  if (debugMode){
     message += "true";
-  else
-    message += "false";  
-}
-
-void help(CommandArgs comArgs){
-  // ||help|| returns all available commands and short description
-  // ||help-<COMMAND>|| returns detailed information about the command
-  message += "HELP: ";
-
-  if (comArgs.option.equals(""))
-  {
-    message += "Available commands: ";
-    message += "ping, info, trigger, debug, help\n";
-  }
-  else if (comArgs.option.equals(STRING_PING)){
-    message += "ping: returns 'pong' \n";
-    message += "It is used to check if the communication with the device still active.\n";
-  }
-  else if (comArgs.option.equals(STRING_INFO)){
-    message += "info: returns all device information\n";
-    message += "It is used to retrieve information about the device.\n";
-    message += "Options: custom_name, board, mcu_type, ucid\n";
-  }
-  else if (comArgs.option.equals(STRING_TRIGGER)){
-    message += "trigger: sends a trigger to the device\n";
-    message += "It is used to trigger the device to perform image acquisition.\n";
-    message += "Options: all, selective, show\n";
-  }
-  else if (comArgs.option.equals(STRING_DEBUG)){
-    message += "debug: toggles debug mode\n";
-    message += "Debug mode is used to check the device's internal state.\n";
-  }
-  else if (comArgs.option.equals(STRING_HELP)){
-    message += "help: returns available commands\n";
-    message += "It is used to retrieve information about the available commands.\n";
-    message += "Options: ping, info, trigger, debug, help\n";
   }
   else{
-    message += "Command \"" + comArgs.option + "\" not found.";
-  }
+    message += "false"; 
+  } 
 }

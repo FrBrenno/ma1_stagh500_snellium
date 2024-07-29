@@ -52,16 +52,6 @@ PARSING_STRINGS_TEST = [
     ## trigger-show command
     ("||trigger-show||", True),
     ("||trigger-show|1-cam1||", False),
-    ### help command
-    ("||help||", True),
-    ("||help-ping||", True),
-    ("||help-info||", True),
-    ("||help-trigger||", True),
-    ("||help-debug||", True),
-    ("||help-help||", True),
-    ("||help-unknown||", False),
-    ("||help|1-unknown||", False),
-    ("||help-ping|1-unknown||", False),    
 ]
 
 random.shuffle(PARSING_STRINGS_TEST)

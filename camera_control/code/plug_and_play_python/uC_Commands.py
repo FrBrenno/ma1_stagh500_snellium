@@ -156,20 +156,6 @@ class DebugCommand(Command):
         print("Debug command failed")
         return False
     
-class HelpCommand(CommandWithOption):
-    """ Help command to get help from the microcontroller.
-    """
-    def __init__(self, option=None):
-        super().__init__("help", None, option)
-        
-    def on_success(self, uC):
-        return True
-    
-    def on_failure(self, uC):
-        print("Help command failed")
-        return False
-
-
 if __name__ == "__main__":
     print("## uC Commands")
     
@@ -190,9 +176,3 @@ if __name__ == "__main__":
     
     debug = DebugCommand()
     debug.serialize()
-    
-    help = HelpCommand()
-    help.serialize()
-    
-    help_info = HelpCommand("info")
-    help_info.serialize()

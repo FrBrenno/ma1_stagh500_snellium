@@ -165,12 +165,6 @@ void Deserializer::validateCommandArg(CommandArgs &deserialized_)
     {
         validateDebugCommand(deserialized_);
     }
-
-    else if (deserialized_.command.equals(STRING_HELP))
-    {
-        validateHelpCommand(deserialized_);
-    }
-
     // Command is not recognized
     else
     {
@@ -261,29 +255,5 @@ void Deserializer::validateDebugCommand(CommandArgs &deserialized_){
     {
         errorParser(deserialized_, "Debug command does not accept options or arguments.");
     }
-}
-
-void Deserializer::validateHelpCommand(CommandArgs &deserialized_)
-{
-    // ||help|| or ||help-<COMMAND>||
-    // <COMMAND> for help command can be: ping, info, trigger, help
-    // help without command on option will show the help for all commands
-    // HELP COMMAND can take no options or take one option that is a command name to get help
-
-    if (deserialized_.argNumber > 0)
-    {
-        errorParser(deserialized_, "Help command does not accept arguments.");
-    }
-
-    if (deserialized_.option != "" &&
-        deserialized_.option != STRING_PING &&
-        deserialized_.option != STRING_INFO &&
-        deserialized_.option != STRING_TRIGGER &&
-        deserialized_.option != STRING_DEBUG &&
-        deserialized_.option != STRING_HELP)
-    {
-        errorParser(deserialized_, "Help command has invalid options.");
-    }
-
 }
 

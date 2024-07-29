@@ -75,9 +75,6 @@ if __name__ == "__main__":
     uC.execute_command(InfoCommand("ucid"))
     uC.execute_command(TriggerCommand())
     uC.execute_command(TriggerCommand("selective", 1, 4))
-    uC.execute_command(HelpCommand())
-    uC.execute_command(HelpCommand("trigger"))
-    uC.execute_command(HelpCommand("info"))
     uC.execute_command(DebugCommand())
     uC.execute_command(DebugCommand())    
     

@@ -4,7 +4,6 @@
 #define STRING_INFO "info"
 #define STRING_TRIGGER "trigger"
 #define STRING_DEBUG "debug"
-#define STRING_HELP "help"
 
 #define COMMAND_DELIMITER "||"
 #define DELIMITER "|"
@@ -42,7 +41,6 @@ class Deserializer {
     static void validateInfoCommand(CommandArgs &deserialized_);
     static void validateTriggerCommand(CommandArgs &deserialized_);
     static void validateDebugCommand(CommandArgs &deserialized_);
-    static void validateHelpCommand(CommandArgs &deserialized_);
     static void deserializeCommand(CommandArgs &deserialized_, String &serialMessage);
 
 public:

@@ -132,7 +132,12 @@ class TriggerCommand(CommandWithOptionsAndArguments):
     """ Trigger command to trigger cameras controlled by the microcontroller.
     """        
     def __init__(self, trigger_type="all", *args):
-        super().__init__("trigger", "triggered", trigger_type)
+        expected_response = "trigger " + trigger_type
+        # add arguments too in he expected response like: "trigger selective 1 2 3"
+        for arg in args:
+            expected_response += " " + str(arg)
+               
+        super().__init__("trigger", expected_response, trigger_type)
         for arg in args:
             self.add_argument(str(arg))       
         

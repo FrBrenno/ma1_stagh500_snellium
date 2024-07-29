@@ -111,17 +111,19 @@ void info(CommandArgs comArgs){
   // ||info|| returns all information about the device
   // ||info-<INFO_TYPE>|| returns specific information about the device
   message += "INFO: ";
-  
-  if (comArgs.option.equals(INFO_ARG_CUSTOM_NAME)){
+  if (comArgs.option.equals(INFO_OPTION_HELLO)){
+    message += "hello";
+  }
+  else if (comArgs.option.equals(INFO_OPTION_CUSTOM_NAME)){
     message += CUSTOM_NAME;
   }
-  else if (comArgs.option.equals(INFO_ARG_BOARD)){
+  else if (comArgs.option.equals(INFO_OPTION_BOARD)){
     message += BOARD;
   }
-  else if (comArgs.option.equals(INFO_ARG_MCU_TYPE)){
+  else if (comArgs.option.equals(INFO_OPTION_MCU_TYPE)){
     message += MCU_TYPE;
   }
-  else if (comArgs.option.equals(INFO_ARG_UCID)){
+  else if (comArgs.option.equals(INFO_OPTION_UCID)){
     message += uCID;
   }
   else{

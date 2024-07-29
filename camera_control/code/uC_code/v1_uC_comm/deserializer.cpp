@@ -195,10 +195,11 @@ void Deserializer::validateInfoCommand(CommandArgs &deserialized_)
 
     // It can take no options or the options are valid
     if (deserialized_.option != "" &&
-        deserialized_.option != INFO_ARG_CUSTOM_NAME &&
-        deserialized_.option != INFO_ARG_BOARD &&
-        deserialized_.option != INFO_ARG_MCU_TYPE &&
-        deserialized_.option != INFO_ARG_UCID)
+        deserialized_.option != INFO_OPTION_CUSTOM_NAME &&
+        deserialized_.option != INFO_OPTION_BOARD &&
+        deserialized_.option != INFO_OPTION_MCU_TYPE &&
+        deserialized_.option != INFO_OPTION_UCID &&
+        deserialized_.option != INFO_OPTION_HELLO)
     {
         errorParser(deserialized_, "Info command has invalid options.");
     }

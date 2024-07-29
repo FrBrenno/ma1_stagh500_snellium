@@ -13,10 +13,11 @@
 #define TRIGGER_OPTION_SELECTIVE "selective"
 #define TRIGGER_OPTION_SHOW "show"
 
-#define INFO_ARG_CUSTOM_NAME "custom_name"
-#define INFO_ARG_BOARD "board"
-#define INFO_ARG_MCU_TYPE "mcu_type"
-#define INFO_ARG_UCID "ucid"
+#define INFO_OPTION_HELLO "hello"
+#define INFO_OPTION_CUSTOM_NAME "custom_name"
+#define INFO_OPTION_BOARD "board"
+#define INFO_OPTION_MCU_TYPE "mcu_type"
+#define INFO_OPTION_UCID "ucid"
 
 #define ARGUMENT_LIST_MAXSIZE 10
 

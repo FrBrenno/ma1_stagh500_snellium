@@ -19,7 +19,6 @@ class Command():
         
     def serialize(self):
         serialized = f"{self.delimiter*2}{self.command_str}{self.delimiter*2}"
-        print(serialized)
         return serialized
 
 class CommandWithOption(Command):
@@ -37,7 +36,6 @@ class CommandWithOption(Command):
         if self.option is not None:
             serialized += f"{self.separator}{self.option}"
         serialized += f"{self.delimiter*2}"
-        print(serialized)
         return serialized
         
 class CommandWithArguments(Command):
@@ -60,7 +58,6 @@ class CommandWithArguments(Command):
             serialized += f"{self.delimiter}{len(self.arguments)}{self.separator}"
             serialized += f"{self.separator.join(self.arguments)}"
         serialized += f"{self.delimiter*2}"
-        print(serialized)
         return serialized
     
 class CommandWithOptionsAndArguments(Command):
@@ -95,7 +92,6 @@ class CommandWithOptionsAndArguments(Command):
             serialized += f"{self.delimiter}{len(self.arguments)}{self.separator}"
             serialized += f"{self.separator.join(self.arguments)}"
         serialized += f"{self.delimiter*2}"
-        print(serialized)
         return serialized
     
 ############################################################################################################
@@ -178,6 +174,9 @@ if __name__ == "__main__":
     
     info_mcu_type = InfoCommand("mcu_type")
     info_mcu_type.serialize()
+    
+    info_hello = InfoCommand("hello")
+    info_hello.serialize()
     
     debug = DebugCommand()
     debug.serialize()

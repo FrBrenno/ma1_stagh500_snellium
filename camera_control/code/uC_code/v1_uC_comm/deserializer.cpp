@@ -6,7 +6,7 @@ Deserializer::Deserializer() {}
 
 void Deserializer::errorParser(CommandArgs &deserialized_, String errorMsg)
 {
-    deserialized_.errorMessage += errorMsg + "\n";
+    deserialized_.errorMessage += errorMsg;
     deserialized_.status = 1;
 }
 
@@ -20,14 +20,14 @@ CommandArgs Deserializer::deserialize(String serialMessage)
     // Check if string is correctly delimited || <COMMAND> ||
     if (!serialMessage.startsWith(COMMAND_DELIMITER))
     {
-        errorParser(deserialized_, "Command is not correctly delimited: Not starting with ||.");
+        errorParser(deserialized_, F("Command is not correctly delimited."));
         return deserialized_;
     }
     serialMessage = serialMessage.substring(2);
 
     if (!serialMessage.endsWith(COMMAND_DELIMITER))
     {
-        errorParser(deserialized_, "Command is not correctly delimited: Not ending with ||.");
+        errorParser(deserialized_, F("Command is not correctly delimited"));
         return deserialized_;
     }
     serialMessage = serialMessage.substring(0, serialMessage.length() - 2);
@@ -35,7 +35,7 @@ CommandArgs Deserializer::deserialize(String serialMessage)
     // Check if string is empty: ||||
     if (serialMessage.equals(COMMAND_DELIMITER))
     {
-        errorParser(deserialized_, "Empty command block.");
+        errorParser(deserialized_, F("Empty command block."));
         return deserialized_;
     }
 
@@ -88,7 +88,7 @@ void Deserializer::deserializeCommand(CommandArgs &deserialized_, String &serial
     }
     else
     {
-        errorParser(deserialized_, "Command is not correctly delimited.");
+        errorParser(deserialized_, F("Command is not correctly delimited."));
     }
 }
 
@@ -103,43 +103,47 @@ void Deserializer::deserializeArgBlock(CommandArgs &deserialized_)
     int idxSeparator = deserialized_.arguments.indexOf(SEPARATOR);
     if (idxSeparator == -1)
     {
-        errorParser(deserialized_, "Arguments block is not correctly delimited.");
+        errorParser(deserialized_, F("Arguments block is not correctly delimited."));
         return;
     }
 
     String argNumberStr = deserialized_.arguments.substring(0, idxSeparator);
     int argNumber = argNumberStr.toInt();
-    deserialized_.argNumber = argNumber;
 
     // Check is the number of arguments is valid
     if (argNumber <= 0 || argNumber > ARGUMENT_LIST_MAXSIZE)
     {
-        errorParser(deserialized_, "Number of arguments is not valid.");
+        errorParser(deserialized_, F("Too many arguments."));
         return;
     }
+    deserialized_.argNumber = argNumber;
 
     // Find the arguments and put them on the array
+    //<SEP><ARG><ARGLIST> or <SEP><ARG>
     String arguments = deserialized_.arguments.substring(idxSeparator + 1);
-    int argCount = 0;
-    for (argCount = 0; argCount < argNumber; argCount++)
+    deserialized_.arguments = arguments;
+    int argCounter = 0;
+    while (arguments.length() > 0)
     {
         int idxSeparator = arguments.indexOf(SEPARATOR);
         if (idxSeparator == -1)
         {
-            deserialized_.args[argCount] = arguments;
+            deserialized_.args[argCounter] = arguments;
             break;
         }
-        else
-        {
-            deserialized_.args[argCount] = arguments.substring(0, idxSeparator);
-            arguments = arguments.substring(idxSeparator + 1);
-        }
+        deserialized_.args[argCounter] = arguments.substring(0, idxSeparator);
+        arguments = arguments.substring(idxSeparator + 1);
+        argCounter++;
     }
 
-    if (argCount + 1 != argNumber)
+
+    // Check if the number of arguments is the same as the number of arguments found
+    if (argCounter + 1 != argNumber)
     {
-        errorParser(deserialized_, "There is not the same number of arguments as mentioned!");
+        errorParser(deserialized_, F("Incorrect number of arguments."));
+        return;
     }
+
 
     return;
 }
@@ -178,7 +182,7 @@ void Deserializer::validatePingCommand(CommandArgs &deserialized_)
     // PING COMMAND is a single-word command accepting no options or arguments
     if (deserialized_.option != "" || deserialized_.arguments != "")
     {
-        errorParser(deserialized_, "Ping command does not accept options or arguments.");
+        errorParser(deserialized_, F("Ping command does not accept options or arguments."));
     }
 }
 
@@ -190,7 +194,7 @@ void Deserializer::validateInfoCommand(CommandArgs &deserialized_)
     // It takes no arguments
     if (deserialized_.argNumber > 0)
     {
-        errorParser(deserialized_, "Info command does not accept arguments.");
+        errorParser(deserialized_, F("Info command does not accept arguments."));
     }
 
     // It can take no options or the options are valid
@@ -198,10 +202,9 @@ void Deserializer::validateInfoCommand(CommandArgs &deserialized_)
         deserialized_.option != INFO_OPTION_CUSTOM_NAME &&
         deserialized_.option != INFO_OPTION_BOARD &&
         deserialized_.option != INFO_OPTION_MCU_TYPE &&
-        deserialized_.option != INFO_OPTION_UCID &&
-        deserialized_.option != INFO_OPTION_HELLO)
+        deserialized_.option != INFO_OPTION_UCID)
     {
-        errorParser(deserialized_, "Info command has invalid options.");
+        errorParser(deserialized_, F("Info command has invalid options."));
     }
 }
 
@@ -224,7 +227,7 @@ void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
         deserialized_.option != TRIGGER_OPTION_SELECTIVE &&
         deserialized_.option != TRIGGER_OPTION_SHOW)
     {
-        errorParser(deserialized_, "Trigger command has invalid options.");
+        errorParser(deserialized_, F("Invalid trigger option."));
     }
 
     // If the option is show or all, it takes no arguments
@@ -232,7 +235,7 @@ void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
     {
         if (deserialized_.argNumber > 0)
         {
-            errorParser(deserialized_, "Trigger command with option " + deserialized_.option + " does not accept arguments.");
+            errorParser(deserialized_, "Trigger " + deserialized_.option + " does not accept arguments.");
         }
     }
 
@@ -241,7 +244,7 @@ void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
     {
         if (deserialized_.argNumber == 0)
         {
-            errorParser(deserialized_, "Trigger command with option " + deserialized_.option + " takes at least one argument.");
+            errorParser(deserialized_, "Trigger " + deserialized_.option + " takes at least one argument.");
         }
     }
     
@@ -254,7 +257,7 @@ void Deserializer::validateDebugCommand(CommandArgs &deserialized_){
 
     if (deserialized_.option != "" || deserialized_.arguments != "")
     {
-        errorParser(deserialized_, "Debug command does not accept options or arguments.");
+        errorParser(deserialized_, F("Debug command does not accept options or arguments."));
     }
 }
 

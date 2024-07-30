@@ -4,12 +4,17 @@
 
 //======== MICROCONTROLLER INFORMATION ========//
       
-#define CUSTOM_NAME "Device A"      // User-defined
-#define BOARD "Uno Clone"
-#define MCU_TYPE "ATmega328P"     
+#define CUSTOM_NAME F("Device A")      // User-defined
+#define BOARD F("Uno Clone")
+#define MCU_TYPE F("ATmega328P")    
 char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips, generally a serial number
 
 //======== MACROS DEFINITION ========//
+
+//=== ENUMS
+#define STATUS_SUCCESS String("Success")
+#define STATUS_ERROR String("Error")
+
 //=== PINS
 #define LED 13
 
@@ -22,10 +27,11 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 unsigned long lastTimeBlink = 0;
 unsigned long delayBlink = 500;
 String message = "";
+String commandStatus = STATUS_SUCCESS;
 String errorMessage = "";
 
-String debugMessage = "Success";
 bool debugMode = false;
+String debugMessage = "";
 
 //======== CYCLE FUNCTION ========//
 void setup() {
@@ -50,9 +56,9 @@ void loop() {
   }
   
   if (Serial.available()){
-    String commandString = Serial.readString();
-    CommandArgs comArgs = Deserializer::deserialize(commandString);
-
+    String serialMessage = Serial.readString();
+    CommandArgs comArgs = Deserializer::deserialize(serialMessage);
+    
     if (comArgs.status != 0){
       // Deserialization has failed.
       error(comArgs.errorMessage);
@@ -72,25 +78,11 @@ void loop() {
         debug(comArgs);
       }
       else{
-        message += "Command \""+ comArgs.fullString +"\"" + " unknown.";
+        error("Command \""+ comArgs.fullString +"\"" + " unknown.");
       }
     }
-   
-
-    if (message.length() > 0){
-      Serial.println(message);
-      message = "";
-    }
-    if (debugMode){
-      Serial.println(debugMessage);
-      debugMessage = "Success";
-    }
-    if (errorMessage.length() > 0){
-      Serial.println(errorMessage);
-      errorMessage = "";
-    }
+    send_response();
   }
-   
 }
 
 //======== UTILITY FUNCTIONS ========//
@@ -101,20 +93,42 @@ void blinkLED(){
 }
 
 void error(String errorMsg){
-  debugMessage = "Fail";
+  commandStatus = STATUS_ERROR;
   errorMessage += errorMsg;
 }
 
+void send_response(){
+  // Response construction
+  // ||SUCCESS|<MESSAGE>|| or ||SUCCESS|<MESSAGE>|<DEBUG_MESSAGE>||
+  // ||ERROR|<ERROR_MESSAGE>|| or ||ERROR|<ERROR_MESSAGE>|<DEBUG_MESSAGE>||
+  String response = "||" + commandStatus;
+  if (commandStatus.equals(STATUS_SUCCESS)){
+    response += "|" + message;
+  }
+  else{
+    response += "|" + errorMessage;
+  }
+  if (debugMode){
+    response += "|" + debugMessage;
+  }
+  response += "||"; 
+  // Send response
+  Serial.println(response);
+
+  // Reset variables
+  message = "";
+  commandStatus = STATUS_SUCCESS;
+  errorMessage = "";
+  debugMessage = "";
+
+}
 
 //======== COMMANDS FUNCTIONS ========//
 void info(CommandArgs comArgs){
   // ||info|| returns all information about the device
   // ||info-<INFO_TYPE>|| returns specific information about the device
   message += "INFO: ";
-  if (comArgs.option.equals(INFO_OPTION_HELLO)){
-    message += "hello";
-  }
-  else if (comArgs.option.equals(INFO_OPTION_CUSTOM_NAME)){
+  if (comArgs.option.equals(INFO_OPTION_CUSTOM_NAME)){
     message += CUSTOM_NAME;
   }
   else if (comArgs.option.equals(INFO_OPTION_BOARD)){
@@ -127,7 +141,7 @@ void info(CommandArgs comArgs){
     message += uCID;
   }
   else{
-    message += "Custom Name: " + String(CUSTOM_NAME) + " | Board: " + BOARD + " | MCU Type: " + MCU_TYPE + " | uCID: " + uCID;
+    message += String(CUSTOM_NAME) + "-" + BOARD + "-" + MCU_TYPE + "-" + uCID;
   }
 }
 
@@ -140,14 +154,14 @@ void trigger(CommandArgs comArgs){
   // ||trigger-all|| triggers all devices
   // ||trigger-selective|<ARGBLOCK>|| triggers selected devices based on ARGBLOCK
   // ||trigger-show|| shows all devices
-  message += "trigger";
+  message += "trigger ";
   
   if (comArgs.option.equals(TRIGGER_OPTION_ALL)){
-    message += " all";
+    message += "all";
     blinkLED();
   }
   else if (comArgs.option.equals(TRIGGER_OPTION_SELECTIVE)){
-    message += " selective";
+    message += "selective";
     for (int i = 0; i < comArgs.argNumber; i++){
       message += " " + comArgs.args[i];
     }
@@ -157,7 +171,7 @@ void trigger(CommandArgs comArgs){
     message += " show";
   }
   else{
-    message += " all";
+    message += "all";
     blinkLED();
   }
 }

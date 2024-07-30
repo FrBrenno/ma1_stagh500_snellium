@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/29.07 - Week 3.md",
+                "file": "camera_control/journal/30.07.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "e135303658473623",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/29.07 - Week 3.md",
+                "file": "camera_control/journal/30.07.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/29.07 - Week 3.md",
+                "file": "camera_control/journal/30.07.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/29.07 - Week 3.md"
+                "file": "camera_control/journal/30.07.md"
               }
             }
           }
@@ -151,21 +152,25 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
+    "camera_control/code/deserialization_performance_analysis.ods",
+    "camera_control/code/lu42350bj0lj.tmp",
+    "camera_control/code/deserialization_time.csv",
+    "camera_control/code/deserialization_performance_analysis.txt",
+    "camera_control/code/plug_and_play_python/uC_performance_test.py",
+    "camera_control/code/plug_and_play_python/uC_commands_test.py",
+    "camera_control/journal/26.07 - Day OFF.md",
+    "camera_control/journal/30.07.md",
+    "camera_control/journal/29.07 - Week 3.md",
+    "camera_control/portfolio/Serial communication.md",
+    "camera_control/portfolio/Microcontroller selection.md",
+    "camera_control/portfolio/Snellium.md",
+    "camera_control/portfolio",
+    "Untitled",
     "camera_control/lu7809grvr.tmp",
     "camera_control/code/usb_sniffing_analysis.txt",
     "camera_control/usb_sniffing_5_random.csv",
-    "camera_control/usb_sniffing_4_random.csv",
-    "camera_control/usb_sniffing_3_random.csv",
-    "camera_control/usb_sniffing_2.csv",
-    "camera_control/usb_sniffing.csv",
-    "camera_control/lu7809grvi.tmp",
-    "camera_control/usb_packet_sniffing_2.csv",
-    "camera_control/code/analyze_usb_sniffing.py",
-    "camera_control/code/analyze_usb_sniffing",
     "camera_control/journal/25.07.md",
-    "camera_control/journal/29.07 - Week 3.md",
     "camera_control/journal/24.07.md",
-    "camera_control/journal/26.07 - Day OFF.md",
     "camera_control/biblio/block-rx65n.png",
     "camera_control/journal/23.07.md",
     "camera_control/journal/22.07 - Week 2.md",

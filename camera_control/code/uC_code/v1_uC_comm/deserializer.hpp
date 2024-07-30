@@ -1,23 +1,22 @@
 #include <Arduino.h>
 
-#define STRING_PING "ping"
-#define STRING_INFO "info"
-#define STRING_TRIGGER "trigger"
-#define STRING_DEBUG "debug"
+#define STRING_PING F("ping")
+#define STRING_INFO F("info")
+#define STRING_TRIGGER F("trigger")
+#define STRING_DEBUG F("debug")
 
-#define COMMAND_DELIMITER "||"
-#define DELIMITER "|"
-#define SEPARATOR "-"
+#define COMMAND_DELIMITER F("||")
+#define DELIMITER F("|")
+#define SEPARATOR F("-")
 
-#define TRIGGER_OPTION_ALL "all"
-#define TRIGGER_OPTION_SELECTIVE "selective"
-#define TRIGGER_OPTION_SHOW "show"
+#define TRIGGER_OPTION_ALL F("all")
+#define TRIGGER_OPTION_SELECTIVE F("selective")
+#define TRIGGER_OPTION_SHOW F("show")
 
-#define INFO_OPTION_HELLO "hello"
-#define INFO_OPTION_CUSTOM_NAME "custom_name"
-#define INFO_OPTION_BOARD "board"
-#define INFO_OPTION_MCU_TYPE "mcu_type"
-#define INFO_OPTION_UCID "ucid"
+#define INFO_OPTION_CUSTOM_NAME F("custom_name")
+#define INFO_OPTION_BOARD F("board")
+#define INFO_OPTION_MCU_TYPE F("mcu_type")
+#define INFO_OPTION_UCID F("ucid")
 
 #define ARGUMENT_LIST_MAXSIZE 10
 
@@ -30,7 +29,7 @@ struct CommandArgs {
     int argNumber = 0;
     String args[ARGUMENT_LIST_MAXSIZE];
     
-    String errorMessage = "Error (Deserializer): ";
+    String errorMessage = "Deserializer: ";
     int status = 0;
 };
 

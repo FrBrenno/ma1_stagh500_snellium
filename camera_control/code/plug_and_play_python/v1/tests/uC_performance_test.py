@@ -64,7 +64,7 @@ if __name__ == "__main__":
     # command, length, time_1, time_2, time_3, time_4, time_5
     # For each new test, close and open the connection
     
-    with open("deserialization_time.csv", "w") as f:
+    with open("../docs/deserialization_time.csv", "w") as f:
         f.write("command,length,time_1,time_2,time_3,time_4,time_5\n")
         for command in range(len(COMMANDS)):
             f.write(COMMANDS[command] + "," + str(len(COMMANDS[command])) + ",")

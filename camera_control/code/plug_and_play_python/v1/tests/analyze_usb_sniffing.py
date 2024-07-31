@@ -37,11 +37,11 @@ def analyze_usb_sniffing(csv_file):
     
     
 if __name__ == "__main__":
-    csv_files = ["../usb_sniffing.csv",
-                 "../usb_sniffing_2.csv",
-                 "../usb_sniffing_3_random.csv",
-                 "../usb_sniffing_4_random.csv",
-                 "../usb_sniffing_5_random.csv",
+    csv_files = ["../docs/usb_sniffing.csv",
+                 "../docs/usb_sniffing_2.csv",
+                 "../docs/usb_sniffing_3_random.csv",
+                 "../docs/usb_sniffing_4_random.csv",
+                 "../docs/usb_sniffing_5_random.csv",
                  ]
     results = []
     
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     avg_time_diffs = sum([result[1] for result in results]) / len(results)
     print(f"Average time difference between the transmission of the command and its response: {avg_time_diffs}s")
     # write the results to a file
-    with open("usb_sniffing_analysis.txt", "w") as file:
+    with open("../docs/usb_sniffing_analysis.txt", "w") as file:
         file.write("Summary of the analysis of the USB sniffing\n\n")    
         file.write(f"Average time difference between the transmission of the command and its response: {avg_time_diffs} s\n\n")
         for i, result in enumerate(results):

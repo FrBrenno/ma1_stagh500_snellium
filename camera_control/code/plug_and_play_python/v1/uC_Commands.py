@@ -175,8 +175,5 @@ if __name__ == "__main__":
     info_mcu_type = InfoCommand("mcu_type")
     info_mcu_type.serialize()
     
-    info_hello = InfoCommand("hello")
-    info_hello.serialize()
-    
     debug = DebugCommand()
     debug.serialize()

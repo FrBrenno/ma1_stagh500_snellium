@@ -21,7 +21,7 @@ class uC_SerialCommunication:
     def __init__(self, baudrate, port=None):
         self.baudrate = baudrate    # Generaly 9600
         self.port_list = set(serial.tools.list_ports.comports())
-        self.port = port
+        self.port = port or self.scan_for_uC_port(self.port_list)
         self.serialComm = None
         
         if self.port != None:

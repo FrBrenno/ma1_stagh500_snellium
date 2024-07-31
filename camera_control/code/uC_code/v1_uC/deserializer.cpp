@@ -224,7 +224,7 @@ void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
     // TRIGGER COMMAND takes options that are trigger modes and arguments that are the camera names
 
     if (deserialized_.option != TRIGGER_OPTION_ALL &&
-        deserialized_.option != TRIGGER_OPTION_SELECTIVE &&
+        deserialized_.option != TRIGGER_OPTION_SELECT &&
         deserialized_.option != TRIGGER_OPTION_SHOW)
     {
         errorParser(deserialized_, F("Invalid trigger option."));
@@ -240,7 +240,7 @@ void Deserializer::validateTriggerCommand(CommandArgs &deserialized_)
     }
 
     // If the option is selective, it takes arguments
-    if (deserialized_.option == TRIGGER_OPTION_SELECTIVE)
+    if (deserialized_.option == TRIGGER_OPTION_SELECT)
     {
         if (deserialized_.argNumber == 0)
         {

@@ -127,7 +127,6 @@ void send_response(){
 void info(CommandArgs comArgs){
   // ||info|| returns all information about the device
   // ||info-<INFO_TYPE>|| returns specific information about the device
-  message += "INFO: ";
   if (comArgs.option.equals(INFO_OPTION_CUSTOM_NAME)){
     message += CUSTOM_NAME;
   }
@@ -141,7 +140,7 @@ void info(CommandArgs comArgs){
     message += uCID;
   }
   else{
-    message += String(CUSTOM_NAME) + "-" + BOARD + "-" + MCU_TYPE + "-" + uCID;
+    message += String(uCID) + "-" + CUSTOM_NAME + "-" + BOARD + "-" + MCU_TYPE;
   }
 }
 
@@ -156,19 +155,15 @@ void trigger(CommandArgs comArgs){
   // ||trigger-show|| shows all devices
   message += "trigger ";
   
-  if (comArgs.option.equals(TRIGGER_OPTION_ALL)){
-    message += "all";
-    blinkLED();
-  }
-  else if (comArgs.option.equals(TRIGGER_OPTION_SELECTIVE)){
-    message += "selective";
+  if (comArgs.option.equals(TRIGGER_OPTION_SELECT)){
+    message += "select ";
     for (int i = 0; i < comArgs.argNumber; i++){
-      message += " " + comArgs.args[i];
+      message += comArgs.args[i];
     }
     blinkLED();
   }
   else if (comArgs.option.equals(TRIGGER_OPTION_SHOW)){
-    message += " show";
+    message += "show";
   }
   else{
     message += "all";

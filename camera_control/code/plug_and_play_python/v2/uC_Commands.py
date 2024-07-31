@@ -22,7 +22,7 @@ class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
     """        
     def __init__(self, trigger_type="all", *args):
         expected_response = "trigger " + trigger_type
-        # add arguments too in he expected response like: "trigger selective 1 2 3"
+        # add arguments too in he expected response like: "trigger select 1 2 3"
         for arg in args:
             expected_response += " " + str(arg)
                

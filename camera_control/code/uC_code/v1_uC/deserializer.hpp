@@ -10,7 +10,7 @@
 #define SEPARATOR F("-")
 
 #define TRIGGER_OPTION_ALL F("all")
-#define TRIGGER_OPTION_SELECTIVE F("selective")
+#define TRIGGER_OPTION_SELECT F("select")
 #define TRIGGER_OPTION_SHOW F("show")
 
 #define INFO_OPTION_CUSTOM_NAME F("custom_name")

@@ -8,13 +8,7 @@ class PingCommand(uC_BaseCommands.Command):
     """
     def __init__(self):
         super().__init__("ping", "pong")
-    
-    def on_success(self, uC):
-        return True
-    
-    def on_failure(self, uC):
-        print("Ping command failed")
-        return False
+
 
 class InfoCommand(uC_BaseCommands.CommandWithOption):
     """ Info command to get information from the microcontroller.
@@ -22,12 +16,6 @@ class InfoCommand(uC_BaseCommands.CommandWithOption):
     def __init__(self, option=None):
         super().__init__("info", None, option)
         
-    def on_success(self, uC):
-        return True
-    
-    def on_failure(self, uC):
-        print("Info command failed")
-        return False 
         
 class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
     """ Trigger command to trigger cameras controlled by the microcontroller.
@@ -42,26 +30,12 @@ class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
         for arg in args:
             self.add_argument(str(arg))       
         
-    def on_success(self, uC):
-        return True
-    
-    def on_failure(self, uC):
-        print("Trigger command failed")
-        return False
 
 class DebugCommand(uC_BaseCommands.Command):
     """ Debug command to debug the microcontroller.
     """
     def __init__(self):
         super().__init__("debug", None)
-        
-    def on_success(self, uC):
-        return True
-    
-    def on_failure(self, uC):
-        print("Debug command failed")
-        return False
-    
 
     
 # TODO: Unit tests

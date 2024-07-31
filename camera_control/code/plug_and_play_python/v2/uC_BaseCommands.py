@@ -11,9 +11,11 @@ class Command():
         self.expected_response = response
         
     def on_success(self, uC):
+        print(f"Command {self.command_str} was successful.")
         return True
     
     def on_failure(self, uC):
+        print(f"Command {self.command_str} failed.")
         return False
     
         

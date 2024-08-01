@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/31.07.md",
+                "file": "camera_control/journal/3 - 01.08.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "567d6af42764255d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "camera_control/journal/3 - 31.07.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/31.07.md",
+                "file": "camera_control/journal/3 - 01.08.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/31.07.md",
+                "file": "camera_control/journal/3 - 01.08.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/31.07.md"
+                "file": "camera_control/journal/3 - 01.08.md"
               }
             }
           }
@@ -152,6 +164,20 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
+    "camera_control/journal/3 - 31.07.md",
+    "camera_control/journal/3 - 01.08.md",
+    "camera_control/journal/3 - 30.07.md",
+    "camera_control/journal/3 - 29.07 - Week 3.md",
+    "camera_control/journal/2 - 26.07 - Day OFF.md",
+    "camera_control/journal/2 - 25.07.md",
+    "camera_control/journal/2 - 24.07.md",
+    "camera_control/journal/2 - 23.07.md",
+    "camera_control/journal/2 - 22.07 - Week 2.md",
+    "camera_control/journal/1 - 19.07.md",
+    "camera_control/journal/1 - 18.07.md",
+    "camera_control/journal/1 - 17.07.md",
+    "camera_control/journal/1 - 16.07.md",
+    "camera_control/journal/1 - 15.07 - Week 1.md",
     "camera_control/code/uC_code/libraries/Microcontroller-id/examples/GetDeviceID/GetDeviceID.ino",
     "camera_control/code/uC_code/libraries/Microcontroller-id/src/MicrocontrollerID.h",
     "camera_control/code/uC_code/libraries/Microcontroller-id/src/MicrocontrollerID.cpp",
@@ -164,27 +190,13 @@
     "camera_control/code/uC_code/libraries/Microcontroller-id/LICENSE",
     "camera_control/code/uC_code/libraries/Microcontroller-id/CHANGELOG.md",
     "camera_control/code/uC_code/libraries/Microcontroller-id",
-    "camera_control/code/uC_code/libraries",
     "camera_control/code/uC_code/v1/libraries/Microcontroller-id/README.md",
     "camera_control/code/uC_code/v1/libraries/Microcontroller-id/CHANGELOG.md",
     "camera_control/code/uC_code/v1/libraries/package-118956852/Microcontroller_id-1.1.0/CHANGELOG.md",
-    "camera_control/journal/30.07.md",
-    "camera_control/journal/31.07.md",
-    "camera_control/journal/26.07 - Day OFF.md",
-    "camera_control/journal/29.07 - Week 3.md",
     "camera_control/portfolio/Serial communication.md",
     "camera_control/portfolio/Microcontroller selection.md",
     "camera_control/portfolio/Snellium.md",
-    "camera_control/journal/25.07.md",
-    "camera_control/journal/24.07.md",
     "camera_control/biblio/block-rx65n.png",
-    "camera_control/journal/23.07.md",
-    "camera_control/journal/22.07 - Week 2.md",
-    "camera_control/journal/15.07 - Week 1.md",
-    "camera_control/journal/19.07.md",
-    "camera_control/journal/18.07.md",
-    "camera_control/journal/17.07.md",
-    "camera_control/journal/16.07.md",
     "camera_control/Untitled.md",
     "Welcome.md"
   ]

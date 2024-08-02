@@ -1,4 +1,3 @@
-import random
 import serial
 import time
 
@@ -28,22 +27,24 @@ class uC_Connection:
         
         self.connect_to_port()
         
+    ### Connection control functions ###
     def connect_to_port(self):
         try:
             self.serialComm = serial.Serial(self.port, self.baudrate, timeout=TIMEOUT_RX)
             time.sleep(ARDUINO_AUTORESET_DURATION)
             self.serialComm.flushInput()
             self.serialComm.flushOutput()
-            print(f"Connected to port {self.port}")
+            print(f"Connected to port {self.port}")    
             
-            print(f"Gathering information from microcontroller...")
-            self.gather_info()
-            self.is_connected = True
+            response = self.send_command(PingCommand())
+            if response is not "":
+                print(f"Gathering information from microcontroller...")
+                self.gather_info()
+                self.is_connected = True
         except serial.serialutil.SerialException:
             print(f"Failed to connect to port {self.port}")
             self.port = None
-            self.serialComm = None
-            
+            self.serialComm = None            
             
     def disconnect(self):
         if self.is_connected:
@@ -64,38 +65,29 @@ class uC_Connection:
             pass
         self.is_connected = False
         return False
+
     
-    def deserialize_response(self, response):
-        """Deserialize the response from the microcontroller.
-        Response Format:
-        ||<STATUS>|<MESSAGE> or <ERROR_MESSAGE>[|<DEBUG_MESSAGE>] if debug mode on||
-        """
-        
-        # Verify if response if correctly delimited.
-        if response[0:2] != "||" or response[-2:] != "||":
-            return None, None, None
-        # Remove delimiters.
-        response = response[2:-2]
-        
-        # Split response into tokens
-        tokens = response.split("|")
-        if len(tokens) < 2:
-            return None, None, None
-        
-        status = tokens[0]
-        message = tokens[1]
-        debug_message = None
-        if len(tokens) == 3:
-            debug_message = tokens[2]
-        
-        if status != "Success" and status != "Error":
-            return None, None, None
-        
-        return status, message, debug_message
-        
+    def gather_info(self):
+        response = self.send_command(InfoCommand())
+        if response is not None:
+            status, message, _ = self.deserialize_response(response)
+            if status == "Success":
+                ## info response format: "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
+                info_tokens = message.split("-")    
+                if len(info_tokens) == 4:
+                    self.uC_id = info_tokens[0]
+                    self.uC_name = info_tokens[1]
+                    self.uC_board = info_tokens[2]
+                    self.uC_mcu_type = info_tokens[3]
+                    print("Information gathered successfully")
+                    return
+        print("Failed to gather information from microcontroller")
+    ### End of connection control functions ###
+    
+    ### Communication functions ###
     def send_command(self, command, do_print=False):
         try:
-            ### DEBUG: Randomly raise a SerialException to test the reconnection mechanism.
+            """ ### DEBUG: Randomly raise a SerialException to test the reconnection mechanism.
             if (random.randint(0, 5) == 0):
                 if (random.randint(0, 1) == 0):
                     ## Lose the connection.
@@ -105,7 +97,7 @@ class uC_Connection:
                     pass
                 raise serial.serialutil.SerialException
             ### DEBUG
-            
+             """
             if do_print:
                 print(f"--> {command.serialize()}")
                 print(f"-- expecting: {command.expected_response}")
@@ -131,22 +123,39 @@ class uC_Connection:
                 self.disconnect()
                 return None
             
-    def gather_info(self):
-        response = self.send_command(InfoCommand())
-        if response is not None:
-            status, message, _ = self.deserialize_response(response)
-            if status == "Success":
-                ## info response format: "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
-                info = message.split("-")
-                if len(info) == 4:
-                    self.uC_id = info[0]
-                    self.uC_name = info[1]
-                    self.uC_board = info[2]
-                    self.uC_mcu_type = info[3]
-                    print("Information gathered successfully")
-                    return
-        print("Failed to gather information from microcontroller")
+            
+            
+    def deserialize_response(self, response):
+        """Deserialize the response from the microcontroller.
+        Response Format:
+        ||<STATUS>|<MESSAGE> or <ERROR_MESSAGE>[|<DEBUG_MESSAGE>] if debug mode on||
+        """
+        
+        # Default return values
+        status, message, debug_message = None, None, None
 
+        # Check if response is correctly delimited
+        if response.startswith("||") and response.endswith("||"):
+            # Remove delimiters
+            response_content = response[2:-2]
+
+            # Split response into tokens
+            tokens = response_content.split("|")
+
+            # Ensure the correct number of tokens
+            if len(tokens) == 2 or len(tokens) == 3:
+                # Extract status, message, and optional debug_message
+                status, message = tokens[0], tokens[1]
+                if len(tokens) == 3:
+                    debug_message = tokens[2]
+                
+                # Validate status
+                if status not in {"Success", "Error"}:
+                    status, message, debug_message = None, None, None
+        
+        return status, message, debug_message
+
+    ### End of communication functions ###
 
 if __name__ == "__main__":
     command_set = [

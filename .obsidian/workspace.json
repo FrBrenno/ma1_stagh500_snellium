@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/3 - 02.08.md",
+                "file": "camera_control/journal/4.1 - 05.08 - week 4.md",
                 "mode": "source",
                 "source": false
               }
@@ -38,7 +38,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "byCreatedTimeReverse"
               }
             }
           },
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "e135303658473623",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/3 - 02.08.md",
+                "file": "camera_control/journal/4.1 - 05.08 - week 4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/3 - 02.08.md",
+                "file": "camera_control/journal/4.1 - 05.08 - week 4.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/3 - 02.08.md"
+                "file": "camera_control/journal/4.1 - 05.08 - week 4.md"
               }
             }
           }
@@ -152,22 +151,27 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
-    "camera_control/code/plug_and_play_python/v2/__pycache__/uC_monitor_events.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/v2/uC_Manager.py",
-    "camera_control/code/plug_and_play_python/v2/uC_monitor_events.py",
-    "camera_control/code/plug_and_play_python/v2/uC_monitor_active_polling copy.py",
-    "camera_control/code/plug_and_play_python/v2/uC_monitor_active_polling.py",
-    "camera_control/code/plug_and_play_python/v2/__pycache__/colors.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/v2/colors.py",
-    "camera_control/code/plug_and_play_python/v2/uC_monitor.py",
-    "camera_control/code/pytest-cache-files-spuhxbea",
-    "camera_control/code/plug_and_play_python/v2/__pycache__/uC_Connection.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/v2/tests/__pycache__/connection_test.cpython-312-pytest-8.3.2.pyc",
-    "camera_control/journal/3 - 01.08.md",
-    "camera_control/journal/3 - 02.08.md",
-    "camera_control/journal/3 - 31.07.md",
-    "camera_control/journal/3 - 30.07.md",
-    "camera_control/journal/3 - 29.07 - Week 3.md",
+    "camera_control/code/plug_and_play_python/v2/tests/__pycache__/monitor_test.cpython-312-pytest-8.3.2.pyc",
+    "camera_control/code/plug_and_play_python/v2/__pycache__/__init__.cpython-312.pyc",
+    "camera_control/code/plug_and_play_python/v2/tests/monitor_test.py",
+    "camera_control/code/plug_and_play_python/v2/__pycache__/uC_Monitor.cpython-312.pyc",
+    "camera_control/code/plug_and_play_python/v2/__pycache__/uC_Manager.cpython-312.pyc",
+    "camera_control/code/plug_and_play_python/v2/main.py",
+    "camera_control/code/plug_and_play_python/v2/classes_uC_Comm.png",
+    "camera_control/code/plug_and_play_python/v2/packages_uC_Comm.png",
+    "camera_control/code/plug_and_play_python/v2/classes.dot",
+    "camera_control/code/plug_and_play_python/v2/packages.dot",
+    "camera_control/code/plug_and_play_python/v2/uC_Monitor.py",
+    "camera_control/code/plug_and_play_python/v2/abandonned/uC_monitor_active_polling.py",
+    "camera_control/code/plug_and_play_python/v2/abandonned",
+    "camera_control/code/plug_and_play_python/v2/classes.png",
+    "camera_control/code/plug_and_play_python/v2/packages.png",
+    "camera_control/journal/3.1 - 29.07 - Week 3.md",
+    "camera_control/journal/4.1 - 05.08 - week 4.md",
+    "camera_control/journal/3.5 - 02.08.md",
+    "camera_control/journal/3.4 - 01.08.md",
+    "camera_control/journal/3.3 - 31.07.md",
+    "camera_control/journal/3.2 - 30.07.md",
     "camera_control/journal/2 - 26.07 - Day OFF.md",
     "camera_control/journal/2 - 25.07.md",
     "camera_control/journal/2 - 24.07.md",
@@ -187,7 +191,6 @@
     "camera_control/portfolio/Microcontroller selection.md",
     "camera_control/portfolio/Snellium.md",
     "camera_control/biblio/block-rx65n.png",
-    "camera_control/Untitled.md",
-    "Welcome.md"
+    "camera_control/Untitled.md"
   ]
 }

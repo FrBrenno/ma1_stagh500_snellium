@@ -27,8 +27,16 @@ class uC_Connection:
         
         self.connect_to_port()
         
+    def __str__(self):
+        return f"uC_Connection({self.port}, {self.baudrate}, {self.uC_id}, {self.uC_name}, {self.uC_board}, {self.uC_mcu_type})"
+        
     ### Connection control functions ###
     def connect_to_port(self):
+        """Connects to the port and initializes the connection.
+        It sends a ping command to the microcontroller to verify the connection.
+        If the connection is successful, it gathers information from the microcontroller.
+        Else, it disconnects from the port.
+        """
         try:
             self.serialComm = serial.Serial(self.port, self.baudrate, timeout=TIMEOUT_RX)
             time.sleep(ARDUINO_AUTORESET_DURATION)
@@ -37,8 +45,8 @@ class uC_Connection:
             print(f"Connected to port {self.port}")    
             
             response = self.send_command(PingCommand())
-            if response is not "":
-                print(f"Gathering information from microcontroller...")
+            if response != "":
+                print("Gathering information from microcontroller...")
                 self.gather_info()
                 self.is_connected = True
         except serial.serialutil.SerialException:
@@ -47,12 +55,19 @@ class uC_Connection:
             self.serialComm = None            
             
     def disconnect(self):
+        """Disconnects from the port.
+        It closes the serial communication and sets the is_connected flag to False.
+        """
         if self.is_connected:
             self.serialComm.close()
             self.is_connected = False
             print(f"Disconnected from port {self.port}")
     
     def verify_connection(self):
+        """Verifies the connection with the microcontroller.
+        It sends a ping command to the microcontroller and waits for a pong response.
+        If the response is correct, it sets the is_connected flag to True.
+        Else, it sets the is_connected flag to False."""
         if self.serialComm is None:
             return False
         try:
@@ -68,6 +83,9 @@ class uC_Connection:
 
     
     def gather_info(self):
+        """Gathers information from the microcontroller.
+        It sends an info command to the microcontroller and parses the response.
+        """
         response = self.send_command(InfoCommand())
         if response is not None:
             status, message, _ = self.deserialize_response(response)
@@ -86,6 +104,12 @@ class uC_Connection:
     
     ### Communication functions ###
     def send_command(self, command, do_print=False):
+        """Sends a command to the microcontroller.
+        It serializes the command and sends it to the microcontroller.
+        It waits for the response and returns it.
+        If the command fails, it tries to reconnect and send the command again.
+        If connection is not restablished, communication is lost, and it returns None.
+        """
         try:
             """ ### DEBUG: Randomly raise a SerialException to test the reconnection mechanism.
             if (random.randint(0, 5) == 0):

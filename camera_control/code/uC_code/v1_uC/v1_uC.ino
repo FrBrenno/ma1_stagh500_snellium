@@ -17,15 +17,20 @@ char uCID[IDSIZE*2+1];              // uCID: uC identifier obtain from uC chips,
 
 //=== PINS
 #define LED 13
+#define GPIO_1 2
 
 //=== MACRO FUNCTIONS
 #define LED_ON() digitalWrite(LED, HIGH)
 #define LED_OFF() digitalWrite(LED, LOW)
 #define LED_TOGGLE() digitalWrite(LED, !digitalRead(LED))
 
+#define GPIO_1_ON() digitalWrite(GPIO_1, HIGH)
+#define GPIO_1_OFF() digitalWrite(GPIO_1, LOW)
+#define GPIO_1_TOGGLE() digitalWrite(GPIO_1, !digitalRead(GPIO_1))
+
 //======== GLOBAL VARIABLES ========//
 unsigned long lastTimeBlink = 0;
-unsigned long delayBlink = 500;
+unsigned long delayBlink = 2000;
 String message = "";
 String commandStatus = STATUS_SUCCESS;
 String errorMessage = "";
@@ -40,6 +45,7 @@ void setup() {
 
   Serial.begin(9600);
   pinMode(LED, OUTPUT);
+  pinMode(GPIO_1, OUTPUT);
 }
 
 
@@ -53,6 +59,7 @@ void loop() {
     else{
       LED_OFF();
     }
+    GPIO_1_OFF();
   }
   
   if (Serial.available()){
@@ -160,6 +167,7 @@ void trigger(CommandArgs comArgs){
     for (int i = 0; i < comArgs.argNumber; i++){
       message += comArgs.args[i];
     }
+    GPIO_1_ON();
     blinkLED();
   }
   else if (comArgs.option.equals(TRIGGER_OPTION_SHOW)){
@@ -167,6 +175,7 @@ void trigger(CommandArgs comArgs){
   }
   else{
     message += "all";
+    GPIO_1_ON();
     blinkLED();
   }
 }

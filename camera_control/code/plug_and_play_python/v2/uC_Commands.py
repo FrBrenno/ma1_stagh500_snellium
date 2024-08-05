@@ -12,6 +12,12 @@ class PingCommand(uC_BaseCommands.Command):
 
 class InfoCommand(uC_BaseCommands.CommandWithOption):
     """ Info command to get information from the microcontroller.
+    Option defines the type of information to get and these are the possible options:
+    - "": get all the information
+    - id: get the uC id
+    - name: get the uC name
+    - board: get the uC board
+    - mcu: get the uC microcontroller type
     """
     def __init__(self, option=None):
         super().__init__("info", None, option)
@@ -19,6 +25,11 @@ class InfoCommand(uC_BaseCommands.CommandWithOption):
         
 class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
     """ Trigger command to trigger cameras controlled by the microcontroller.
+    Options are:
+    - all: trigger all the cameras (no arguments needed)
+    - select: trigger selected cameras (arguments needed)
+    
+    Arguments are the camera numbers to trigger.
     """        
     def __init__(self, trigger_type="all", *args):
         expected_response = "trigger " + trigger_type
@@ -33,6 +44,7 @@ class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
 
 class DebugCommand(uC_BaseCommands.Command):
     """ Debug command to debug the microcontroller.
+    Sets the microcontroller in debug mode which returns debug messages.
     """
     def __init__(self):
         super().__init__("debug", None)

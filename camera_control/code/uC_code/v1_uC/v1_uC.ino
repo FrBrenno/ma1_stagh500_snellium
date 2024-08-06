@@ -163,9 +163,9 @@ void trigger(CommandArgs comArgs){
   message += "trigger ";
   
   if (comArgs.option.equals(TRIGGER_OPTION_SELECT)){
-    message += "select ";
+    message += "select";
     for (int i = 0; i < comArgs.argNumber; i++){
-      message += comArgs.args[i];
+      message += " "+ comArgs.args[i];
     }
     GPIO_1_ON();
     blinkLED();

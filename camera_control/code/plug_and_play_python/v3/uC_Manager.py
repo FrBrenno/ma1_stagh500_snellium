@@ -1,7 +1,7 @@
 import threading
 
-import uC_Monitor as uC_Monitor
-import uC_Connection
+from uC_Discoverer import uC_Discoverer
+from uC_Connection import uC_Connection
 
 class uC_Manager:
     """This class is responsible for managin uC_Connection classes.
@@ -17,10 +17,10 @@ class uC_Manager:
         """
         self.baudrate = baudrate
         self.init_event = threading.Event()
-        self.uC_monitor = uC_Monitor.uC_Monitor(baudrate, self.init_event)
+        self.uC_discoverer = uC_Discoverer(baudrate, self.init_event)
         self.uC_connections = dict()
         
-        self.monitor_thread = threading.Thread(target=self.uC_monitor.start)
+        self.monitor_thread = threading.Thread(target=self.uC_discoverer.start)
         self.monitor_thread.daemon = True
         self.monitor_thread.start()
         
@@ -31,13 +31,13 @@ class uC_Manager:
     def get_uC_ports(self):
         """Returns the list of available ports.
         """
-        return list(self.uC_monitor.get_uC_ports())
+        return list(self.uC_discoverer.get_uC_ports())
     
     def connect_to_uC(self, port):
         """Connects to the uC port.
         Creates a uC_Connection object and stores it in the uC_connections dictionary.
         """
-        self.uC_connections[port] = uC_Connection.uC_Connection(port, self.baudrate)
+        self.uC_connections[port] = uC_Connection(port, self.baudrate)
         if self.uC_connections[port].is_connected:
             return True
         else:
@@ -72,7 +72,7 @@ class uC_Manager:
         """Closes the uC_Manager class.
         Stops the uC_Monitor and disconnects from all the connected ports.
         """
-        self.uC_monitor.stop()
+        self.uC_discoverer.stop()
         for port in self.uC_connections:
             self.uC_connections[port].disconnect()
         self.uC_connections.clear()
@@ -101,9 +101,11 @@ if __name__ == "__main__":
     
     print("Sending command to port 1...")
     connection = manager.get_uC_connection(ports[0])
-    response = connection.send_command(InfoCommand())
-    print(f"Response: {response}")
-    print()
+    connection.send_command(InfoCommand(), do_print=True)
+    connection.send_command(PingCommand(), do_print=True)
+    connection.send_command(TriggerCommand(), do_print=True)
+    connection.send_command(TriggerCommand("select", 1, 3, 5), do_print=True) 
+    
     
     print("Disconnecting from port 1...")
     manager.disconnect_from_uC(ports[0])

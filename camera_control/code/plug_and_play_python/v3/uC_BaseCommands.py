@@ -75,30 +75,13 @@ class CommandWithArguments(Command):
         serialized += f"{self.delimiter*2}"
         return serialized
     
-class CommandWithOptionsAndArguments(Command):
+class CommandWithOptionsAndArguments(CommandWithOption, CommandWithArguments):
     """ Base class for microcontroller commands with options and arguments.
     ||<COMMAND>-<OPTION>|<ARGNUMBER>-<ARGUMENT>-...-<ARGUMENT>||
     """
-    def __init__(self, command=None, response=None):
-        super().__init__(command, response)
-        self.option = None
-        self.arguments = []
-    
-    def __init__(self, command=None, response=None, option=None):
-        super().__init__(command, response)
-        self.option = option
-        self.arguments = []
-        
     def __init__(self, command=None, response=None, option=None, *args):
-        super().__init__(command, response)
+        super().__init__(command, response, *args)
         self.option = option
-        self.arguments = list(args)
-        
-    def set_option(self, option):
-        self.option = option
-        
-    def add_argument(self, argument):
-        self.arguments.append(str(argument))
         
     def serialize(self):
         serialized = f"{self.delimiter*2}{self.command_str}"
@@ -109,4 +92,3 @@ class CommandWithOptionsAndArguments(Command):
             serialized += f"{self.separator.join(self.arguments)}"
         serialized += f"{self.delimiter*2}"
         return serialized
-    

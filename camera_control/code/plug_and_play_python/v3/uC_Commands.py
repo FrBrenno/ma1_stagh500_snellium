@@ -1,16 +1,16 @@
-import uC_BaseCommands
+from uC_BaseCommands import *
 ############################################################################################################
 # Command classes
 ############################################################################################################
 
-class PingCommand(uC_BaseCommands.Command):
+class PingCommand(Command):
     """ Ping command to check if the communication is active.
     """
     def __init__(self):
         super().__init__("ping", "pong")
 
 
-class InfoCommand(uC_BaseCommands.CommandWithOption):
+class InfoCommand(CommandWithOption):
     """ Info command to get information from the microcontroller.
     Option defines the type of information to get and these are the possible options:
     - "": get all the information
@@ -23,7 +23,7 @@ class InfoCommand(uC_BaseCommands.CommandWithOption):
         super().__init__("info", None, option)
         
         
-class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
+class TriggerCommand(CommandWithOptionsAndArguments):
     """ Trigger command to trigger cameras controlled by the microcontroller.
     Options are:
     - all: trigger all the cameras (no arguments needed)
@@ -42,7 +42,7 @@ class TriggerCommand(uC_BaseCommands.CommandWithOptionsAndArguments):
             self.add_argument(str(arg))       
         
 
-class DebugCommand(uC_BaseCommands.Command):
+class DebugCommand(Command):
     """ Debug command to debug the microcontroller.
     Sets the microcontroller in debug mode which returns debug messages.
     """

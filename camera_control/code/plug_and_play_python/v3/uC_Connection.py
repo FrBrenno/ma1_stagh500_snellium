@@ -5,7 +5,7 @@ from colors import bcolors
 class uC_Connection:
     """This class is responsible for establishing and maintaining a connection with a microcontroller.
     """
-    def __init__(self, port=None):
+    def __init__(self, port=None, baudrate=9600):
         self.uC_name = "Unknown"
         self.uC_board = "Board Unknown"
         self.uC_mcu_type = "MCU Unknown"
@@ -13,7 +13,7 @@ class uC_Connection:
         self.serialComm = None
         self.is_connected = False
         
-        self.connect_to_port(port)
+        self.connect_to_port(port, baudrate)
         
     def __str__(self):
         return f"uC_Connection: {self.uC_id}, {self.uC_name}, {self.uC_board}, {self.uC_mcu_type}"

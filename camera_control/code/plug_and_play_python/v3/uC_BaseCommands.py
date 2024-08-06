@@ -11,6 +11,9 @@ class Command():
         self.command_str = command
         self.expected_response = response
         
+    def __str__(self) -> str:
+        return self.serialize()
+        
     def on_success(self):
         """Function to be executed when the command is successful.
         """

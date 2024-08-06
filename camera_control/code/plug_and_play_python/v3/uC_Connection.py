@@ -1,67 +1,57 @@
-import serial
-import time
-
+from uC_SerialCommunication import uC_SerialCommunication
 from uC_Commands import *
-### Sleep time between port opening and command execution.
-### This is necessary because of Arduino auto-reset feature.
-### Whenever a serial communication is established, the Arduino resets and
-### the bootloader needs some time to run before accepting commands.
-ARDUINO_AUTORESET_DURATION = 1.62 #seconds
-### Timeout for serial communication.
-### This is the time the program waits for a response from the Arduino.
-### Needed because of readline() function.
-TIMEOUT_RX = 1.5 #seconds
+from colors import bcolors
 
 class uC_Connection:
     """This class is responsible for establishing and maintaining a connection with a microcontroller.
     """
-    def __init__(self, port, baudrate):
+    def __init__(self, port=None):
         self.uC_name = "Unknown"
         self.uC_board = "Board Unknown"
         self.uC_mcu_type = "MCU Unknown"
         self.uC_id = None
-        self.port = port
-        self.baudrate = baudrate
         self.serialComm = None
         self.is_connected = False
         
-        self.connect_to_port()
+        self.connect_to_port(port)
         
     def __str__(self):
-        return f"uC_Connection({self.port}, {self.baudrate}, {self.uC_id}, {self.uC_name}, {self.uC_board}, {self.uC_mcu_type})"
+        return f"uC_Connection: {self.uC_id}, {self.uC_name}, {self.uC_board}, {self.uC_mcu_type}"
         
     ### Connection control functions ###
-    def connect_to_port(self):
-        """Connects to the port and initializes the connection.
-        It sends a ping command to the microcontroller to verify the connection.
-        If the connection is successful, it gathers information from the microcontroller.
-        Else, it disconnects from the port.
+    def connect_to_port(self, port, baudrate=9600):
+        """Creates a serial communication object and connects to the port.
         """
-        try:
-            self.serialComm = serial.Serial(self.port, self.baudrate, timeout=TIMEOUT_RX)
-            time.sleep(ARDUINO_AUTORESET_DURATION)
-            self.serialComm.flushInput()
-            self.serialComm.flushOutput()
-            print(f"Connected to port {self.port}")    
-            
-            response = self.send_command(PingCommand())
-            if response != "":
-                print("Gathering information from microcontroller...")
-                self.gather_info()
-                self.is_connected = True
-        except serial.serialutil.SerialException:
-            print(f"Failed to connect to port {self.port}")
-            self.port = None
-            self.serialComm = None            
+        if port is None:
+            print("No port specified")
+            return
+        
+        self.serialComm = uC_SerialCommunication(port, baudrate)
+        if self.verify_connection():
+            print(f"Connected to port {port}")
+            print("Gathering information from microcontroller...")
+            self.gather_info()
+            self.is_connected = True
+        else:
+            print(f"Failed to connect to port {port}")
+            self.disconnect()
             
     def disconnect(self):
         """Disconnects from the port.
-        It closes the serial communication and sets the is_connected flag to False.
         """
         if self.is_connected:
-            self.serialComm.close()
+            self.serialComm.disconnect_from_port()
             self.is_connected = False
-            print(f"Disconnected from port {self.port}")
+            self.reset_uC_info()
+            print("Disconnected from port")
+
+    def reset_uC_info(self):
+        """Resets the microcontroller information.
+        """
+        self.uC_id = None
+        self.uC_name = "Unknown"
+        self.uC_board = "Board Unknown"
+        self.uC_mcu_type = "MCU Unknown"
     
     def verify_connection(self):
         """Verifies the connection with the microcontroller.
@@ -70,17 +60,14 @@ class uC_Connection:
         Else, it sets the is_connected flag to False."""
         if self.serialComm is None:
             return False
-        try:
-            self.serialComm.write(PingCommand().serialize().encode())
-            response = self.serialComm.readline().decode().strip()
-            if response == "||Success|pong||":
-                self.is_connected = True
-                return True
-        except serial.serialutil.SerialException:
-            pass
-        self.is_connected = False
-        return False
-
+        response = self.send_command(PingCommand())
+        status, message, _ = self.deserialize_response(response)
+        if  status == "Success" and message == "pong":
+            self.is_connected = True
+            return True
+        else:
+            self.is_connected = False
+            return False
     
     def gather_info(self):
         """Gathers information from the microcontroller.
@@ -90,97 +77,66 @@ class uC_Connection:
         if response is not None:
             status, message, _ = self.deserialize_response(response)
             if status == "Success":
-                ## info response format: "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
-                info_tokens = message.split("-")    
-                if len(info_tokens) == 4:
-                    self.uC_id = info_tokens[0]
-                    self.uC_name = info_tokens[1]
-                    self.uC_board = info_tokens[2]
-                    self.uC_mcu_type = info_tokens[3]
-                    print("Information gathered successfully")
-                    return
+                uC_id, uC_name, uC_board, uC_mcu_type = self.deserialize_info_response(message)
+                self.uC_id = uC_id
+                self.uC_name = uC_name
+                self.uC_board = uC_board
+                self.uC_mcu_type = uC_mcu_type
+                print("Information gathered successfully")
+                return
         print("Failed to gather information from microcontroller")
-    ### End of connection control functions ###
-    
-    ### Communication functions ###
+
     def send_command(self, command, do_print=False):
         """Sends a command to the microcontroller.
         It serializes the command and sends it to the microcontroller.
-        It waits for the response and returns it.
-        If the command fails, it tries to reconnect and send the command again.
-        If connection is not restablished, communication is lost, and it returns None.
+        Always waits for the response and returns it, even if it is None.
         """
-        try:
-            """ ### DEBUG: Randomly raise a SerialException to test the reconnection mechanism.
-            if (random.randint(0, 5) == 0):
-                if (random.randint(0, 1) == 0):
-                    ## Lose the connection.
-                    self.disconnect()
-                else:   
-                    ## Connection is still active.
-                    pass
-                raise serial.serialutil.SerialException
-            ### DEBUG
-             """
-            if do_print:
-                print(f"--> {command.serialize()}")
-                print(f"-- expecting: {command.expected_response}")
-                
-            self.serialComm.write(command.serialize().encode())    
-            response = self.serialComm.readline().decode().strip()
-            
-            if do_print:
-                print(f"<-- {response}\n")
-            return response
-        except serial.serialutil.SerialException:
-            ## If the command fails, try to reconnect and send the command again.
-            print(f"Failed to send command {command.serialize()}")
-            if self.verify_connection():
-                print("Connection is still active\n")
-                return self.send_command(command, do_print=True)
-            else:
-                if not self.is_connected:
-                    print("Connection is not active\n")
-                else:
-                    ## If the connection is lost, return None.
-                    print("Connection is lost\n")
-                self.disconnect()
-                return None
-            
-            
-            
+        serialized_command = command.serialize()
+        response = self.serialComm.send_command(serialized_command)
+        if do_print:
+            print(f"{bcolors.OKBLUE}-->: {str(command)}{bcolors.ENDC}")
+            print(f"{bcolors.OKGREEN}<--: {response}{bcolors.ENDC}")
+        return response
+    
     def deserialize_response(self, response):
         """Deserialize the response from the microcontroller.
         Response Format:
         ||<STATUS>|<MESSAGE> or <ERROR_MESSAGE>[|<DEBUG_MESSAGE>] if debug mode on||
         """
-        
-        # Default return values
         status, message, debug_message = None, None, None
-
-        # Check if response is correctly delimited
-        if response.startswith("||") and response.endswith("||"):
-            # Remove delimiters
-            response_content = response[2:-2]
-
-            # Split response into tokens
-            tokens = response_content.split("|")
-
-            # Ensure the correct number of tokens
-            if len(tokens) == 2 or len(tokens) == 3:
-                # Extract status, message, and optional debug_message
-                status, message = tokens[0], tokens[1]
-                if len(tokens) == 3:
-                    debug_message = tokens[2]
-                
-                # Validate status
-                if status not in {"Success", "Error"}:
-                    status, message, debug_message = None, None, None
+        if response is None:
+            return status, message, debug_message
         
+        # Check if response is correctly delimited
+        if not (response.startswith("||") and response.endswith("||")):
+            return status, message, debug_message
+        response_content = response[2:-2]
+        tokens = response_content.split("|")
+        if not(len(tokens) == 2 or len(tokens) == 3):    # Ensure the correct number of tokens
+            return status, message, debug_message
+        
+        status, message = tokens[0], tokens[1]
+        if len(tokens) == 3:
+            debug_message = tokens[2]
+        if status not in {"Success", "Error"}:
+            status, message, debug_message = None, None, None
         return status, message, debug_message
 
-    ### End of communication functions ###
-
+    def deserialize_info_response(self, response):
+        """Deserialize the info response from the microcontroller.
+        Info Response Format:
+        "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
+        """
+        info_tokens = response.split("-")
+        if len(info_tokens) == 4:      
+            # info response format: "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
+            uC_id, uC_name, uC_board, uC_mcu_type = info_tokens
+            return uC_id, uC_name, uC_board, uC_mcu_type
+        elif len(info_tokens) == 1:
+            return info_tokens[0], None, None, None
+        else:
+            return None, None, None, None
+            
 if __name__ == "__main__":
     command_set = [
         PingCommand(),
@@ -201,7 +157,7 @@ if __name__ == "__main__":
     
     for port in device_ports:
         print(f"## Testing port {port}")
-        uC = uC_Connection(port, 9600)
+        uC = uC_Connection(port)
         if uC.is_connected:
             for command in command_set:
                 uC.send_command(command, do_print=True)

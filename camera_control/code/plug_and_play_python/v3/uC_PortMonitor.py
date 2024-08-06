@@ -24,14 +24,6 @@ class uC_PortMonitor:
         """
         self.observer.stop()
         print("Stopped monitoring ports...")
-        
-
-    def is_uC_port(self, port):
-        """Checks if the port is a uC port.
-        It uses the uC_Connection class to check if the port is a uC port.
-        """
-        uC_connection = uC_Connection(port, self.baudrate)
-        return uC_connection.is_connected
     
     def scan_existing_ports(self):
         """Scans the existing ports to detect uC ports.
@@ -39,14 +31,13 @@ class uC_PortMonitor:
         """
         print("Scanning existing ports...")
         for port in list_ports.comports():
-            if self.is_uC_port(port.device):
-                self.listener.handle_new_port(port.device)
+            self.listener.handle_new_port(port.device)
                 
     def device_event(self, action, device):
         """Callback function for the device event.
         It calls the handle_new_port or handle_removed_port functions based on the action.
         """
-        if action == 'add' and self.is_uC_port(device.device_node):
-                self.listener.handle_new_port(device.device_node)
+        if action == 'add':
+            self.listener.handle_new_port(device.device_node)
         elif action == 'remove':
             self.listener.handle_removed_port(device.device_node)

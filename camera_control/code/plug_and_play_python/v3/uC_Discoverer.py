@@ -1,4 +1,5 @@
 from uC_PortMonitor import uC_PortMonitor
+from uC_Connection import uC_Connection
 from colors import bcolors
 
 class uC_Discoverer:
@@ -13,7 +14,7 @@ class uC_Discoverer:
             init_event (bool, optional): Event flag to synchronize manager to monitor. Defaults to False.
         """
         self.baudrate = baudrate
-        self.uC_port_set = set()
+        self.uC_connections = {}
         self.is_monitoring = False
         self.init_event = init_event
         
@@ -23,12 +24,11 @@ class uC_Discoverer:
         """Starts the monitoring of the ports.
         """
         if not self.is_monitoring:
-            if self.init_event:
+            if not self.init_event:
                 self.port_monitor.scan_existing_ports()
-                self.init_event.set()
+                ##self.init_event.set()
             self.port_monitor.start()
             self.is_monitoring = True
-            
         
     def stop(self):
         """Stops the monitoring of the ports.
@@ -37,25 +37,51 @@ class uC_Discoverer:
             self.port_monitor.stop()
             self.is_monitoring = False
     
+    def is_uC_port(self, port):
+        """Checks if the port is a uC port.
+        It creates a uC_Connection object and tries to connect to the port.
+        If the connection is successful, set it into the dictionay and return True.
+        """
+        connection = uC_Connection(port, self.baudrate)
+        if connection.is_connected:
+            connection.disconnect() # The connection is not needed, just for verification
+            return connection
+        return None
+    
     def handle_new_port(self, port):
         """Handles the detection of a new port.
         It checks if the port is a uC port and adds it to the uC port list.
         """
-        self.uC_port_set.add(port)
-        print(f"{bcolors.OKGREEN}uC found in port {port}{bcolors.ENDC}")  
+        connection = self.is_uC_port(port)
+        if connection:
+            self.uC_connections[port] = connection
+            print(f"{bcolors.OKGREEN}Port {port} added{bcolors.ENDC}")
 
     def handle_removed_port(self, port):
         """Handles the removal of a port.
         It removes the port from the uC port list.
         """
-        if port in self.uC_port_set:
-            self.uC_port_set.discard(port)
+        if port in self.uC_connections:
+            del self.uC_connections[port]
             print(f"{bcolors.FAIL}Port {port} removed{bcolors.ENDC}")
                 
     def get_uC_ports(self):
         """Returns the list of uC ports.
         """
-        return self.uC_port_set
+        return list(self.uC_connections.keys())
+    
+    def get_uC_connections(self):
+        """Returns the uC_Connection objects of all the connected ports.
+        """
+        return self.uC_connections
+    
+    def get_uC_connection(self, port):
+        """Returns the uC_Connection object of the selected port.
+        """
+        if port in self.uC_connections:
+            return self.uC_connections[port]
+        else:
+            return None
                 
 if __name__ == "__main__":
     discoverer = uC_Discoverer()

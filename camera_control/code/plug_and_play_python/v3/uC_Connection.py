@@ -1,58 +1,60 @@
-from uC_SerialCommunication import uC_SerialCommunication
-from uC_Commands import *
 from colors import bcolors
+from .uC_Commands import DebugCommand, InfoCommand, PingCommand, TriggerCommand
+from .uC_SerialCommunication import uC_SerialCommunication
+
 
 class uC_Connection:
-    """This class is responsible for establishing and maintaining a connection with a microcontroller.
-    """
-    def __init__(self, port=None, baudrate=9600):
+    """This class is responsible for establishing and maintaining a connection with a microcontroller."""
+
+    def __init__(self, port, baudrate):
+        self.is_info_initialized = (
+            False  # Flag to indicate if the information is gathered
+        )
         self.uC_name = "Unknown"
         self.uC_board = "Board Unknown"
         self.uC_mcu_type = "MCU Unknown"
         self.uC_id = None
+
+        self.port = port
+        self.baudrate = baudrate
+
         self.serialComm = None
         self.is_connected = False
-        
-        self.connect_to_port(port, baudrate)
-        
+
+        self.connect_to_port()
+
     def __str__(self):
-        return f"uC_Connection: {self.uC_id}, {self.uC_name}, {self.uC_board}, {self.uC_mcu_type}"
-        
+        connectivity = "Connected" if self.is_connected else "Disconnected"
+        return f"{self.port} ({connectivity}): {self.uC_id}, {self.uC_name}, {self.uC_board}, {self.uC_mcu_type}"
+
+    def __print__(self):
+        print(self.__str__())
+
     ### Connection control functions ###
-    def connect_to_port(self, port, baudrate=9600):
-        """Creates a serial communication object and connects to the port.
-        """
-        if port is None:
+    def connect_to_port(self):
+        """Creates a serial communication object and connects to the port."""
+        if self.port is None:
             print("No port specified")
             return
-        
-        self.serialComm = uC_SerialCommunication(port, baudrate)
+
+        self.serialComm = uC_SerialCommunication(self.port, self.baudrate)
         if self.verify_connection():
-            print(f"Connected to port {port}")
-            print("Gathering information from microcontroller...")
-            self.gather_info()
+            print(f"Connected to port {self.port}")
+            if not self.is_info_initialized:
+                print("Gathering information from microcontroller...")
+                self.gather_info()
+                self.is_info_initialized = True
             self.is_connected = True
         else:
-            print(f"Failed to connect to port {port}")
+            print(f"Failed to connect to port {self.port}")
             self.disconnect()
-            
+
     def disconnect(self):
-        """Disconnects from the port.
-        """
+        """Disconnects from the port."""
         if self.is_connected:
             self.serialComm.disconnect_from_port()
             self.is_connected = False
-            self.reset_uC_info()
-            print("Disconnected from port")
 
-    def reset_uC_info(self):
-        """Resets the microcontroller information.
-        """
-        self.uC_id = None
-        self.uC_name = "Unknown"
-        self.uC_board = "Board Unknown"
-        self.uC_mcu_type = "MCU Unknown"
-    
     def verify_connection(self):
         """Verifies the connection with the microcontroller.
         It sends a ping command to the microcontroller and waits for a pong response.
@@ -62,13 +64,13 @@ class uC_Connection:
             return False
         response = self.send_command(PingCommand())
         status, message, _ = self.deserialize_response(response)
-        if  status == "Success" and message == "pong":
+        if status == "Success" and message == "pong":
             self.is_connected = True
             return True
         else:
             self.is_connected = False
             return False
-    
+
     def gather_info(self):
         """Gathers information from the microcontroller.
         It sends an info command to the microcontroller and parses the response.
@@ -77,7 +79,9 @@ class uC_Connection:
         if response is not None:
             status, message, _ = self.deserialize_response(response)
             if status == "Success":
-                uC_id, uC_name, uC_board, uC_mcu_type = self.deserialize_info_response(message)
+                uC_id, uC_name, uC_board, uC_mcu_type = self.deserialize_info_response(
+                    message
+                )
                 self.uC_id = uC_id
                 self.uC_name = uC_name
                 self.uC_board = uC_board
@@ -97,7 +101,7 @@ class uC_Connection:
             print(f"{bcolors.OKBLUE}-->: {str(command)}{bcolors.ENDC}")
             print(f"{bcolors.OKGREEN}<--: {response}{bcolors.ENDC}")
         return response
-    
+
     def deserialize_response(self, response):
         """Deserialize the response from the microcontroller.
         Response Format:
@@ -106,15 +110,17 @@ class uC_Connection:
         status, message, debug_message = None, None, None
         if response is None:
             return status, message, debug_message
-        
+
         # Check if response is correctly delimited
         if not (response.startswith("||") and response.endswith("||")):
             return status, message, debug_message
         response_content = response[2:-2]
         tokens = response_content.split("|")
-        if not(len(tokens) == 2 or len(tokens) == 3):    # Ensure the correct number of tokens
+        if not (
+            len(tokens) == 2 or len(tokens) == 3
+        ):  # Ensure the correct number of tokens
             return status, message, debug_message
-        
+
         status, message = tokens[0], tokens[1]
         if len(tokens) == 3:
             debug_message = tokens[2]
@@ -128,7 +134,7 @@ class uC_Connection:
         "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
         """
         info_tokens = response.split("-")
-        if len(info_tokens) == 4:      
+        if len(info_tokens) == 4:
             # info response format: "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
             uC_id, uC_name, uC_board, uC_mcu_type = info_tokens
             return uC_id, uC_name, uC_board, uC_mcu_type
@@ -136,7 +142,8 @@ class uC_Connection:
             return info_tokens[0], None, None, None
         else:
             return None, None, None, None
-            
+
+
 if __name__ == "__main__":
     command_set = [
         PingCommand(),
@@ -147,23 +154,20 @@ if __name__ == "__main__":
         InfoCommand("mcu_type"),
         TriggerCommand("all"),
         TriggerCommand("select", 1, 2, 3),
-        DebugCommand()
+        DebugCommand(),
     ]
-    
+
     device_ports = [
         "/dev/ttyUSB0",
         "/dev/ttyUSB1",
     ]
-    
+
     for port in device_ports:
-        print(f"## Testing port {port}")
-        uC = uC_Connection(port)
+        print(f"## Testing port {port}...")
+        uC = uC_Connection(port, 9600)
         if uC.is_connected:
             for command in command_set:
                 uC.send_command(command, do_print=True)
-        
+
         uC.disconnect()
         print("##############################")
-        
-        
-    

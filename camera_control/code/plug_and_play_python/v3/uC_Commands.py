@@ -1,4 +1,4 @@
-from uC_BaseCommands import *
+from .uC_BaseCommands import Command, CommandWithOption, CommandWithOptionsAndArguments
 ############################################################################################################
 # Command classes
 ############################################################################################################

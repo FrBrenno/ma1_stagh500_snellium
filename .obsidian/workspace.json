@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/4.2 - 06.08.md",
+                "file": "camera_control/journal/4.3 - 07.08.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/4.2 - 06.08.md",
+                "file": "camera_control/journal/4.3 - 07.08.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/4.2 - 06.08.md",
+                "file": "camera_control/journal/4.3 - 07.08.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/4.2 - 06.08.md"
+                "file": "camera_control/journal/4.3 - 07.08.md"
               }
             }
           }
@@ -151,6 +151,23 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
+    "camera_control/code/plug_and_play_python/v3/img/packages.png",
+    "camera_control/code/plug_and_play_python/v3/img/classes.png",
+    "camera_control/code/plug_and_play_python/v3/img",
+    "camera_control/code/plug_and_play_python/v3/__pycache__/uC_PortMonitor.cpython-312.pyc.132809995340592",
+    "Pasted image 20240807102452.png",
+    "camera_control/journal/2.5 - 26.07 - Day OFF.md",
+    "camera_control/journal/2.4 - 25.07.md",
+    "camera_control/journal/2.3 - 24.07.md",
+    "camera_control/journal/2.2 - 23.07.md",
+    "camera_control/journal/2.1 - 22.07 - Week 2.md",
+    "camera_control/journal/1.5 - 19.07.md",
+    "camera_control/journal/1.4 - 18.07.md",
+    "camera_control/journal/1.3 - 17.07.md",
+    "camera_control/journal/1.2 - 16.07.md",
+    "camera_control/journal/1.1 - 15.07 - Week 1.md",
+    "camera_control/journal/4.3 - 07.08.md",
+    "camera_control/journal/4.2 - 06.08.md",
     "camera_control/code/plug_and_play_python/v3/__pycache__/uC_Discoverer.cpython-312.pyc",
     "camera_control/code/plug_and_play_python/v3/__pycache__/uC_Connection.cpython-312.pyc",
     "camera_control/code/plug_and_play_python/v3/__pycache__/uC_PortMonitor.cpython-312.pyc",
@@ -159,9 +176,6 @@
     "camera_control/code/plug_and_play_python/v3/uC_PortMonitor.py",
     "camera_control/code/plug_and_play_python/v3/uC_ResponseDeserializer.py",
     "camera_control/code/plug_and_play_python/v3/__pycache__/colors.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/v3/__pycache__/uC_BaseCommands.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/v3/__pycache__/uC_Commands.cpython-312.pyc",
-    "camera_control/code/plug_and_play_python/v3/__pycache__/uC_SerialCommunication.cpython-312.pyc",
     "camera_control/code/plug_and_play_python/v3/packages.png",
     "camera_control/code/plug_and_play_python/v3/classes.png",
     "camera_control/code/plug_and_play_python/v3/packages_uC_Comm.png",
@@ -169,33 +183,19 @@
     "camera_control/code/plug_and_play_python/v2 (Copy)/packages_uC_Comm.png",
     "camera_control/code/plug_and_play_python/v2 (Copy)/classes_uC_Comm.png",
     "camera_control/journal/4.1 - 05.08 - week 4.md",
-    "camera_control/journal/4.2 - 06.08.md",
     "camera_control/code/plug_and_play_python/v2/classes_uC_Comm.png",
     "camera_control/code/plug_and_play_python/v2/packages_uC_Comm.png",
-    "camera_control/code/plug_and_play_python/v2/classes.png",
-    "camera_control/code/plug_and_play_python/v2/packages.png",
     "camera_control/journal/3.1 - 29.07 - Week 3.md",
     "camera_control/journal/3.5 - 02.08.md",
     "camera_control/journal/3.4 - 01.08.md",
     "camera_control/journal/3.3 - 31.07.md",
     "camera_control/journal/3.2 - 30.07.md",
-    "camera_control/journal/2 - 26.07 - Day OFF.md",
-    "camera_control/journal/2 - 25.07.md",
-    "camera_control/journal/2 - 24.07.md",
-    "camera_control/journal/2 - 23.07.md",
-    "camera_control/journal/2 - 22.07 - Week 2.md",
-    "camera_control/journal/1 - 19.07.md",
-    "camera_control/journal/1 - 18.07.md",
-    "camera_control/journal/1 - 17.07.md",
-    "camera_control/journal/1 - 16.07.md",
-    "camera_control/journal/1 - 15.07 - Week 1.md",
     "camera_control/code/uC_code/libraries/Microcontroller-id/README.md",
     "camera_control/code/uC_code/libraries/Microcontroller-id/CHANGELOG.md",
     "camera_control/code/uC_code/v1/libraries/Microcontroller-id/README.md",
     "camera_control/code/uC_code/v1/libraries/Microcontroller-id/CHANGELOG.md",
     "camera_control/code/uC_code/v1/libraries/package-118956852/Microcontroller_id-1.1.0/CHANGELOG.md",
     "camera_control/portfolio/Serial communication.md",
-    "camera_control/portfolio/Microcontroller selection.md",
-    "camera_control/portfolio/Snellium.md"
+    "camera_control/portfolio/Microcontroller selection.md"
   ]
 }

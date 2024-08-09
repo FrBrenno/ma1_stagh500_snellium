@@ -56,7 +56,6 @@ class uC_SerialCommunication:
                 return None
 
             self.serialComm.write(serialized_command.encode())
-            time.sleep(5)
             response = self.serialComm.readline().decode().strip()
             return response
         except serial.serialutil.SerialException:

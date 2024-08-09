@@ -34,7 +34,7 @@ class uC_Manager:
         ## Wait for the uC_Monitor to start
         self.startup_sync.wait()
 
-    def get_uC_connection(self, port):
+    def _retrieve_uC_connection(self, port):
         """Returns the uC connection by the port."""
         if port in self.uC_connections:
             return self.uC_connections[port]
@@ -43,7 +43,7 @@ class uC_Manager:
     def connect_uC(self, port):
         """Connects to the uC by the port."""
         self.connections_lock.acquire()
-        connection = self.get_uC_connection(port)
+        connection = self._retrieve_uC_connection(port)
         self.connections_lock.release()
 
         if connection is None:
@@ -65,7 +65,7 @@ class uC_Manager:
     def disconnect_uC(self, port):
         """Disconnects from the uC by the port."""
         self.connections_lock.acquire()
-        connection = self.get_uC_connection(port)
+        connection = self._retrieve_uC_connection(port)
         self.connections_lock.release()
         if connection is None:
             print(f"Port {port} not available.")
@@ -78,7 +78,7 @@ class uC_Manager:
     def send_command_to_uC(self, port, command):
         """Sends a command to the uC by the port."""
         self.connections_lock.acquire()
-        connection = self.get_uC_connection(port)
+        connection = self._retrieve_uC_connection(port)
         self.connections_lock.release()
         if connection is None:
             print(f"Port {port} not available.")

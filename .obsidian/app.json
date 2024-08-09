@@ -1,3 +1,6 @@
 {
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "newLinkFormat": "absolute",
+  "attachmentFolderPath": "camera_control/img"
 }

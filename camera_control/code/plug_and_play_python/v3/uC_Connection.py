@@ -102,48 +102,6 @@ class uC_Connection:
             print(f"{bcolors.OKGREEN}<--: {response}{bcolors.ENDC}")
         return response
 
-    def deserialize_response(self, response):
-        """Deserialize the response from the microcontroller.
-        Response Format:
-        ||<STATUS>|<MESSAGE> or <ERROR_MESSAGE>[|<DEBUG_MESSAGE>] if debug mode on||
-        """
-        status, message, debug_message = None, None, None
-        if response is None:
-            return status, message, debug_message
-
-        # Check if response is correctly delimited
-        if not (response.startswith("||") and response.endswith("||")):
-            return status, message, debug_message
-        response_content = response[2:-2]
-        tokens = response_content.split("|")
-        if not (
-            len(tokens) == 2 or len(tokens) == 3
-        ):  # Ensure the correct number of tokens
-            return status, message, debug_message
-
-        status, message = tokens[0], tokens[1]
-        if len(tokens) == 3:
-            debug_message = tokens[2]
-        if status not in {"Success", "Error"}:
-            status, message, debug_message = None, None, None
-        return status, message, debug_message
-
-    def deserialize_info_response(self, response):
-        """Deserialize the info response from the microcontroller.
-        Info Response Format:
-        "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
-        """
-        info_tokens = response.split("-")
-        if len(info_tokens) == 4:
-            # info response format: "<uC_id>-<uC_name>-<uC_board>-<uC_mcu_type>"
-            uC_id, uC_name, uC_board, uC_mcu_type = info_tokens
-            return uC_id, uC_name, uC_board, uC_mcu_type
-        elif len(info_tokens) == 1:
-            return info_tokens[0], None, None, None
-        else:
-            return None, None, None, None
-
-
 if __name__ == "__main__":
     command_set = [
         PingCommand(),

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "camera_control/journal/4.5 - 09.08.md",
+                "file": "camera_control/journal/5.1 - 12.08 - Week 5.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "camera_control/journal/4.5 - 09.08.md",
+                "file": "camera_control/journal/5.1 - 12.08 - Week 5.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "camera_control/journal/4.5 - 09.08.md",
+                "file": "camera_control/journal/5.1 - 12.08 - Week 5.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "camera_control/journal/4.5 - 09.08.md"
+                "file": "camera_control/journal/5.1 - 12.08 - Week 5.md"
               }
             }
           }
@@ -151,8 +151,12 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
-    "camera_control/journal/4.4 - 08.08.md",
+    "camera_control/img/microcontroller_communication_daemon_architecture.pdf",
+    "camera_control/biblio/pdp.jpeg",
     "camera_control/journal/4.5 - 09.08.md",
+    "camera_control/journal/5.1 - 12.08 - Week 5.md",
+    "camera_control/code/plug_and_play_python/v3/uC_Response.py",
+    "camera_control/journal/4.4 - 08.08.md",
     "camera_control/journal/2.2 - 23.07.md",
     "camera_control/journal/2.3 - 24.07.md",
     "camera_control/journal/2.4 - 25.07.md",
@@ -182,7 +186,6 @@
     "camera_control/code/plug_and_play_python/v3/uC_Discoverer.py",
     "camera_control/code/plug_and_play_python/v3/uC_Monitor.py",
     "camera_control/code/plug_and_play_python/v3/uC_PortMonitor.py",
-    "camera_control/code/plug_and_play_python/v3/uC_ResponseDeserializer.py",
     "camera_control/code/plug_and_play_python/v3/packages.png",
     "camera_control/code/plug_and_play_python/v3/classes.png",
     "camera_control/code/plug_and_play_python/v3/packages_uC_Comm.png",
@@ -190,12 +193,9 @@
     "camera_control/code/plug_and_play_python/v2 (Copy)/packages_uC_Comm.png",
     "camera_control/code/plug_and_play_python/v2 (Copy)/classes_uC_Comm.png",
     "camera_control/journal/4.1 - 05.08 - week 4.md",
-    "camera_control/code/plug_and_play_python/v2/classes_uC_Comm.png",
     "camera_control/journal/3.5 - 02.08.md",
     "camera_control/journal/3.4 - 01.08.md",
     "camera_control/code/uC_code/libraries/Microcontroller-id/README.md",
-    "camera_control/code/uC_code/libraries/Microcontroller-id/CHANGELOG.md",
-    "camera_control/code/uC_code/v1/libraries/Microcontroller-id/README.md",
-    "camera_control/code/uC_code/v1/libraries/Microcontroller-id/CHANGELOG.md"
+    "camera_control/code/uC_code/libraries/Microcontroller-id/CHANGELOG.md"
   ]
 }

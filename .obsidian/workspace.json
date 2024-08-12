@@ -18,6 +18,20 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e241338f34d73c45",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "camera_control/portfolio/microcontroller_communication_daemon_architecture.pdf",
+                "page": 1,
+                "left": -22,
+                "top": 614,
+                "zoom": 0.6844919786096256
+              }
+            }
           }
         ]
       }
@@ -151,10 +165,11 @@
   },
   "active": "b72b28a3d241431f",
   "lastOpenFiles": [
+    "camera_control/portfolio/microcontroller_communication_daemon_architecture.pdf",
+    "camera_control/journal/5.1 - 12.08 - Week 5.md",
+    "camera_control/journal/4.5 - 09.08.md",
     "camera_control/img/microcontroller_communication_daemon_architecture.pdf",
     "camera_control/biblio/pdp.jpeg",
-    "camera_control/journal/4.5 - 09.08.md",
-    "camera_control/journal/5.1 - 12.08 - Week 5.md",
     "camera_control/code/plug_and_play_python/v3/uC_Response.py",
     "camera_control/journal/4.4 - 08.08.md",
     "camera_control/journal/2.2 - 23.07.md",
@@ -184,8 +199,6 @@
     "camera_control/code/plug_and_play_python/v3/__pycache__/uC_Connection.cpython-312.pyc",
     "camera_control/code/plug_and_play_python/v3/__pycache__/uC_PortMonitor.cpython-312.pyc",
     "camera_control/code/plug_and_play_python/v3/uC_Discoverer.py",
-    "camera_control/code/plug_and_play_python/v3/uC_Monitor.py",
-    "camera_control/code/plug_and_play_python/v3/uC_PortMonitor.py",
     "camera_control/code/plug_and_play_python/v3/packages.png",
     "camera_control/code/plug_and_play_python/v3/classes.png",
     "camera_control/code/plug_and_play_python/v3/packages_uC_Comm.png",

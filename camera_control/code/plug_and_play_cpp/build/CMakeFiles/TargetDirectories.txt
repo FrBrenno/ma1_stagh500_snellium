@@ -1,0 +1,3 @@
+/home/bferreira/Documents/ma1_stagh500_snellium/camera_control/code/plug_and_play_cpp/build/CMakeFiles/test_libsystemd.dir
+/home/bferreira/Documents/ma1_stagh500_snellium/camera_control/code/plug_and_play_cpp/build/CMakeFiles/edit_cache.dir
+/home/bferreira/Documents/ma1_stagh500_snellium/camera_control/code/plug_and_play_cpp/build/CMakeFiles/rebuild_cache.dir

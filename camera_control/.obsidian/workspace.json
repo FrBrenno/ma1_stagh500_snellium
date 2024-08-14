@@ -1,0 +1,166 @@
+{
+  "main": {
+    "id": "bda74efe3f762668",
+    "type": "split",
+    "children": [
+      {
+        "id": "24be0fe1152c9c4f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "73caefc7c4703751",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "journal/5.3 - 14.08.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "93378c1114e6ea9c",
+    "type": "split",
+    "children": [
+      {
+        "id": "ab2f27f1e6a1dfd5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de8bb32f00e8fc37",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2e2640c4896c518a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "afc110f0080b2e74",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bea1e663235ab52a",
+    "type": "split",
+    "children": [
+      {
+        "id": "45aa9aa17bf68aa0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ddf6ea1a91db6933",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "journal/5.3 - 14.08.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "63527a1320048280",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "journal/5.3 - 14.08.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9eb149dcb803816e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "20cc3f1816ff510a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "journal/5.3 - 14.08.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "73caefc7c4703751",
+  "lastOpenFiles": [
+    "code/plug_and_play_cpp/build/Testing/Temporary/LastTest_20240814-1125.log",
+    "code/plug_and_play_cpp/build/Testing/Temporary/CTestCostData.txt",
+    "code/plug_and_play_cpp/build/Testing/20240814-1125/Test.xml",
+    "code/plug_and_play_cpp/build/Testing/Temporary",
+    "code/plug_and_play_cpp/build/Testing/TAG",
+    "code/plug_and_play_cpp/build/Testing/20240814-1125",
+    "code/plug_and_play_cpp/build/Testing",
+    "code/plug_and_play_cpp/build/CMakeFiles/test_libsystemd.dir/compiler_depend.make.tmp955d1",
+    "code/plug_and_play_cpp/build/CMakeFiles/Progress/count.txt",
+    "code/plug_and_play_cpp/build/CMakeFiles/Progress",
+    "code/plug_and_play_cpp/build/CMakeFiles/Progress/2",
+    "journal/5.2 - 13.08.md",
+    "journal/5.3 - 14.08.md",
+    "journal/5.1 - 12.08 - Week 5.md"
+  ]
+}

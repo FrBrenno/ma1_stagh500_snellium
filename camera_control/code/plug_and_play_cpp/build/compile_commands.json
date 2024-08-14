@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/bferreira/Documents/ma1_stagh500_snellium/camera_control/code/plug_and_play_cpp/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/test_libsystemd.dir/main.cpp.o -c /home/bferreira/Documents/ma1_stagh500_snellium/camera_control/code/plug_and_play_cpp/main.cpp",
-  "file": "/home/bferreira/Documents/ma1_stagh500_snellium/camera_control/code/plug_and_play_cpp/main.cpp",
-  "output": "CMakeFiles/test_libsystemd.dir/main.cpp.o"
-}
-]

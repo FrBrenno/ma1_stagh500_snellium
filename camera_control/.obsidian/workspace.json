@@ -4,16 +4,36 @@
     "type": "split",
     "children": [
       {
-        "id": "24be0fe1152c9c4f",
+        "id": "900aa16672961dba",
         "type": "tabs",
+        "dimension": 75.85365853658537,
         "children": [
           {
-            "id": "73caefc7c4703751",
+            "id": "4c2fc98428e9f16c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journal/5.3 - 14.08.md",
+                "file": "journal/week8/8.5 - 06.09.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "07fc68d5af3ecfab",
+        "type": "tabs",
+        "dimension": 24.146341463414632,
+        "children": [
+          {
+            "id": "6148383c98794be4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "journal/0.0 - TO DO.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 280.5
   },
   "right": {
     "id": "bea1e663235ab52a",
@@ -85,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journal/5.3 - 14.08.md",
+                "file": "journal/week8/8.5 - 06.09.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journal/5.3 - 14.08.md",
+                "file": "journal/week8/8.5 - 06.09.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journal/5.3 - 14.08.md"
+                "file": "journal/week8/8.5 - 06.09.md"
               }
             }
           }
@@ -146,21 +166,48 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "73caefc7c4703751",
+  "active": "4c2fc98428e9f16c",
   "lastOpenFiles": [
-    "code/plug_and_play_cpp/build/test_libsystemd",
-    "code/plug_and_play_cpp/build/CMakeFiles/Progress/2",
-    "code/plug_and_play_cpp/build/CMakeFiles/test_libsystemd.dir/main.cpp.o",
-    "code/plug_and_play_cpp/build/CMakeFiles/test_libsystemd.dir/main.cpp.o.d",
-    "code/plug_and_play_cpp/build/CMakeFiles/Progress/1",
-    "code/plug_and_play_cpp/build/CMakeFiles/Progress/count.txt",
-    "code/plug_and_play_cpp/build/CMakeFiles/Progress",
-    "code/plug_and_play_cpp/build/CMakeFiles/Makefile.cmake",
-    "code/plug_and_play_cpp/build/CMakeFiles/Makefile2",
-    "code/plug_and_play_cpp/build/CMakeFiles/progress.marks",
-    "code/plug_and_play_cpp/build/CMakeFiles/TargetDirectories.txt",
-    "journal/5.2 - 13.08.md",
-    "journal/5.3 - 14.08.md",
-    "journal/5.1 - 12.08 - Week 5.md"
+    "journal/week8/8.4 - 05.09.md",
+    "journal/week8/8.5 - 06.09.md",
+    "portfolio/microcontroller_module_sequence_diagram_discovery.png",
+    "portfolio/microcontroller_communication_daemon_architecture.png",
+    "portfolio/microcontroller_communication_daemon_architecture-2.pdf",
+    "portfolio/microcontroller_communication_daemon_architecture-v1.pdf",
+    "portfolio/microcontroller_communication_daemon_architecture-v2.pdf",
+    "portfolio/microcontroller_communication_daemon_architecture_v1.pdf",
+    "portfolio/microcontroller_module_sequence_diagram.png",
+    "portfolio/Microcontroller Module Sequence Diagram.png",
+    "journal/week8/8.3 - 04.09.md",
+    "journal/week8/8.2 - 03.09.md",
+    "journal/0.0 - TO DO.md",
+    "portfolio/microcontroller module documentation.md",
+    "journal/week6/6.1 - 19.08 - Week 6.md",
+    "journal/week5/5.1 - 12.08 - Week 5.md",
+    "journal/week4/4.1 - 05.08 - week 4.md",
+    "journal/week3/3.1 - 29.07 - Week 3.md",
+    "journal/week2/2.1 - 22.07 - Week 2.md",
+    "journal/week1/1.1 - 15.07 - Week 1.md",
+    "journal/week8",
+    "journal/week7",
+    "journal/week6",
+    "journal/week5",
+    "journal/week4",
+    "journal/week3",
+    "journal/week6/6.6 Week 6 Summary.md",
+    "journal/week6/6.5 - 23.08.md",
+    "journal/week6/6.4 - 22.08.md",
+    "journal/week6/6.3 - 21.08.md",
+    "journal/week6/6.2 - 20.08.md",
+    "portfolio/Communication Protocol.md",
+    "journal/week8/8.1 - 02.09 - EXAM DAY.md",
+    "journal/week7/7.0 - 25.08 to 01.08 - Week 7 ABSENT EXAMEN.md",
+    "portfolio/Code Architecture Explanation.md",
+    "journal/week5/5.3 - 14.08.md",
+    "journal/week5/5.5 - 16.08.md",
+    "journal/week5/5.6 Week 5 Summary.md",
+    "journal/week5/5.4 - 15.08 - DAY OFF.md",
+    "journal/week5/5.2 - 13.08.md",
+    "img/Pasted image 20240807102452.png"
   ]
 }

@@ -1,5 +1,7 @@
 {
   "attachmentFolderPath": "img",
   "newLinkFormat": "absolute",
-  "newFileLocation": "current"
+  "newFileLocation": "current",
+  "showRibbon": false,
+  "alwaysUpdateLinks": true
 }

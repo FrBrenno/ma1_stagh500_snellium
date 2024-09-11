@@ -3,5 +3,6 @@
   "newLinkFormat": "absolute",
   "newFileLocation": "current",
   "showRibbon": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "defaultViewMode": "source"
 }

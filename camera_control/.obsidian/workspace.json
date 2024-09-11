@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md",
+                "file": "journal/week9/9.3 - 11.09.md",
                 "mode": "source",
                 "source": false
               }
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md",
+                "file": "journal/week9/9.3 - 11.09.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md",
+                "file": "journal/week9/9.3 - 11.09.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md"
+                "file": "journal/week9/9.3 - 11.09.md"
               }
             }
           }
@@ -168,8 +168,18 @@
   },
   "active": "4c2fc98428e9f16c",
   "lastOpenFiles": [
-    "journal/week8/8.4 - 05.09.md",
+    "journal/week9/9.2 - 10.09.md",
+    "journal/week9/9.3 - 11.09.md",
+    "portfolio/Project Timeline.md",
+    "journal/week9/9.1 - 09.09.md",
+    "journal/week8/8.6 - Week Summary.md",
     "journal/week8/8.5 - 06.09.md",
+    "journal/week8/8.4 - 05.09.md",
+    "journal/week8/8.3 - 04.09.md",
+    "journal/week8/8.2 - 03.09.md",
+    "journal/week8/8.1 - 02.09 - EXAM DAY.md",
+    "journal/week9",
+    "journal/0.0 - TO DO.md",
     "portfolio/microcontroller_module_sequence_diagram_discovery.png",
     "portfolio/microcontroller_communication_daemon_architecture.png",
     "portfolio/microcontroller_communication_daemon_architecture-2.pdf",
@@ -178,9 +188,6 @@
     "portfolio/microcontroller_communication_daemon_architecture_v1.pdf",
     "portfolio/microcontroller_module_sequence_diagram.png",
     "portfolio/Microcontroller Module Sequence Diagram.png",
-    "journal/week8/8.3 - 04.09.md",
-    "journal/week8/8.2 - 03.09.md",
-    "journal/0.0 - TO DO.md",
     "portfolio/microcontroller module documentation.md",
     "journal/week6/6.1 - 19.08 - Week 6.md",
     "journal/week5/5.1 - 12.08 - Week 5.md",
@@ -193,21 +200,14 @@
     "journal/week6",
     "journal/week5",
     "journal/week4",
-    "journal/week3",
     "journal/week6/6.6 Week 6 Summary.md",
     "journal/week6/6.5 - 23.08.md",
     "journal/week6/6.4 - 22.08.md",
     "journal/week6/6.3 - 21.08.md",
     "journal/week6/6.2 - 20.08.md",
     "portfolio/Communication Protocol.md",
-    "journal/week8/8.1 - 02.09 - EXAM DAY.md",
     "journal/week7/7.0 - 25.08 to 01.08 - Week 7 ABSENT EXAMEN.md",
     "portfolio/Code Architecture Explanation.md",
-    "journal/week5/5.3 - 14.08.md",
-    "journal/week5/5.5 - 16.08.md",
-    "journal/week5/5.6 Week 5 Summary.md",
-    "journal/week5/5.4 - 15.08 - DAY OFF.md",
-    "journal/week5/5.2 - 13.08.md",
     "img/Pasted image 20240807102452.png"
   ]
 }

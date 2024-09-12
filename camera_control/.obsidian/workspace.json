@@ -4,36 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "900aa16672961dba",
+        "id": "662935cd46e63d61",
         "type": "tabs",
-        "dimension": 71.64634146341463,
         "children": [
           {
-            "id": "4c2fc98428e9f16c",
+            "id": "757031d188a8feaf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "5fe0fa86a68c0671",
-        "type": "tabs",
-        "dimension": 28.353658536585364,
-        "children": [
-          {
-            "id": "08f599210fbdddb8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "portfolio/1 - project/Project Description.md",
+                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
                 "mode": "source",
                 "source": false
               }
@@ -68,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": " ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -105,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md",
+                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md",
+                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journal/week8/8.5 - 06.09.md"
+                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md"
               }
             }
           }
@@ -164,57 +144,56 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "markwhen:Create new Markwhen file": false,
       "smart-gantt:Smart Gantt": false
     }
   },
-  "active": "4c2fc98428e9f16c",
+  "active": "757031d188a8feaf",
   "lastOpenFiles": [
-    "portfolio/internship_gantt_diagram.csv",
-    "portfolio/internship_gantt_diagram.pdf",
-    "journal/week8/8.4 - 05.09.md",
-    "journal/week8/8.3 - 04.09.md",
-    "journal/week8/8.2 - 03.09.md",
-    "journal/week8/8.1 - 02.09 - EXAM DAY.md",
-    "journal/week6/6.5 - 23.08.md",
-    "journal/week6/6.4 - 22.08.md",
-    "journal/week6/6.3 - 21.08.md",
-    "journal/week6/6.2 - 20.08.md",
-    "journal/week6/6.1 - 19.08 - Week 6.md",
-    "journal/week5/5.5 - 16.08.md",
-    "journal/week5/5.2 - 13.08.md",
-    "journal/week5/5.3 - 14.08.md",
-    "journal/week5/5.1 - 12.08 - Week 5.md",
-    "journal/week5/5.4 - 15.08 - DAY OFF.md",
-    "journal/week5/5.6 Week 5 Summary.md",
-    "journal/week4/4.5 - 09.08.md",
-    "journal/week4/4.4 - 08.08.md",
-    "journal/week4/4.3 - 07.08.md",
-    "journal/week4/4.2 - 06.08.md",
-    "journal/week4/4.1 - 05.08 - week 4.md",
-    "journal/week3/3.5 - 02.08.md",
-    "journal/week3/3.4 - 01.08.md",
-    "journal/week3/3.3 - 31.07.md",
-    "journal/week3/3.2 - 30.07.md",
-    "journal/week3/3.1 - 29.07 - Week 3.md",
-    "portfolio/1 - project/Markwhen",
-    "portfolio/0 - internship application/CV.pdf",
-    "portfolio/2 - internship/0 - learning outcomes",
-    "portfolio/2 - internship/0 - Learning Outcomes",
-    "portfolio/1 - project/weekly reports",
-    "portfolio/1 - project/3 - weekly reports",
-    "portfolio/1 - project/documentation/uC_communication_grammar.ods",
-    "portfolio/1 - project/documentation/microcontroller_module_sequence_diagram_discovery.png",
-    "portfolio/1 - project/documentation/microcontroller_module_sequence_diagram.png",
-    "portfolio/1 - project/documentation/microcontroller_module_doc.pdf",
-    "portfolio/1 - project/documentation/microcontroller_communication_daemon_architecture.png",
-    "portfolio/1 - project/documentation/microcontroller_communication_daemon_architecture-v2.pdf",
-    "portfolio/1 - project/documentation/microcontroller_module_sequence_diagram_discovery.png",
-    "portfolio/1 - project/documentation/microcontroller_module_sequence_diagram.png",
-    "portfolio/1 - project/documentation/microcontroller_communication_daemon_architecture.png",
-    "portfolio/project/documentation/microcontroller_module_sequence_diagram_discovery.png",
-    "portfolio/project/documentation/microcontroller_module_sequence_diagram.png",
-    "portfolio/project/documentation/microcontroller_communication_daemon_architecture.png",
-    "portfolio/microcontroller_module_sequence_diagram_discovery.png"
+    "portfolio/3 - journal/week5/5.3 - 14.08.md",
+    "portfolio/3 - journal/week5/5.2 - 13.08.md",
+    "portfolio/2 - project/Project Description.md",
+    "portfolio/3 - journal/week5/5.1 - 12.08 - Week 5.md",
+    "portfolio/3 - journal/week4/4.5 - 09.08.md",
+    "portfolio/3 - journal/week4/4.4 - 08.08.md",
+    "portfolio/3 - journal/week4/4.3 - 07.08.md",
+    "portfolio/3 - journal/week4/4.2 - 06.08.md",
+    "portfolio/3 - journal/week4/4.1 - 05.08 - week 4.md",
+    "portfolio/3 - journal/week3/3.5 - 02.08.md",
+    "portfolio/3 - journal/week3/3.4 - 01.08.md",
+    "portfolio/3 - journal/week3/3.3 - 31.07.md",
+    "portfolio/3 - journal/week3/3.2 - 30.07.md",
+    "portfolio/3 - journal/week3/3.1 - 29.07 - Week 3.md",
+    "portfolio/3 - journal/week2/2.5 - 26.07 - Day OFF.md",
+    "portfolio/3 - journal/week2/2.4 - 25.07.md",
+    "portfolio/0 - internship application/Internship Application.md",
+    "portfolio/3 - journal/week2/2.3 - 24.07.md",
+    "portfolio/3 - journal/week2/2.2 - 23.07.md",
+    "portfolio/3 - journal/week2/2.1 - 22.07 - Week 2.md",
+    "portfolio/3 - journal/week1/1.5 - 19.07.md",
+    "portfolio/3 - journal/week1/1.4 - 18.07.md",
+    "portfolio/3 - journal/week1/1.3 - 17.07.md",
+    "portfolio/3 - journal/week1/1.2 - 16.07.md",
+    "portfolio/3 - journal/week1/1.1 - 15.07 - Week 1.md",
+    "portfolio/2 - project/Project Management Framework.md",
+    "portfolio/5 - evaluations/mid-term/self-assessment intern performance evaluation.pdf",
+    "portfolio/2 - project/internship_gantt_chart_portrait.pdf",
+    "portfolio/2 - project/Project Management Framework",
+    "portfolio/2 - project/biblio/block-rx65n.png",
+    "portfolio/2 - project/biblio/Michael_Wlodarczyk_2017_Image_acquisition_system_based_on_s.pdf",
+    "portfolio/2 - project/biblio/Francesco_Adamo_et_al_2009.pdf",
+    "portfolio/2 - project/biblio/Alexander_2015_Synchronization_of_a_multi_camera_system.pdf",
+    "portfolio/2 - project/biblio",
+    "portfolio/3 - journal/week9",
+    "portfolio/3 - journal/week8",
+    "portfolio/3 - journal/week7",
+    "img/Pasted image 20240912152354.png",
+    "img/Pasted image 20240912152339.png",
+    "img/Pasted image 20240912150454.png",
+    "img/Pasted image 20240912150431.png",
+    "portfolio/2 - project/documentation/Microcontroller/Microcontroller Firmware Diagram.png",
+    "portfolio/2 - project/documentation/Architecture/doc/device_module_daemon_architecture.png",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_module_sequence_diagram_discovery.png",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_module_sequence_diagram.png",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v2.png"
   ]
 }

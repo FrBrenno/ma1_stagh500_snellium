@@ -1,4 +1,6 @@
 
+# Project Tasks & Planning
+
 > Cf. [Internship Project - Gantt Diagram](portfolio/2 - project/internship_gantt_chart_portrait.pdf|internship_gantt_chart_portrait)
 
 ![[portfolio/2 - project/internship_gantt_chart.png]]

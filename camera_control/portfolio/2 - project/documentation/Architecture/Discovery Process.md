@@ -1,4 +1,5 @@
- 
+# Discovery of Device Process
+
 ![[portfolio/2 - project/documentation/Architecture/doc/microcontroller_module_sequence_diagram_discovery.png| Discovery Sequence Diagram]]
 
 This discovery process is simple. 

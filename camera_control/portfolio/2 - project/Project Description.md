@@ -1,4 +1,6 @@
-# Introduction
+# Project Description
+
+## Introduction
 
 The current setup for one of Snellium's technology implementations consists of a computer running the software, four cameras, and a speckle projector.
 
@@ -6,7 +8,7 @@ The cameras are configured to acquire images through hardware triggering, which 
 
 While this setup functions well, it is manual and may not be suitable for industrial applications where automation is preferred. To meet industry demands, Snellium aims to eliminate the need for physical intervention.
 
-# Project Statement
+## Project Statement
 
 > **GOAL:** Design and implement a control module powered by a microcontroller capable of communicating with the software for automatic image acquisition.
 
@@ -22,7 +24,7 @@ While this setup functions well, it is manual and may not be suitable for indust
 - Control unit with components and circuit diagrams
 - Microcontroller firmware to receive and execute commands
 
-# Project Strategy
+## Project Strategy
 
 My strategy for this project involves dividing it into distinct phases:
 

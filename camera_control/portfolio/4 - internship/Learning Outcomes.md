@@ -1,5 +1,6 @@
+# Learning Outcommes
 
-# Technical Skills
+## Technical Skills
 
 1. **Modular Software Architecture**:
     - Learned the principles of modular design, specifically how a daemon manages modules in a professional environment.
@@ -20,7 +21,7 @@
     - Enhanced familiarity with collaborative tools like Git, ensuring that code changes were tracked, reviewed, and integrated into the main codebase effectively.
     - Practiced maintaining code quality, readability, and following best practices in a professional development environment.
 
-#### Non-Technical Skills
+## Non-Technical Skills
 
 1. **Project Management**:
     - Managed a multi-phase project, from research and design to prototyping and final implementation.

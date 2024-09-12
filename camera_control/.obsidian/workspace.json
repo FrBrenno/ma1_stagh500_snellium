@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
+                "file": "portfolio/4 - internship/Learning Outcomes.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
+                "file": "portfolio/4 - internship/Learning Outcomes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
+                "file": "portfolio/4 - internship/Learning Outcomes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md"
+                "file": "portfolio/4 - internship/Learning Outcomes.md"
               }
             }
           }
@@ -149,32 +149,35 @@
   },
   "active": "757031d188a8feaf",
   "lastOpenFiles": [
+    "portfolio/2 - project/Project Tasks & Planning.md",
+    "portfolio/2 - project/Project Management Framework.md",
+    "portfolio/2 - project/Project Description.md",
+    "portfolio/2 - project/weekly reports/Week 8.md",
+    "portfolio/2 - project/weekly reports/Week 7.md",
+    "portfolio/2 - project/weekly reports/Week 6.md",
+    "portfolio/2 - project/weekly reports/Week 5.md",
+    "portfolio/2 - project/weekly reports/Week 4.md",
+    "portfolio/2 - project/weekly reports/Week 3.md",
+    "portfolio/2 - project/weekly reports/Week 2.md",
+    "portfolio/2 - project/weekly reports/Week 1.md",
+    "portfolio/2 - project/documentation/Microcontroller/Microcontroller Firmware Diagram.png",
+    "portfolio/2 - project/documentation/Microcontroller/Microcontroller Firmware Diagram.pdf",
+    "portfolio/2 - project/documentation/Microcontroller/Microcontroller selection.md",
+    "portfolio/2 - project/documentation/Microcontroller/Firmware Code Architecture.md",
+    "portfolio/2 - project/documentation/Communication Protocol/Communication Protocol.md",
+    "portfolio/2 - project/documentation/Architecture/microcontroller_module_doc.pdf",
+    "portfolio/2 - project/documentation/Architecture/Discovery Process.md",
+    "portfolio/2 - project/documentation/Architecture/Code Architecture Explanation.md",
+    "portfolio/1 - company/Snellium - Company Presentation.md",
+    "portfolio/0 - internship application/Motivation Letter.md",
+    "portfolio/0 - internship application/Internship Application.md",
+    "portfolio/3 - journal/week5/5.4 - 15.08 - DAY OFF.md",
     "portfolio/3 - journal/week5/5.3 - 14.08.md",
     "portfolio/3 - journal/week5/5.2 - 13.08.md",
-    "portfolio/2 - project/Project Description.md",
     "portfolio/3 - journal/week5/5.1 - 12.08 - Week 5.md",
     "portfolio/3 - journal/week4/4.5 - 09.08.md",
     "portfolio/3 - journal/week4/4.4 - 08.08.md",
     "portfolio/3 - journal/week4/4.3 - 07.08.md",
-    "portfolio/3 - journal/week4/4.2 - 06.08.md",
-    "portfolio/3 - journal/week4/4.1 - 05.08 - week 4.md",
-    "portfolio/3 - journal/week3/3.5 - 02.08.md",
-    "portfolio/3 - journal/week3/3.4 - 01.08.md",
-    "portfolio/3 - journal/week3/3.3 - 31.07.md",
-    "portfolio/3 - journal/week3/3.2 - 30.07.md",
-    "portfolio/3 - journal/week3/3.1 - 29.07 - Week 3.md",
-    "portfolio/3 - journal/week2/2.5 - 26.07 - Day OFF.md",
-    "portfolio/3 - journal/week2/2.4 - 25.07.md",
-    "portfolio/0 - internship application/Internship Application.md",
-    "portfolio/3 - journal/week2/2.3 - 24.07.md",
-    "portfolio/3 - journal/week2/2.2 - 23.07.md",
-    "portfolio/3 - journal/week2/2.1 - 22.07 - Week 2.md",
-    "portfolio/3 - journal/week1/1.5 - 19.07.md",
-    "portfolio/3 - journal/week1/1.4 - 18.07.md",
-    "portfolio/3 - journal/week1/1.3 - 17.07.md",
-    "portfolio/3 - journal/week1/1.2 - 16.07.md",
-    "portfolio/3 - journal/week1/1.1 - 15.07 - Week 1.md",
-    "portfolio/2 - project/Project Management Framework.md",
     "portfolio/5 - evaluations/mid-term/self-assessment intern performance evaluation.pdf",
     "portfolio/2 - project/internship_gantt_chart_portrait.pdf",
     "portfolio/2 - project/Project Management Framework",
@@ -184,13 +187,10 @@
     "portfolio/2 - project/biblio/Alexander_2015_Synchronization_of_a_multi_camera_system.pdf",
     "portfolio/2 - project/biblio",
     "portfolio/3 - journal/week9",
-    "portfolio/3 - journal/week8",
-    "portfolio/3 - journal/week7",
     "img/Pasted image 20240912152354.png",
     "img/Pasted image 20240912152339.png",
     "img/Pasted image 20240912150454.png",
     "img/Pasted image 20240912150431.png",
-    "portfolio/2 - project/documentation/Microcontroller/Microcontroller Firmware Diagram.png",
     "portfolio/2 - project/documentation/Architecture/doc/device_module_daemon_architecture.png",
     "portfolio/2 - project/documentation/Architecture/doc/microcontroller_module_sequence_diagram_discovery.png",
     "portfolio/2 - project/documentation/Architecture/doc/microcontroller_module_sequence_diagram.png",

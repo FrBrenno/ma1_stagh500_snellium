@@ -1,3 +1,4 @@
+# Communication Protocol
 
 The communication protocol between the daemon and the microcontroller is a straightforward, text-based format utilizing ASCII characters for both commands and responses.
 

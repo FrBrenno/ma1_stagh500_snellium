@@ -1,5 +1,6 @@
+# Code Architecture Explanation
 
-# First Approach
+## First Approach
  ![[portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v2.pdf|microcontroller_communication_daemon_architecture-v2]]
 Snellium’s architecture is **modular**, meaning it consists of a central component that manages the overall application, referred to as the **daemon**, and smaller, independent components known as **modules**, which are integrated into the daemon’s environment.
 
@@ -25,7 +26,7 @@ The final version of the diagram after implementing it is the following:
 
 The file [[portfolio/2 - project/documentation/Architecture/microcontroller_module_doc.pdf|microcontroller_module_doc]] contains the actual documentation present in the code repository. It explains in a resumed way everything about the microcontroller module.
 
-# Second Approach
+## Second Approach
 
 During the implementation of my module, I observed significant similarities with another module responsible for discovering and managing cameras. Many methods were identical, while others were analogous, differing only in the types they used. After analyzing the situation, I proposed a refactoring that led to the creation of an abstraction module called **Device**. This module consolidates the duplicated methods, allowing individual modules to focus only on implementing device-specific functionality.
 

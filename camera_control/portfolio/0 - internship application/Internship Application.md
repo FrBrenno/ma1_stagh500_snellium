@@ -1,3 +1,4 @@
+# Internship Application
 
 Before beginning my search for an internship, I needed to decide which domain I wanted to work in, and which would provide the most realistic experience for my future career. I decided that :
 - I should work on my domain of study;

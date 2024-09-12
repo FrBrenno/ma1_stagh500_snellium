@@ -1,3 +1,5 @@
+# Presentation of the Company
+
 <div style="text-align:center"> <h1>SNELLIUM</h1> <p>Innovative Solutions for Optical Inspections</p> </div>
 
 Snellium is a startup and a spin-off from ULB, founded in 2021. It operates as an R&D company focused on developing **optical inspection systems** for quality control in industries like automotive and aerospace.

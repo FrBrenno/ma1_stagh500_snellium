@@ -1,7 +1,8 @@
 # Code Architecture Explanation
 
 ## First Approach
- ![[portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v2.pdf|microcontroller_communication_daemon_architecture-v2]]
+ ![Archicture Diagram](./doc/microcontroller_communication_daemon_architecture-v1.png)
+ 
 Snellium’s architecture is **modular**, meaning it consists of a central component that manages the overall application, referred to as the **daemon**, and smaller, independent components known as **modules**, which are integrated into the daemon’s environment.
 
 The daemon is responsible for initializing the entire application along with its modules. It handles the instantiation of the execution context, the module manager, the threads, the server, and all required objects.
@@ -22,15 +23,15 @@ Finally, the **communication protocol** is the only element connecting the softw
 
 The final version of the diagram after implementing it is the following:
 
-![[portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v2.pdf|microcontroller_communication_daemon_architecture-v2]]
+![Final Architecture Diagram](./doc/microcontroller_communication_daemon_architecture-v2.png)
 
-The file [[portfolio/2 - project/documentation/Architecture/microcontroller_module_doc.pdf|microcontroller_module_doc]] contains the actual documentation present in the code repository. It explains in a resumed way everything about the microcontroller module.
+The file [microcontroller_module_doc](./microcontroller_module_doc.pdf) contains the actual documentation present in the code repository. It explains in a resumed way everything about the microcontroller module.
 
 ## Second Approach
 
 During the implementation of my module, I observed significant similarities with another module responsible for discovering and managing cameras. Many methods were identical, while others were analogous, differing only in the types they used. After analyzing the situation, I proposed a refactoring that led to the creation of an abstraction module called **Device**. This module consolidates the duplicated methods, allowing individual modules to focus only on implementing device-specific functionality.
 
-![[portfolio/2 - project/documentation/Architecture/doc/device_module_daemon_architecture.pdf|device_module_daemon_architecture]]
+![Architecture Diagram with Device Module](./doc/device_module_daemon_architecture.png)
 
 
 The concept was to introduce a **Device module**, serving as a higher-level abstraction layer than the individual module abstractions. Any module dealing with devices that need to be discovered and managed would implement this **Device abstraction**, incorporating only the device-specific logic. This approach reduces code duplication, provides a straightforward interface for core classes, and allows module abstractions to be more focused and specific.

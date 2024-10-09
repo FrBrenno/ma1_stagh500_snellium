@@ -1,6 +1,6 @@
 # Firmware Code Architecture
 
-![[portfolio/2 - project/documentation/Microcontroller/Microcontroller Firmware Diagram.pdf|Microcontroller Firmware Diagram]]
+![Microcontroller Firmware Loop Diagram](./microcontroller_firmware_diagram.png)
 
 ### Firmware Operation Overview
 

@@ -15,7 +15,7 @@ Through my research into the current state-of-the-art microcontroller platforms,
 ### Key Criteria for Microcontroller Selection
 
 
-![[img/Pasted image 20240912150431.png]]
+![criteria](./criteria_1.png)
 
 1. **Manufacturer**:
     - I had no specific constraint regarding the manufacturer at the outset. However, I came across several manufacturers commonly used in industrial applications, such as STMicroelectronics, Texas Instruments, Infineon Technologies, and Raspberry Pi. 
@@ -32,7 +32,7 @@ Through my research into the current state-of-the-art microcontroller platforms,
 
 ### Additional Considerations
 
-![[img/Pasted image 20240912150454.png]]
+![criteria_2](./criteria_2.png)
 
 - **I/O Reliability**:
     - The board should come with a *reliability guarantee* of at least 5–10 years to ensure it can withstand long-term industrial use.
@@ -55,7 +55,7 @@ Through my research into the current state-of-the-art microcontroller platforms,
 
 ### Renesas RX65N review
 
-![[img/Pasted image 20240912152354.png]]
+![top_1_board](./top_1_board.png)
 **_Pros_**  
 - **Excellent construction quality.**
 - **Firmware and Support**
@@ -91,7 +91,7 @@ Through my research into the current state-of-the-art microcontroller platforms,
 
 ### STM32 Nucleo and Tiva LaunchPad
 
-![[img/Pasted image 20240912152339.png]]
+![top_2_3_boards](./top_2_3_boards.png)
 
 This was my first top 2 solutions. STM32 seemed a really good candidate with its high-performance capabilities, high number of ports, high clock frequency, USB communication and realibilty. Also, an important factor was compatibility with Arduino IDE meaning that I could exploit already existing Arduino libraries which could improve development quality and pace.
 

@@ -8,7 +8,7 @@ Snellium did not impose a strict project management framework on me. Their key e
 
 They provided project management tools through the **NextCloud** environment, which offered features like *Kanban boards*, calendars, email, and documents integration. Of these, I mainly used the Kanban board to manage ongoing tasks. At the start of each phase, I would break down the work into tasks and categorize them as "To Do," "Doing," and "Done." This method gave me clear direction and helped structure my progress.
 
-For this project, I worked in **phases**, as outlined in the document [[Project Tasks & Planning]].
+For this project, I worked in **phases**, as outlined in the document [Project Tasks & Planning](./Project%20Tasks%20&%20Planning.md).
 
 ## Project Workflow
 

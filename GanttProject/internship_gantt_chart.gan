@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Internship Project : Camera Control Module" company="Snellium" webLink="http://" view-date="2024-08-19" view-index="0" gantt-divider-location="450" resource-divider-location="300" version="3.3.3311" locale="en_GB">
+    <description/>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd3" name="Name" width="246" order="0"/>
+        <field id="tpd4" name="Begin date" width="94" order="1"/>
+        <field id="tpd5" name="End date" width="94" order="2"/>
+        <field id="tpd15" name="Notes" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#990000 #ff9900 #ffcc00 #ccffcc #990099 #660066 #cc00cc #00cccc #009999 #cc0033]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="none">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="" month="8" date="26" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="8" date="27" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="8" date="28" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="8" date="29" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="8" date="30" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="8" date="31" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="9" date="1" type="NEUTRAL" color="#660000"><![CDATA[EXAM PREPARATION]]></date>
+        <date year="" month="9" date="2" type="NEUTRAL" color="#660000"/>
+        <date year="2024" month="7" date="26" type="HOLIDAY" color="#006666"><![CDATA[Belgium's National Day]]></date>
+        <date year="2024" month="8" date="15" type="HOLIDAY" color="#006666"><![CDATA[Ascension's Day]]></date>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="55" uid="2df2ad36414841468175c21f12ebcb88" name="Mid-Term Visit" color="#ff9900" meeting="true" start="2024-09-16" duration="0" complete="0" expand="true"/>
+        <task id="56" uid="2988548e7fc243e8b4f47eb24d15329c" name="Last day of Internship" color="#ff9900" meeting="true" start="2024-10-04" duration="0" complete="0" expand="true"/>
+        <task id="57" uid="ce43ef17d39a49a6a76a85e25089ce87" name="Portfolio Submission" color="#ff9900" meeting="true" start="2024-10-11" duration="0" complete="0" expand="true"/>
+        <task id="0" uid="6d2160ade8fb4edfaf8b7c4f22ab8d6b" name="Research" color="#006600" meeting="false" start="2024-07-15" duration="22" complete="100" expand="false">
+            <task id="21" uid="114e3b1cb9b64551b89e28205890b8a3" name="State-of-the-art of control system, camera systems, etc" color="#00cc00" meeting="false" start="2024-07-15" duration="3" complete="100" expand="true"/>
+            <task id="20" uid="88bc9e3e294a4da3ac6a5cc622e2356b" name="Research on Plug-and-Play Software" color="#00cc00" meeting="false" start="2024-07-23" duration="2" complete="100" expand="true"/>
+            <task id="22" uid="18038b5b98324701b1a66146c4362afe" name="Research on Serial Communication" color="#00cc00" meeting="false" start="2024-07-24" duration="2" complete="100" expand="true">
+                <depend id="23" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="26" uid="166c03b8652f49df9fa0a90b70a58bab" name="Research on Monitoring Algorithms" color="#00cc00" meeting="false" start="2024-07-29" duration="1" complete="100" expand="true">
+                <depend id="25" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="33" uid="cce8ab4a2ce44a36a650fefbcb0a0556" name="Research on Python-C++ equivalent libraries" color="#00cc00" meeting="false" start="2024-08-14" duration="1" complete="100" expand="true"/>
+        </task>
+        <task id="1" uid="5f7f30cfc7ae4ca5bea45a03d5773d70" name="Microcontroller" color="#990099" meeting="false" start="2024-07-17" duration="56" complete="80" expand="true">
+            <task id="58" uid="23de88162eac4dc5ba0681a94633b7d2" name="Component Selection" color="#990000" meeting="false" start="2024-07-17" duration="9" complete="100" expand="false">
+                <task id="2" uid="3b238fa19bf94269847b42dd2aeeacbb" name="Microcontorller Board Choice" color="#cc00cc" meeting="false" start="2024-07-17" duration="4" complete="100" expand="true"/>
+                <task id="3" uid="7110596e429b4b2691ba634500799e9d" name="Hardware Components Choice" color="#cc00cc" meeting="false" start="2024-07-22" duration="2" complete="100" expand="true"/>
+                <task id="5" uid="65495ab3ce6c40fbb3cbfbe8e5250c9c" name="Order Placed" color="#cc00cc" meeting="true" start="2024-07-23" duration="0" complete="100" expand="true"/>
+                <task id="7" uid="03ae428b09a7476180d31a3a3b46df25" name="Order Arrival" color="#cc00cc" meeting="true" start="2024-07-31" duration="0" complete="0" expand="true"/>
+            </task>
+            <task id="60" uid="a8962e5e74964bc390f619d90e8a665d" name="Prototype Microcontroller" color="#990000" meeting="false" start="2024-07-29" duration="14" complete="100" expand="false">
+                <task id="6" uid="1fb631a4efd84e75ac2e1496ebc71ad6" name="Command Deserializer" color="#cc00cc" meeting="false" start="2024-07-29" duration="2" complete="100" expand="true"/>
+                <task id="8" uid="4e539cd4983443d9a29f5c78258f049c" name="Testing Components + Hands-On IDE" color="#cc00cc" meeting="false" start="2024-08-01" duration="3" complete="100" expand="true"/>
+                <task id="9" uid="5357d37bb28e4bf9a4d62b287e5e0e9a" name="Triggering Camera with Prototype System" color="#cc00cc" meeting="true" start="2024-08-05" duration="0" complete="100" expand="true">
+                    <depend id="28" type="1" difference="0" hardness="Strong"/>
+                </task>
+                <task id="10" uid="7d61d0df1733419c9ab6aa7deab338a8" name="USB Communication Implementation" color="#cc00cc" meeting="false" start="2024-08-08" duration="3" complete="100" expand="true"/>
+                <task id="11" uid="90218a6be1304891a94edf1f55f784e0" name="USB-to-UART search" color="#cc00cc" meeting="false" start="2024-08-12" duration="1" complete="100" expand="true"/>
+                <task id="12" uid="9617b1bfd7d1401285ec247990cf7e38" name="Order USB-to-UART module" color="#cc00cc" meeting="true" start="2024-08-12" duration="0" complete="0" expand="true"/>
+                <task id="13" uid="2adb2d7e990345b4b7cb1608df9bc084" name="Order Arrival USB-to-UART module" color="#cc00cc" meeting="true" start="2024-08-16" duration="0" complete="0" expand="true"/>
+                <task id="14" uid="73c0f2edf9af4e2c854e18c203bd1576" name="Testing of USB-to-UART module" color="#cc00cc" meeting="false" start="2024-08-16" duration="1" complete="100" expand="true"/>
+            </task>
+            <task id="50" uid="e50958849e8141228962b2e15a2ddd33" name="Microcontroller Firmware Implementation" color="#990099" meeting="false" start="2024-10-01" duration="4" complete="0" expand="true">
+                <task id="15" uid="c69e888b114a4c9794909893d5361253" name="Refactor and Formalize Microcontroller Firmware" color="#cc00cc" meeting="false" start="2024-10-01" duration="2" complete="0" expand="true">
+                    <depend id="51" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="51" uid="d3939b73060e4958a64e33dcb3ff33ef" name="Merge Request: microcontrller_firmware" color="#cc00cc" meeting="false" start="2024-10-03" duration="2" complete="0" expand="true"/>
+            </task>
+        </task>
+        <task id="16" uid="4d933cec244b416f957af91beac14533" name="Communication Protocol" color="#666600" meeting="false" start="2024-07-24" duration="31" complete="50" expand="false">
+            <task id="17" uid="964112d9ecfb4b19b6826800b03f88ca" name="First Definition" color="#cccc00" meeting="false" start="2024-07-24" duration="2" complete="0" expand="true"/>
+            <task id="18" uid="500b5dc9c898466eac2f67be9c4702e6" name="Formalization and Documentation of Protocol" color="#cccc00" meeting="false" start="2024-09-05" duration="2" complete="100" expand="true"/>
+        </task>
+        <task id="19" uid="ec574df0a7784434a1e5b3327f13b44f" name="Python Software Prototype" color="#003366" meeting="false" start="2024-07-29" duration="10" complete="100" expand="false">
+            <task id="23" uid="8bcf4ae0f3c548538092d84678409138" name="Serial Communication with board" color="#0066cc" meeting="false" start="2024-07-29" duration="2" complete="100" expand="true"/>
+            <task id="25" uid="7973229168e34f8497d22fa93400fc36" name="Monitoring Algorithm" color="#0066cc" meeting="false" start="2024-07-30" duration="2" complete="100" expand="true"/>
+            <task id="27" uid="f7d73785b9be437ca9eb8cd403cc4b4c" name="Refactoring" color="#0066cc" meeting="false" start="2024-07-31" duration="8" complete="100" expand="true"/>
+            <task id="28" uid="70101d07d8c24df3be3a066b84e061f2" name="Triggering Camera with Prototype" color="#0066cc" meeting="true" start="2024-08-05" duration="0" complete="100" expand="true"/>
+            <task id="29" uid="e81ad0a657fa44c8a1f4cb291890b65d" name="End of Prototype" color="#0066cc" meeting="true" start="2024-08-09" duration="0" complete="0" expand="true"/>
+        </task>
+        <task id="30" uid="1fcdea53181547e9b948e2a5841d0430" name="Snellium Codebase Integration" color="#990000" meeting="false" start="2024-08-12" duration="39" complete="91" expand="true">
+            <task id="31" uid="1c4b8243a0a640da91080bbfce6f97d4" name="Study of current codebase" color="#cc0033" meeting="false" start="2024-08-12" duration="4" complete="100" expand="true"/>
+            <task id="32" uid="15aad87161d443f2bd621725e59be5f8" name="Build &amp; Hands-on Software" color="#cc0033" meeting="false" start="2024-08-13" duration="1" complete="100" expand="true"/>
+            <task id="34" uid="4a42cff759d24099b7d46e78cdcf6832" name="Daemon Module Abstraction" color="#990000" meeting="false" start="2024-08-16" duration="16" complete="100" expand="false">
+                <task id="35" uid="8563d82dce684fb1ba8e2bc0ee600445" name="Implementation" color="#cc0033" meeting="false" start="2024-08-16" duration="4" complete="100" expand="true"/>
+                <task id="36" uid="b36d0e547d9f4262b4940acd51c6669d" name="Merge Request: module microcontroller" color="#cc0033" meeting="false" start="2024-08-21" duration="13" complete="100" expand="true"/>
+            </task>
+            <task id="37" uid="f865526f60a74c54aecd29eb0ba48a51" name="Daemon Core Implementation" color="#990000" meeting="false" start="2024-08-22" duration="22" complete="100" expand="true">
+                <task id="38" uid="5a8e0e0946614f29a73bc8f4aaef476c" name="Implementation" color="#cc0033" meeting="false" start="2024-08-22" duration="12" complete="100" expand="true"/>
+                <task id="39" uid="8b7d083909bd4d608b30e56c293061a3" name="Device Module Abstraction Implementation" color="#cc0033" meeting="false" start="2024-09-06" duration="7" complete="100" expand="true"/>
+                <task id="40" uid="e1093215552240bf92aa414e0bc1c314" name="Merge Request: device module" color="#cc0033" meeting="false" start="2024-09-16" duration="5" complete="100" expand="true"/>
+            </task>
+            <task id="41" uid="8afca1fc2cce4a0b960f460f3684d21a" name="Virtual Microcontroller Module" color="#990000" meeting="false" start="2024-09-17" duration="10" complete="87" expand="true">
+                <task id="42" uid="6b73d850284a49e583c67c6a66a4011f" name="Implementation" color="#cc0033" meeting="false" start="2024-09-17" duration="7" complete="100" expand="true"/>
+                <task id="43" uid="9795c961fdcf44e2a9301f91b1e1b21d" name="Merge Request: virtual microcontroller" color="#cc0033" meeting="false" start="2024-09-30" duration="1" complete="0" expand="true"/>
+            </task>
+            <task id="44" uid="c3ecc3264be848eca9f12539c83a4c64" name="Serial Communication Microcontroller Module" color="#990000" meeting="false" start="2024-09-26" duration="7" complete="40" expand="true">
+                <task id="45" uid="9f21b895bf574ebf9a1579badc79c8a9" name="Implementation" color="#cc0033" meeting="false" start="2024-09-26" duration="4" complete="70" expand="true">
+                    <depend id="46" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="46" uid="3cbabda637554879a0a2c364e8ad6c78" name="Merge Request: serial_microcontroller" color="#cc0033" meeting="false" start="2024-10-02" duration="3" complete="0" expand="true"/>
+            </task>
+        </task>
+        <task id="47" uid="479ef0d3d3ee452dbc435b016a616a55" name="Physical Setup &amp; System Validation" color="#009999" meeting="false" start="2024-10-03" duration="2" complete="0" expand="true">
+            <task id="48" uid="b3705b3a8b1e4ab69601fabbc610e3cc" name="Solder and House Hardware Components" color="#00cccc" meeting="false" start="2024-10-03" duration="2" complete="0" expand="true"/>
+            <task id="49" uid="ba22ad9f465e4899b713018d6af217c7" name="Test &amp; Debug" color="#00cccc" meeting="false" start="2024-10-03" duration="2" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

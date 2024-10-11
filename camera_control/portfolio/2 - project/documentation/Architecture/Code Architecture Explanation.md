@@ -1,7 +1,7 @@
 # Code Architecture Explanation
 
 ## First Approach
- ![Archicture Diagram](./doc/microcontroller_communication_daemon_architecture-v1.png)
+ ![Archicture Diagram](./doc/microcontroller_communication_daemon_architecture.png)
  
 Snellium’s architecture is **modular**, meaning it consists of a central component that manages the overall application, referred to as the **daemon**, and smaller, independent components known as **modules**, which are integrated into the daemon’s environment.
 
@@ -33,9 +33,7 @@ During the implementation of my module, I observed significant similarities with
 
 ![Architecture Diagram with Device Module](./doc/device_module_daemon_architecture.png)
 
-
 The concept was to introduce a **Device module**, serving as a higher-level abstraction layer than the individual module abstractions. Any module dealing with devices that need to be discovered and managed would implement this **Device abstraction**, incorporating only the device-specific logic. This approach reduces code duplication, provides a straightforward interface for core classes, and allows module abstractions to be more focused and specific.
 
 In this architecture, all **device sets**, **discoverer sets**, and **threads** are handled within the new module. The methods employed in these classes must be implemented by any device, ensuring consistent and easy setup. To achieve this, **Device** and **Discoverer interfaces** were introduced. For the analogous code that varies only by the type of device handler, such as communication or backend classes, a bridge section was created with **template classes** for devices and discoverers. These template classes are still abstract, while the module abstraction defines the specific device handler types.
 
-To this day, 12th September, I am still implementing this module and reiterating it.

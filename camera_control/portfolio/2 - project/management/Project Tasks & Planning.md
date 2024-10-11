@@ -1,9 +1,9 @@
 
-# Project Tasks & Planning
+# MID-TERM : Project Tasks & Planning
 
 > Cf. [Internship Project - Gantt Diagram](portfolio/2 - project/internship_gantt_chart_portrait.pdf|internship_gantt_chart_portrait)
 
-![Gantt Diagram of Internship Project](./internship_gantt_chart.png)
+![Gantt Diagram of Internship Project](portfolio/2%20-%20project/management/docs/internship_gantt_chart.png)
 
 The project was divided in several phases:
 1. **Research:**
@@ -32,3 +32,21 @@ Notice the big vertical red strip on the calendar. It represents a time off gran
 I asked this time off as I was unable to prepare the exam in my free time. The internship location was too far from my residence, resulting in a daily commute of nearly four hours. After a full day of work and the lengthy commute, it was hard to study effectively. Upon reviewing the internship convention, we were unable to locate any specific article addressing days off granted by supervisors for such purposes. However, my supervisor kindly agreed to my request, and the time off proved essential for my preparation.
 
 This week off allowed me to pass the exam with a mark of 15/20, and I would like to express my sincere gratitude to my supervisor for providing this opportunity.
+
+# END OF INTERNSHIP: Planning
+
+> Cf. final_internship_gantt_chart.pdf for a more detailed view of the internship planning.
+
+![Final Internship Gantt Chart](./docs/final_internship_gantt_chart.png)
+
+In the final version of the internship planning, one can notice that the end of the project took more time than planned. Indeed, the last week that was suppose to be a late zone, and specially a test and debug zone, were taken by the end of the software implementation and firmware refactoring. Lots of parallels tasks were done at the end.
+
+## Conclusion
+
+The beginning of the project was not strictly planned because time was need to get used to the environment and to deeply understand the project and its working charge. Thus, the project advanced task by task without a long-term planning. 
+
+Once the prototyping phase concluded, the software implementation had began. This phase was easier to estimate and plan. Thanks also to code review and the closer communication to my supervisor, I could receive feedback about my pace of advancement and set some light deadlines.
+
+By the end of the project, it was clear that I would not have time to finish successfully without imposing a more strict and faster pace. This is when the harsh deadlines were set and the project was planned until its end. However, time was short and the complexity of debug and errors increased. Each new step became more difficult to implement, taking more time to finish, review and debug.  
+
+In conclusion, the project was managed in a more flexible manner and it maintained a regular pace during two thirds of it. However, the pace of advancement should have been faster in order to conclude successfully the project and have time to test and debug everything. 

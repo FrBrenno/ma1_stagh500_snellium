@@ -1,0 +1,151 @@
+{
+  "main": {
+    "id": "1677493c05d9ac26",
+    "type": "split",
+    "children": [
+      {
+        "id": "215c9cc08459d43d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7789f55513e2e786",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2 - project/documentation/Architecture/Code Architecture Explanation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d3b953195b987646",
+    "type": "split",
+    "children": [
+      {
+        "id": "e87426e77ae7eea7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "16057a870e1f47e0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "03ebfda7a12528d7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d753368c6e854975",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "365f19d921e7d07a",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ce9ed7a5afe1acf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fa5a631a7d80b743",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2 - project/documentation/Architecture/Code Architecture Explanation.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "33a8b4e573b907b5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "2 - project/documentation/Architecture/Code Architecture Explanation.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "01f5ea27f3d902dc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "908f2ce108ec6b8a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2 - project/documentation/Architecture/Code Architecture Explanation.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false
+    }
+  },
+  "active": "7789f55513e2e786",
+  "lastOpenFiles": []
+}

@@ -12,11 +12,11 @@ Currently, the company has six full-time employees, including the founders, alon
 
 ## Business
 
-Snellium's business is primarily **Research & Development**. According to a conversation with the CEO, the company doesn't work on specific projects but rather implements its technology to meet client needs. Clients approach Snellium for solutions to their quality control challenges, and the team conducts feasibility studies before signing contracts for implementation.
+Snellium's business is primarily **Research & Development**. According to a conversation with the CEO, the company has one important product which is **Promethe**. They put this product in evidence and try to sell contracts of implementation of this technology to meet client needs. Promethe is a glass profiler that is used to detect manufacturing defects due its fine precision and can also evaluate glass optical properties. 
 
-The company owns its technology, and once a project is delivered, it is installed at the client's site, with ongoing maintenance provided. Clients pay royalties for the continued use of the technology. Snellium's revenue comes from regional government subsidies, development contracts, and royalties.
+The company owns its technology - it is the way to be patented, and once a project is delivered, it is installed at the client's site, with ongoing maintenance provided. Clients pay **royalties** for the continued use of the technology. Snellium's revenue comes from **regional government subsidies, development contracts, royalties and licences**.
 
-The primary industry they serve is automotive, although the technology has potential applications in other sectors, such as glass for mobile phones, watches, and buildings. The automotive industry is a key focus because manufacturers are eager to replace outdated systems and accelerate processes. For example, the current method for profiling windshields involves a mechanical system using pistons, which must be calibrated with an expensive template. This process is costly, time-consuming, and prone to wear and tear. Snellium's technology offers a more efficient solution.
+The primary industry they serve is **automotive**, although the technology has potential applications in other sectors, such as glass for mobile phones, watches, and buildings. The automotive industry is a key focus because manufacturers are eager to replace outdated systems and accelerate processes. For example, the current method for profiling windshields involves a mechanical system using pistons, which must be calibrated with an expensive template. This process is costly, time-consuming, and prone to wear and tear. Snellium's technology offers a more efficient solution.
 
 ## Technology
 

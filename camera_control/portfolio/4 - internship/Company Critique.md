@@ -1,0 +1,13 @@
+# **Company Critique: Snellium**
+
+Snellium is a welcoming and great host for interns, creating an environment that is encouraging. During my internship, I worked on projects that not only aligned with my interests but also addressed the company’s needs. In this critique, I will discuss various aspects of my experience, including the company culture, learning opportunities, teamwork, and the guidance I received.
+
+From the very beginning, Snellium presented an environment where I felt included and supported. The employees were kind, polite, and always willing to help. I was treated as a member of the team, and this welcoming atmosphere made it easy for me to adapt, even though it was my first experience in a professional setting. Also this environment encouraged me to ask as many questions as needed, and the employees always provided helpful insights.
+
+One of the standout aspects of my internship at Snellium was the guidance I received from my supervisors. They were patient and understanding during my learning process, always ready to give advice that helped me overcome obstacles.
+
+The projects I worked on were both relevant to my interests and aligned with the company’s goals. I appreciated that Snellium took the time to match the tasks with my skills while also giving me opportunities to expand my expertise. The economic aspect of my project was also well supported, as I had access to all the necessary resources to carry out my work. They were flexible as long as I could justify the importance of these resources for the success of my project. 
+
+At Snellium, each person worked on their own individual projects, as the tasks were generally not related. However, we often discussed each other’s work, which helped me gain new ideas and insights for my own project. These informal conversations were valuable for finding different approaches or solutions. The daily stand-up meetings also played a big role in making me feel part of the team and the company as a whole. Even though we worked on separate projects, these discussions and meetings gave me a sense of connection and collaboration.
+
+I also enjoyed a good amount of autonomy in my work. I was trusted to take charge of my tasks, and this sense of responsibility pushed me to stay motivated and self-driven. Although I was always guided when needed, I had the freedom to explore different solutions and approaches, which contributed to my growth. Paradoxically, it was the biggest and worst point about the internship because I managed the pace of advancement on my own, but the lack of structure and planning made me lose the track of time.

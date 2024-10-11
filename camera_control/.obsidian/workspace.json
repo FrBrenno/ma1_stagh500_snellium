@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "662935cd46e63d61",
+        "id": "7471d1526de0bccb",
         "type": "tabs",
         "children": [
           {
-            "id": "23033813dd55eb26",
+            "id": "a2314a4f8559cd57",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journal/week12/12.04 - 03.10.md",
+                "file": "portfolio/4 - internship/Company Critique.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journal/week12/12.04 - 03.10.md",
+                "file": "portfolio/4 - internship/Company Critique.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journal/week12/12.04 - 03.10.md",
+                "file": "portfolio/4 - internship/Company Critique.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journal/week12/12.04 - 03.10.md"
+                "file": "portfolio/4 - internship/Company Critique.md"
               }
             }
           }
@@ -138,62 +138,62 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false,
       "smart-gantt:Smart Gantt": false
     }
   },
-  "active": "23033813dd55eb26",
+  "active": "a2314a4f8559cd57",
   "lastOpenFiles": [
-    "journal/week12/12.05 - 04.10.md",
-    "journal/week12/12.04 - 03.10.md",
-    "journal/week3/3.4 - 01.08.md",
-    "journal/week3/3.3 - 31.07.md",
-    "journal/week3/3.2 - 30.07.md",
-    "journal/week3/3.1 - 29.07 - Week 3.md",
-    "journal/week2/2.4 - 25.07.md",
-    "journal/week2/2.3 - 24.07.md",
-    "journal/week2/2.2 - 23.07.md",
-    "journal/week2/2.1 - 22.07 - Week 2.md",
-    "journal/week12/12.03 - 02.10.md",
-    "journal/week2/2.5 - 26.07 - Day OFF.md",
-    "portfolio/3 - journal/week3/3.1 - 29.07 - Week 3.md",
-    "journal/week12/12.02 - 01.10.md",
-    "journal/week12/12.01 - 30.09.md",
-    "img/week_12_gantt.png",
-    "journal/week11/11.04 - 26.09.md",
-    "journal/week11/11.03 - 25.09.md",
-    "journal/week11/11.02 - 24.09.md",
-    "journal/week11/11.05 - 27.09.md",
-    "journal/week12",
-    "journal/week11/11.01 - 23.09.md",
-    "journal/week11/11.06 - Week Summary.md",
-    "journal/0.0 - TO DO.md",
-    "portfolio/5 - evaluations/mid-term/Mid-Term Visit - Feedback.md",
-    "img/IPE_personal.jpeg",
-    "img/IPE_personal_1.jpeg",
-    "img/IPE_Team.jpeg",
-    "img/IPE_Outcomes.jpeg",
-    "img/IPE_global_strength.jpeg",
-    "img/IPE_improvements_goals.jpeg",
-    "portfolio/5 - evaluations/mid-term/vincent_intern_performance_evaluation.pdf",
-    "portfolio/5 - evaluations/mid-term/self-assessment_intern_performance_evaluation.pdf",
-    "portfolio/5 - evaluations/mid-term/vincent intern performance evaluation.pdf",
-    "img/technology_readiness_level.jpg",
-    "img/technology_readiness_level.webp",
-    "portfolio/5 - evaluations/mid-term/self-assessment intern performance evaluation.pdf",
-    "portfolio/1 - company/Snellium - Company Presentation.md",
-    "journal/week10/10.01 - 16.09 - Homeoffice.md",
-    "journal/week10/10.02 - 17.09.md",
-    "img/week_11_gantt.png",
-    "journal/week11",
-    "journal/week10/Untitled",
-    "journal/week10",
-    "portfolio/2 - project/documentation/Microcontroller/Microcontroller Firmware Diagram.pdf",
-    "portfolio/2 - project/documentation/Architecture/microcontroller_module_doc.pdf"
+    "portfolio/4 - internship/Company Critique.md",
+    "portfolio/4 - internship/Company Critique.md",
+    "portfolio/4 - internship/Learning Outcomes.md",
+    "portfolio/2 - project/management/Project Tasks & Planning.md",
+    "portfolio/2 - project/management/docs/final_internship_gantt_chart.pdf",
+    "portfolio/2 - project/management/docs/final_internship_gantt_chart.png",
+    "portfolio/2 - project/management/Project Management Framework.md",
+    "portfolio/2 - project/Project Description.md",
+    "portfolio/2 - project/management/docs/internship_gantt_chart_portrait.pdf",
+    "portfolio/2 - project/management/docs/internship_gantt_chart.png",
+    "portfolio/2 - project/management/docs",
+    "portfolio/2 - project/documentation/Microcontroller/Microcontroller selection.md",
+    "portfolio/2 - project/management",
+    "portfolio/2 - project/documentation/Microcontroller/top_2_3_boards.png",
+    "portfolio/2 - project/documentation/Microcontroller/top_1_board.png",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller_firmware_diagram.png",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller_firmware_diagram.pdf",
+    "portfolio/2 - project/documentation/Microcontroller/Firmware Code Architecture.md",
+    "portfolio/2 - project/documentation/Microcontroller/criteria_2.png",
+    "portfolio/2 - project/documentation/Microcontroller/criteria_1.png",
+    "portfolio/2 - project/documentation/Microcontroller/manuals/renesas-rx/project_documentation.md",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller-firmware/project_documentation.md",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller-firmware/installation_e2_studio.md",
+    "portfolio/2 - project/documentation/Microcontroller/manuals/renesas-rx/utilisation_e2_studio.md",
+    "portfolio/2 - project/documentation/Microcontroller/manuals/renesas-rx/installation_e2_studio.md",
+    "portfolio/2 - project/documentation/Communication Protocol/Communication Protocol.md",
+    "portfolio/2 - project/documentation/Architecture/Discovery Process.md",
+    "portfolio/2 - project/documentation/Architecture/Device Module.md",
+    "portfolio/2 - project/documentation/Architecture/Code Architecture Explanation.md",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v1.pdf",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v2.pdf",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_communication_daemon_architecture-v2.png",
+    "portfolio/2 - project/documentation/Architecture/doc/microcontroller_module_sequence_diagram_discovery.png",
+    "portfolio/2 - project/documentation/Architecture/device.md",
+    "portfolio/2 - project/weekly reports/Week 10.md",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller-firmware/img/smart_configurator_pins.png",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller-firmware/utilisation_e2_studio.md",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller-firmware/img",
+    "portfolio/2 - project/documentation/Microcontroller/microcontroller-firmware",
+    "portfolio/2 - project/documentation/Microcontroller/manuals/renesas-rx/figures",
+    "portfolio/2 - project/documentation/microcontroller-firmware/utilisation_e2_studio.md",
+    "portfolio/2 - project/documentation/microcontroller-firmware/project_documentation.md",
+    "portfolio/2 - project/documentation/microcontroller-firmware/installation_e2_studio.md",
+    "portfolio/2 - project/documentation/manuals/renesas-rx/utilisation_e2_studio.md",
+    "portfolio/2 - project/documentation/manuals/renesas-rx/project_documentation.md",
+    "portfolio/2 - project/documentation/manuals/renesas-rx/installation_e2_studio.md"
   ]
 }
